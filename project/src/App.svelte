@@ -115,8 +115,7 @@
               >
                 <div
                   class="bg-blue-600 h-2.5 rounded-full"
-                  style="width: {skil.percent}%"
-                />
+                  style="width: {skil.percent}%"></div>
               </div>
             </div>
           </div>
@@ -173,7 +172,7 @@
   </div>
   Contact End -->
 
-  <div class="h-16" />
+  <div class="h-16"></div>
 </main>
 
 <style>

@@ -1,5 +1,11 @@
 <script>
     import sourceCode from "../assets/sourceCode.png";
+
+    let menuOpen = false
+
+    function toggleMenu() {
+        menuOpen = !menuOpen
+    }
 </script>
 
 <nav
@@ -21,6 +27,7 @@
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-default"
             aria-expanded="false"
+            on:click={toggleMenu}
         >
             <span class="sr-only">Open main menu</span>
             <svg
@@ -36,9 +43,10 @@
                 />
             </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <div class="{menuOpen ? '' : 'hidden'} w-full md:block md:w-auto" id="navbar-default">
             <ul
                 class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+                on:click={toggleMenu}
             >
                 <li>
                     <a
@@ -48,7 +56,7 @@
                         About
                     </a>
                 </li>
-                <li>
+                <li on:click={toggleMenu}>
                     <a
                         href="#projects"
                         class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
@@ -56,7 +64,7 @@
                         Projects
                     </a>
                 </li>
-                <li>
+                <li on:click={toggleMenu}>
                     <a
                         href="https://github.com/TaalayDev"
                         class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
