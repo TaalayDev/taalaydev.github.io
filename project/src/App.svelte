@@ -7,6 +7,7 @@
   import SiGmail from "svelte-icons-pack/si/SiGmail";
   import SiTelegram from "svelte-icons-pack/si/SiTelegram";
   import ImGithub from "svelte-icons-pack/im/ImGithub";
+  import SiLinkedin from "svelte-icons-pack/si/SiLinkedin";
   import { projects, skils } from "./data/data";
 
   let innerWidth = 0;
@@ -51,6 +52,12 @@
             class="contact-icon w-10 h-10 flex items-center justify-center rounded-lg"
           >
             <Icon src={ImGithub} size="48" color="black" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/taalaydev/"
+            class="contact-icon w-10 h-10 flex items-center justify-center rounded-lg"
+          >
+            <Icon src={SiLinkedin} size="48" color="#0077B5" />
           </a>
         </div>
       </div>
@@ -115,7 +122,8 @@
               >
                 <div
                   class="bg-blue-600 h-2.5 rounded-full"
-                  style="width: {skil.percent}%"></div>
+                  style="width: {skil.percent}%"
+                />
               </div>
             </div>
           </div>
@@ -172,7 +180,7 @@
   </div>
   Contact End -->
 
-  <div class="h-16"></div>
+  <div class="h-16" />
 </main>
 
 <style>

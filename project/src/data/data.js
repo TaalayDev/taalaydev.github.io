@@ -1,10 +1,10 @@
 import oshshamy from "../assets/oshshamy.png"
 
 export const skils = [
-    {name: "Android", langs: ["Java", "Kotlin"], percent: 80},
-    {name: "Flutter", langs: ["Dart"], percent: 90},
-    {name: "Backend", langs: ["PHP", "Laravel"], percent: 70},
-    {name: "Web", langs: ["Javasript", "React", "Vue"], percent: 60},
+    { name: "Android", langs: ["Java", "Kotlin"], percent: 80 },
+    { name: "Flutter", langs: ["Dart"], percent: 90 },
+    { name: "Backend", langs: ["PHP", "Laravel"], percent: 70 },
+    { name: "Web", langs: ["Javasript", "React", "Vue"], percent: 60 },
 ];
 
 export const projects = [
@@ -12,7 +12,7 @@ export const projects = [
         name: "Osh Shamy",
         image: oshshamy,
         platforms: {
-            web: "http://oshshamy.kg/images/logotip2222.png",
+            web: "http://oshshamy.kg",
         },
         stack: ["React", "Laravel", "InertiaJs"],
     },
