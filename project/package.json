@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
@@ -14,6 +14,7 @@
     "@tsconfig/svelte": "^3.0.0",
     "autoprefixer": "^10.4.8",
     "flowbite-svelte": "^0.26.16",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.16",
     "svelte": "^3.49.0",
     "svelte-carousel": "^1.0.20",
@@ -25,7 +26,9 @@
     "vite": "^3.1.0"
   },
   "dependencies": {
+    "scroll-carousel": "^1.2.7",
     "siema": "^1.5.1",
-    "svelte-icons-pack": "^2.0.0"
+    "svelte-icons-pack": "^2.0.0",
+    "svelte-spa-router": "^3.3.0"
   }
 }

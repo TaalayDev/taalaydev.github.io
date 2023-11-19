@@ -1,19 +1,30 @@
 <script>
     import sourceCode from "../assets/sourceCode.png";
 
-    let menuOpen = false
+    let menuOpen = false;
 
     function toggleMenu() {
-        menuOpen = !menuOpen
+        menuOpen = !menuOpen;
+    }
+
+    function handleAnchorClick(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const anchorId = new URL(link.href).hash.replace("#", "");
+        const anchor = document.getElementById(anchorId);
+        window.scrollTo({
+            top: anchor.offsetTop,
+            behavior: "smooth",
+        });
     }
 </script>
 
 <nav
-    class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900"
+    class="bg-white border-gray-200 px-8 sm:px-8 py-2.5 rounded dark:bg-gray-900"
 >
     <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="https://flowbite.com/" class="flex items-center">
-            <img src={sourceCode} class="mr-4 h-6 sm:h-9" alt="Flowbite Logo" />
+        <a href="/" class="flex items-center">
+            <img src={sourceCode} class="mr-4 h-6 sm:h-9" alt="Site Logo" />
             <span
                 class="self-center text-xl font-semibold whitespace-nowrap"
                 style="color: #50afc0;"
@@ -43,7 +54,10 @@
                 />
             </svg>
         </button>
-        <div class="{menuOpen ? '' : 'hidden'} w-full md:block md:w-auto" id="navbar-default">
+        <div
+            class="{menuOpen ? '' : 'hidden'} w-full md:block md:w-auto"
+            id="navbar-default"
+        >
             <ul
                 class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
                 on:click={toggleMenu}
@@ -52,6 +66,7 @@
                     <a
                         href="#about"
                         class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                        on:click={handleAnchorClick}
                     >
                         About
                     </a>
@@ -60,6 +75,7 @@
                     <a
                         href="#projects"
                         class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                        on:click={handleAnchorClick}
                     >
                         Projects
                     </a>
