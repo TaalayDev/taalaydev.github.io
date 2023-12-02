@@ -2,11 +2,13 @@
     import computerGuy from "../assets/computerGuy.jpeg";
     import { projects, skils } from "../data/data";
     import ProjectsCarousel from "../lib/ProjectsCarousel.svelte";
+    import Swiper from "../lib/Swiper.svelte";
 
     import gmail from "../assets/gmail.svg";
     import telegram from "../assets/telegram.svg";
     import octocat from "../assets/octocat.svg";
     import linkedin from "../assets/linkedin.svg";
+    import ProjectCard from "../lib/ProjectCard.svelte";
 </script>
 
 <main class="px-8">
@@ -160,7 +162,7 @@
           </Carousel>
         {/if} -->
 
-            <ProjectsCarousel {projects} />
+            <Swiper {projects} />
         </div>
     </div>
 

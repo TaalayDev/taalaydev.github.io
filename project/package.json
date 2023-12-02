@@ -29,6 +29,7 @@
     "scroll-carousel": "^1.2.7",
     "siema": "^1.5.1",
     "svelte-icons-pack": "^2.0.0",
-    "svelte-spa-router": "^3.3.0"
+    "svelte-spa-router": "^3.3.0",
+    "swiper": "^11.0.5"
   }
 }
