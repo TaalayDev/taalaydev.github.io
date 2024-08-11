@@ -17,19 +17,19 @@
         <div class="col-span-3 md:col-span-2 text-left flex items-center">
             <div>
                 <h2 class="text-bold">
-                    Discover <span class="me-text">Taalay's World</span>
+                    <span class="me-text">About</span> Me
                 </h2>
 
                 <p class="mt-2 text-lg font-medium">
-                    Hey there! I'm Taalay, a passionate Mobile App Developer
-                    from Kyrgyzstan.
+                    Hi, I'm Taalay, a passionate software engineer with a knack
+                    for crafting clean, efficient, and user-friendly solutions.
                 </p>
 
                 <p class="mt-1 text-sm">
-                    I thrive in both solo and team environments, crafting native
-                    Android apps (Java, Kotlin), Flutter wonders for Android and
-                    iOS, and sculpting dynamic web experiences with JavaScript
-                    (React) and PHP (Laravel).
+                    I'm a self-taught developer with a strong foundation in
+                    mobile and web technologies. I specialize in building
+                    high-quality, scalable applications that deliver exceptional
+                    user experiences.
                 </p>
 
                 <div class="flex flex-wrap gap-4 items-center mt-3">
@@ -101,7 +101,19 @@
             <div class="mt-3">
                 Oracle Digital
                 <p class="text-sm">Lead Flutter and Android Developer</p>
-                <p style="font-size: 12px;">2022 September - Present</p>
+                <p style="font-size: 12px;">2022 September - 2024 February</p>
+            </div>
+
+            <div class="mt-3">
+                Peacky Group
+                <p class="text-sm">Android Developer</p>
+                <p style="font-size: 12px;">2024 March - 2024 May</p>
+            </div>
+
+            <div class="mt-3">
+                Peacky Group
+                <p class="text-sm">iOS Developer</p>
+                <p style="font-size: 12px;">2024 May - Present</p>
             </div>
         </div>
 
@@ -145,23 +157,6 @@
             Last Projects I worked on
         </h2>
         <div class="">
-            <!-- {#if innerWidth > 0}
-          <Carousel
-            autoplay={2000}
-            perPage={innerWidth <= 480 ? 1 : innerWidth <= 768 ? 1 : 3}
-            dots={false}
-          >
-            {#each projects as project}
-              <ProjectCard
-                image={project.image}
-                name={project.name}
-                description={project.stack.join(", ")}
-                platforms={project.platforms}
-              />
-            {/each}
-          </Carousel>
-        {/if} -->
-
             <Swiper {projects} />
         </div>
     </div>
