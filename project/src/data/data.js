@@ -17,8 +17,14 @@ export const projects = [
             ios: "https://apps.apple.com/kg/app/surdokg/id1560636785",
         },
         stack: ["Flutter"],
-        description: "SurdoKG - is a mobile application that helps deaf people to communicate with doctors. The application contains a list of doctors, chat, and video call.",
-        note: "Developed from scratch in collaboration with backend developer.",
+        description: "SurdoKG - is a mobile application that helps deaf people to communicate with doctors. The application contains a list of doctors and video call.",
+        note: [
+            "UI design from Figma",
+            "Video call using WebRTC and WebSockets",
+            "Push notifications using Firebase Cloud Messaging",
+            "Connection to the server using REST API",
+        ],
+        copyrigth: "SurdoKG"
     },
     {
         name: "Ishonch",
@@ -28,7 +34,13 @@ export const projects = [
         },
         stack: ["Flutter"],
         description: "Ishonch - is a mobile application to collect geo data for database. The application contains a map, tasks, and a list of places.",
-        note: "Developed from scratch in collaboration with GeoIntellect developers.",
+        note: [
+            "UI design from Figma",
+            "Connection to the server using REST API",
+            "MapBox for maps",
+            "Local database using SQLite",
+        ],
+        copyright: "GeoIntellect"
     },
     {
         name: "Cute Virtual Pets",
@@ -38,7 +50,15 @@ export const projects = [
         },
         stack: ["Kotlin"],
         description: "Cute Virtual Pets - is a mobile application that allows you to take care of virtual pets. The application contains various pets, mini-games, and daily tasks.",
-        note: "Developed from scratch in collaboration with Peacky Group team.",
+        note: [
+            "UI design from Figma",
+            "Local database using Room",
+            "In-app purchases",
+            "Widgets",
+            "Background tasks",
+            "Notifications",
+        ],
+        copyright: "Peacky Group"
     },
     {
         name: "My Sketchbook - Learn to Draw",
@@ -48,7 +68,13 @@ export const projects = [
         },
         stack: ["Kotlin", "Swift"],
         description: "My Sketchbook - Learn to Draw - is a mobile application that helps you learn to draw. The application contains various drawing lessons and drawing tools.",
-        note: "Updates of tools and lessons.",
+        note: [
+            "Adding new lessons",
+            "Adding new brushes",
+            "Updating the UI",
+            "Bug fixes",
+        ],
+        copyright: "Peacky Group"
     },
     {
         name: "Digital Planner - Task Journal",
@@ -58,6 +84,13 @@ export const projects = [
         },
         stack: ["Kotlin"],
         description: "Digital Planner - Task Journal - is a mobile application that helps you to plan your day. The application contains a calendar, tasks, and notes.",
-        note: "Updates and bug fixes.",
+        note: [
+            "Added new features",
+            "Updated the UI",
+            "Adaptive design",
+            "Bug fixes",
+            "Added Layers functionality",
+        ],
+        copyright: "Peacky Group"
     }
 ];

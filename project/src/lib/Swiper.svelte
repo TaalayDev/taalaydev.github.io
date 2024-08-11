@@ -8,8 +8,16 @@
         EffectCoverflow,
     } from "swiper/modules";
     import ProjectCard from "./ProjectCardItem.svelte";
+    import ProjectInfoDialog from "./Modal.svelte";
+    import Modal from "./Modal.svelte";
 
     export let projects = [];
+    let selectedProject = {
+        name: "",
+        image: "",
+        note: [],
+    };
+    let showModal = false;
 
     function swiper(node) {
         let swiper = new Swiper(node, {
@@ -71,6 +79,10 @@
                     name={project.name}
                     description={project.stack.join(", ")}
                     platforms={project.platforms}
+                    onClick={() => {
+                        selectedProject = project;
+                        showModal = true;
+                    }}
                 />
             </div>
         {/each}
@@ -82,6 +94,40 @@
     <div class="swiper-button-next"></div>
 
     <!-- If we need scrollbar -->
+
+    <!-- Project info dialog -->
+    <Modal bind:showModal>
+        <h2 slot="header" class="text-2xl font-bold">
+            {selectedProject.name}
+        </h2>
+        <div
+            class="flex items-center justify-center pt-8 pb-4 w-500"
+            style="width: 500px;"
+        >
+            <img
+                class="rounded-t-lg"
+                src={selectedProject.image}
+                alt=""
+                style="height: 150px; width: 150px; border-radius: 180px; object-fit: contain;"
+            />
+        </div>
+
+        {#if selectedProject.copyright}
+            <div class="py-5 text-center">
+                <p>
+                    <strong>© {selectedProject.copyright}</strong>
+                </p>
+            </div>
+        {/if}
+
+        <div class="py-5">
+            {#each selectedProject.note as note}
+                <div>
+                    {note}
+                </div>
+            {/each}
+        </div>
+    </Modal>
 </div>
 
 <style>

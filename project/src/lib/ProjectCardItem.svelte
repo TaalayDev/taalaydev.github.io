@@ -13,28 +13,29 @@
     export let description = "";
     export let image = "";
     export let platforms = {};
+    export let onClick = () => {};
 </script>
 
-<div class="card-container py-2">
+<div class="card-container py-2" on:click={onClick}>
     <div
         class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 px-10 w-[100%] h-full"
     >
-        <a href={link} class="flex items-center justify-center pt-8 pb-4">
+        <div class="flex items-center justify-center pt-8 pb-4">
             <img
                 class="rounded-t-lg"
                 src={image}
                 alt=""
                 style="height: 150px; width: 150px; border-radius: 180px; object-fit: contain;"
             />
-        </a>
+        </div>
         <div class="py-5">
-            <a href={link}>
+            <div>
                 <h5
                     class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white text-center"
                 >
                     {name}
                 </h5>
-            </a>
+            </div>
             <p
                 class="mb-3 font-normal text-gray-700 dark:text-gray-400 text-center"
             >
