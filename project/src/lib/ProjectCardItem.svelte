@@ -1,12 +1,11 @@
 <script>
-    import Icon from "svelte-icons-pack/Icon.svelte";
     import IoLogoGooglePlaystore from "svelte-icons-pack/io/IoLogoGooglePlaystore";
     import IoLogoAppleAppstore from "svelte-icons-pack/io/IoLogoAppleAppstore";
-    import ImChrome from "svelte-icons-pack/im/ImChrome";
 
     import playstore from "../assets/playstore.svg";
     import appstore from "../assets/app-store.svg";
     import web from "../assets/internet-explorer.svg";
+    import octocat from "../assets/octocat.svg";
 
     export let link = "";
     export let name = "";
@@ -55,6 +54,11 @@
                 {#if platforms.web}
                     <a href={platforms.web}>
                         <img src={web} alt="web" width="20" />
+                    </a>
+                {/if}
+                {#if platforms.sourcecode}
+                    <a href={platforms.sourcecode}>
+                        <img src={octocat} alt="sourcecode" width="20" />
                     </a>
                 {/if}
             </div>
