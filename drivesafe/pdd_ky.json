@@ -2264,7 +2264,7 @@
                     "imageUrl": "/api/placeholder/400/300"
                 }
             ],
-            "grpup": "emergencySignalsQuizzes"
+            "group": "emergencySignalsQuizzes"
         },
         {
             "id": "emergency_intermediate",
