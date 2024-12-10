@@ -4,7 +4,7 @@ Welcome to my GitHub profile! I'm passionate about software development and love
 
 ## About Me
 
-- 🔭 I’m currently working on DoodleVerse, PixelVerse, BrainTeasers and other (see in my profile).
+- 🔭 I’m currently working on DoodleVerse, PixelVerse, BrainTeasers and more.
 - 💬 Ask me about Flutter, Jetpack Compose
 - 📫 How to reach me: a.u.taalay@gmail.com
 
