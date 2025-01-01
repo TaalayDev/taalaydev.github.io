@@ -100,8 +100,9 @@ export const projects = [
     },
     {
         name: "Doodle Verse",
-        image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_L4ml17sYGI_JW7P3NJH_Q.png",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7d/de/17/7dde175e-b98d-a2ea-3774-7bc284987bde/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/460x0w.webp",
         platforms: {
+            ios: "https://apps.apple.com/us/app/doodleverse-drawing-lessons/id6738771454",
             web: "https://taalaydev.github.io/doodleverse/",
             sourcecode: "https://github.com/TaalayDev/DoodleVerse-ComposeMultiplatform",
         },
