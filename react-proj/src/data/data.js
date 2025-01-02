@@ -120,6 +120,35 @@ export const projects = [
         ],
     },
     {
+        "name": "Constellation Catcher",
+        "image": "https://raw.githubusercontent.com/TaalayDev/constellation_catcher/refs/heads/main/ios/Runner/Assets.xcassets/AppIcon.appiconset/512.png",
+        "platforms": {
+            "ios": "https://apps.apple.com/us/app/constellation-catcher-game/id6739852690",
+            "sourcecode": "https://github.com/TaalayDev/constellation_catcher",
+        },
+        "stack": ["Flutter"],
+        "description": "Constellation Catcher is an educational app that helps users learn about constellations. Users can explore the night sky, view detailed information about constellations, and take quizzes to test their knowledge.",
+        "note": [
+            "Interactive sky map: Explore the night sky and learn about different constellations.",
+            "Constellation details: View information about each constellation, including stars, mythology, and more.",
+            "Offline access: Access content and quizzes offline.",
+        ],
+    },
+    {
+        "name": "Brain Teasers",
+        "image": "https://raw.githubusercontent.com/TaalayDev/brain_teasers/refs/heads/main/ios/Runner/Assets.xcassets/AppIcon.appiconset/512.png",
+        "platforms": {
+            "sourcecode": "https://github.com/TaalayDev/brain_teasers",
+        },
+        "stack": ["Flutter"],
+        "description": "Brain Teasers is a collection of fun and challenging puzzles to test your cognitive skills. Solve puzzles, complete challenges, and track your progress as you exercise your brain.",
+        "note": [
+            "Diverse puzzles: Solve a variety of puzzles, including math problems, logic puzzles, and more.",
+            "Challenges: Complete daily challenges to earn rewards.",
+            "Progress tracking: Monitor your performance and see how you improve over time.",
+        ],
+    },
+    {
         name: "Doodle Verse",
         image: "https://images.ctfassets.net/23aumh6u8s0i/4TsG2mTRrLFhlQ9G1m19sC/4c9f98d56165a0bdd71cbe7b9c2e2484/flutter",
         platforms: {
@@ -136,5 +165,6 @@ export const projects = [
             "Undo/Redo functionality: Easily correct mistakes or revisit previous states.",
             "Project management: Create, save, and edit multiple projects.",
         ],
-    }
+    },
+
 ];
