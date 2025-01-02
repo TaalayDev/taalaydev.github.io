@@ -40,13 +40,11 @@ const SideAnimations = () => {
                 <div className="fixed left-0 top-0 h-screen w-64">
                     <Binary className="absolute top-1/4 left-8 w-8 h-8 text-cyan-600 opacity-20 animate-pulse" />
                     <Code2 className="absolute top-1/2 left-12 w-8 h-8 text-cyan-600 opacity-20 animate-bounce" />
-                    <div className="absolute top-1/3 left-4 w-32 h-32 bg-cyan-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000" />
                 </div>
 
                 <div className="fixed right-0 top-0 h-screen w-64">
                     <Brackets className="absolute top-1/3 right-8 w-8 h-8 text-cyan-600 opacity-20 animate-pulse" />
                     <Terminal className="absolute top-2/3 right-12 w-8 h-8 text-cyan-600 opacity-20 animate-bounce" />
-                    <div className="absolute top-1/2 right-4 w-32 h-32 bg-cyan-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000" />
                 </div>
 
                 <div className="absolute inset-0 opacity-5">

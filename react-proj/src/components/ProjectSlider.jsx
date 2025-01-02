@@ -82,7 +82,7 @@ const ProjectSlider = ({ projects }) => {
                         >
                             <div className="relative h-full flex flex-col md:flex-row">
                                 {/* Image Section */}
-                                <div className="w-full md:w-1/2 h-48 md:h-full relative overflow-hidden">
+                                <div className="w-full md:w-1/2 h-48 md:h-full relative overflow-hidden hidden md:block lg:block">
                                     <img
                                         src={project.image}
                                         alt={project.name}

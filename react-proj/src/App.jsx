@@ -1,19 +1,18 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Portfolio from './pages/Portfolio';
 import NewPortfolio from './pages/NewPortfolio';
-import NeuralBackground from './components/NeuralBackground';
-import AnimatedBackground from './components/AnimatedBackground';
 import SideAnimations from './components/SideAnimations';
+import Background from './components/Background';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App relative">
-      <SideAnimations />
-      <div className="flex grid grid-cols-6">
-        <div className="col-span-1" />
-        <div className="col-span-4">
+      <Background />
+      <div className="flex grid grid-cols-1 lg:grid-cols-6">
+        <div className="hidden lg:col-span-1 md:block" />
+        <div className="lg:col-span-4 col-span-1">
           <Router>
             <Routes>
               <Route path="/" element={<Portfolio />} />
@@ -21,7 +20,7 @@ function App() {
             </Routes>
           </Router>
         </div>
-        <div className="col-span-1" />
+        <div className="hidden lg:col-span-1 md:block" />
       </div>
     </div>
   );
