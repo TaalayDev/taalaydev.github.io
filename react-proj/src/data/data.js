@@ -107,7 +107,7 @@ export const projects = [
             sourcecode: "https://github.com/TaalayDev/DoodleVerse-ComposeMultiplatform",
         },
         stack: ["Kotlin Multiplatform", "Jetpack Compose"],
-        description: "Cross-platform digital drawing application built with Kotlin Multiplatform and Jetpack Compose. Features include various brush types, layer support, shape tools, and a color picker. Create art on Android, iOS, Web, and Desktop with a unified, intuitive interface.",
+        description: "Cross-platform digital drawing application built with Kotlin Multiplatform and Jetpack Compose. ",
         note: [
             "Cross-platform support: Runs on Android, iOS, Web, and Desktop.",
             "Multiple brush types: Including pencil, marker, watercolor, and various creative brushes.",

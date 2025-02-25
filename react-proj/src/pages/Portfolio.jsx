@@ -10,7 +10,11 @@ import linkedin from '../assets/linkedin.svg';
 
 import Navbar from '../components/Navbar';
 import ProjectSlider from '../components/ProjectSlider';
-import NeuralBackground from '../components/NeuralBackground';
+import ExperienceTimeline from '../components/ExperienceTimeline';
+import SkillsRadarChart from '../components/SkillsRadarChart';
+import ContactForm from '../components/ContactForm';
+import ScrollAnimation from '../components/ScrollAnimation';
+import ProjectGrid3D from '../components/ProjectCard3D';
 
 const Portfolio = () => {
     const socialLinks = [
@@ -79,54 +83,12 @@ const Portfolio = () => {
 
                 {/* Experience And Skills */}
                 <div className="grid grid-cols-2 mt-8">
-                    <div className="col-span-2 md:col-span-1 text-left">
-                        <span className="text-lg">Experience</span>
-                        <p className="text-sm mt-2">
-                            Over the years I've gained valuable experience through
-                            freelancing and collaborations with diverse teams, startups, and
-                            organizations. Here's a snapshot of my journey:
-                        </p>
+                    <ExperienceTimeline experiences={experiences} />
 
-                        {experiences.map((exp, index) => (
-                            <div className="mt-3" key={index}>
-                                {exp.title}
-                                <p className="text-sm">{exp.profession}</p>
-                                <p style={{ fontSize: '12px' }}>{exp.date}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="col-span-2 md:col-span-1 text-left md:mt-0 mt-3">
-                        <span className="text-lg">My skills</span>
-                        <div className="text-sm mt-2 gap-2">
-                            {skils.map((skill, index) => (
-                                <div className="mt-3" key={index}>
-                                    <span className='flex flex-wrap items-center gap-2 mb-3'>
-                                        <span className='font-medium text-gray-900'>{skill.name}:</span>
-                                        {skill.langs.map((lang, langIndex) => (
-                                            <span
-                                                key={langIndex}
-                                                className="px-3 py-1 text-xs font-medium text-blue-600 bg-blue-50 rounded-full"
-
-                                            >
-                                                {lang}
-                                            </span>
-                                        ))}
-                                    </span>
-                                    <div>
-                                        <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
-                                            <div
-                                                className={`absolute h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-1000`}
-                                                style={{
-                                                    '--progress-width': `${skill.percent}%`,
-                                                    animation: 'progress 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards'
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="col-span-2 md:col-span-1 text-left md:mt-0 mt-3 md:pl-8">
+                        <ScrollAnimation animation='fadeUp'>
+                            <SkillsRadarChart skills={skils} />
+                        </ScrollAnimation>
                     </div>
                 </div>
 
@@ -135,13 +97,14 @@ const Portfolio = () => {
                     <h2 style={{ fontSize: '25px' }} className="font-normal mb-8">
                         Last Projects I worked on
                     </h2>
-                    <div>
-                        <ProjectSlider projects={projects} />
+                    <div className='mb-16'>
+                        <ProjectGrid3D projects={projects} />
                     </div>
                 </div>
 
-                <div className="h-16" />
+                
             </main>
+            
         </div>
     );
 };
