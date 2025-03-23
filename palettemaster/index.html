@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette Master - Master Color Theory Through Fun Puzzles</title>
+    <style>
+        :root {
+            --primary: #6750A4;
+            --primary-light: #D0BCFF;
+            --primary-container: #EADDFF;
+            --on-primary: #FFFFFF;
+            --on-primary-container: #21005D;
+            --secondary: #625B71;
+            --secondary-container: #E8DEF8; 
+            --on-secondary: #FFFFFF;
+            --on-secondary-container: #1D192B;
+            --tertiary: #7D5260;
+            --tertiary-container: #FFD8E4;
+            --on-tertiary: #FFFFFF;
+            --on-tertiary-container: #31111D;
+            --surface: #FFFBFE;
+            --on-surface: #1C1B1F;
+            --surface-variant: #E7E0EC;
+            --on-surface-variant: #49454F;
+            --error: #B3261E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--on-surface);
+            background-color: var(--surface);
+            overflow-x: hidden;
+        }
+
+        header {
+            background-image: linear-gradient(to right, #6750A4, #7D5260);
+            color: var(--on-primary);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-wheel {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: conic-gradient(
+                red, orange, yellow, green, blue, indigo, violet, red
+            );
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--on-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            padding-top: 100px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #E9DEFF, #FFD8E7);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--on-primary-container);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--on-surface-variant);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--on-primary);
+            box-shadow: 0 4px 12px rgba(103, 80, 164, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #5840A0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(103, 80, 164, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--surface);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-container);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 0 0 40%;
+            position: relative;
+        }
+
+        .app-preview {
+            width: 300px;
+            height: 600px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+            border: 8px solid #333;
+        }
+
+        .app-content {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #f5f5f5, #fff);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-header {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .app-body {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .color-target {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .color-mixer {
+            width: 85%;
+            height: 180px;
+            background: white;
+            border-radius: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .color-droplets {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .droplet {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .droplet:hover {
+            transform: scale(1.1);
+        }
+
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--on-surface-variant);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background-color: var(--primary-container);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--on-surface);
+        }
+
+        .feature-card p {
+            color: var(--on-surface-variant);
+            margin-bottom: 1rem;
+        }
+
+        .mini-game-section {
+            background-color: var(--primary-container);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .mini-game-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mini-game-container h2 {
+            font-size: 2.5rem;
+            color: var(--on-primary-container);
+            margin-bottom: 1rem;
+        }
+
+        .mini-game-container p {
+            color: var(--on-surface-variant);
+            margin-bottom: 2rem;
+        }
+
+        .mini-game {
+            background-color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            margin-bottom: 2rem;
+        }
+
+        .game-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .target-color {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-sliders {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .color-slider {
+            margin-bottom: 1rem;
+        }
+
+        .color-slider label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+            margin: 0 10px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+        }
+
+        .your-mix {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            margin: 1.5rem auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .accuracy {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #E9DEFF, #FFD8E7);
+        }
+
+        .download-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download-container h2 {
+            font-size: 2.5rem;
+            color: var(--on-primary-container);
+            margin-bottom: 1rem;
+        }
+
+        .download-container p {
+            color: var(--on-surface-variant);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .store-badge {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .store-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .store-badge img {
+            height: 60px;
+        }
+
+        footer {
+            background-color: var(--secondary);
+            color: var(--on-secondary);
+            padding: 3rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--on-secondary);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin-bottom: 3rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Floating bubbles animation for background */
+        .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="color-wheel"></div>
+                </div>
+                Palette Master
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#mini-game">Try It</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="privacy-policy.html">Privacy</a></li>
+                    <li><a href="terms-of-service.html">Terms</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="bubbles">
+            <!-- Colored bubbles will be added by JavaScript -->
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Master Color Theory Through Fun Puzzles</h1>
+                <p>Palette Master is an interactive game that teaches color theory through engaging puzzles. Mix colors, match targets, and develop your color intuition while having fun!</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn btn-primary">Download Now</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="app-preview">
+                    <div class="app-content">
+                        <div class="app-header">Palette Master</div>
+                        <div class="app-body">
+                            <div>
+                                <h3>Target Color</h3>
+                                <div class="color-target" id="app-target-color"></div>
+                            </div>
+                            <div class="color-mixer" id="app-mixer">
+                                <!-- Dynamic content will be added by JavaScript -->
+                            </div>
+                            <div>
+                                <h3>Your Mix</h3>
+                                <div id="app-result-color" style="background-color: white; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto; border: 3px solid #eee;"></div>
+                            </div>
+                            <div class="color-droplets">
+                                <div class="droplet" style="background-color: #FF5252;" onclick="addColorToMixer('#FF5252')"></div>
+                                <div class="droplet" style="background-color: #FFEB3B;" onclick="addColorToMixer('#FFEB3B')"></div>
+                                <div class="droplet" style="background-color: #2196F3;" onclick="addColorToMixer('#2196F3')"></div>
+                                <div class="droplet" style="background-color: #4CAF50;" onclick="addColorToMixer('#4CAF50')"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Create floating colored bubbles in the background
+        document.addEventListener('DOMContentLoaded', function() {
+            const bubblesContainer = document.querySelector('.bubbles');
+            const colors = ['#FF5252', '#FFEB3B', '#2196F3', '#4CAF50', '#9C27B0', '#FF9800'];
+            
+            for (let i = 0; i < 30; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                // Random properties
+                const size = Math.random() * 100 + 20;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Position and styles
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.backgroundColor = color;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.bottom = `-${size}px`;
+                
+                // Animation
+                bubble.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                bubble.style.animationDelay = `${Math.random() * 5}s`;
+                
+                bubblesContainer.appendChild(bubble);
+            }
+        });
+
+        // App preview simulation
+        let appMixedColor = 'white';
+        const appTargetColor = '#6750A4';
+        
+        function addColorToMixer(color) {
+            const mixer = document.getElementById('app-mixer');
+            const resultColor = document.getElementById('app-result-color');
+            
+            // Add a circle to the mixer
+            const drop = document.createElement('div');
+            drop.style.position = 'absolute';
+            drop.style.width = '30px';
+            drop.style.height = '30px';
+            drop.style.borderRadius = '50%';
+            drop.style.backgroundColor = color;
+            drop.style.left = `${Math.random() * 80 + 10}%`;
+            drop.style.top = `${Math.random() * 80 + 10}%`;
+            drop.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+            
+            mixer.appendChild(drop);
+            
+            // Simple mixing algorithm for demo (not accurate)
+            if (appMixedColor === 'white') {
+                appMixedColor = color;
+            } else {
+                // Simulate mixing
+                const rgb1 = hexToRgb(appMixedColor);
+                const rgb2 = hexToRgb(color);
+                
+                const mixedRgb = {
+                    r: Math.floor((rgb1.r + rgb2.r) / 2),
+                    g: Math.floor((rgb1.g + rgb2.g) / 2),
+                    b: Math.floor((rgb1.b + rgb2.b) / 2)
+                };
+                
+                appMixedColor = rgbToHex(mixedRgb.r, mixedRgb.g, mixedRgb.b);
+            }
+            
+            // Update the result color
+            resultColor.style.backgroundColor = appMixedColor;
+            
+            // Update the mixer background slightly
+            mixer.style.backgroundColor = appMixedColor + '20'; // 20 is hex for low opacity
+            
+            // Target color for the app preview
+            document.getElementById('app-target-color').style.backgroundColor = appTargetColor;
+        }
+
+        // Color mixing game
+        let targetColorHex;
+        
+        function generateNewTarget() {
+            // Generate a random target color
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            
+            targetColorHex = rgbToHex(r, g, b);
+            document.getElementById('target-color').style.backgroundColor = targetColorHex;
+            
+            // Reset sliders to middle values
+            document.getElementById('red-slider').value = 128;
+            document.getElementById('green-slider').value = 128;
+            document.getElementById('blue-slider').value = 128;
+            document.getElementById('red-value').textContent = 128;
+            document.getElementById('green-value').textContent = 128;
+            document.getElementById('blue-value').textContent = 128;
+            
+            updateMixedColor();
+        }
+        
+        function updateMixedColor() {
+            // Get slider values
+            const r = parseInt(document.getElementById('red-slider').value);
+            const g = parseInt(document.getElementById('green-slider').value);
+            const b = parseInt(document.getElementById('blue-slider').value);
+            
+            // Update value displays
+            document.getElementById('red-value').textContent = r;
+            document.getElementById('green-value').textContent = g;
+            document.getElementById('blue-value').textContent = b;
+            
+            // Set the mixed color
+            const mixedColorHex = rgbToHex(r, g, b);
+            document.getElementById('mixed-color').style.backgroundColor = mixedColorHex;
+            
+            // Calculate accuracy
+            const accuracy = calculateColorSimilarity(mixedColorHex, targetColorHex || '#6750A4');
+            document.getElementById('accuracy').textContent = `${Math.round(accuracy * 100)}%`;
+            
+            // Change accuracy color based on value
+            const accuracyEl = document.getElementById('accuracy');
+            if (accuracy >= 0.9) {
+                accuracyEl.style.color = 'green';
+            } else if (accuracy >= 0.7) {
+                accuracyEl.style.color = 'orange';
+            } else {
+                accuracyEl.style.color = 'red';
+            }
+        }
+        
+        function calculateColorSimilarity(hex1, hex2) {
+            const rgb1 = hexToRgb(hex1);
+            const rgb2 = hexToRgb(hex2);
+            
+            // Calculate color distance (simplified)
+            const rDiff = (rgb1.r - rgb2.r) / 255;
+            const gDiff = (rgb1.g - rgb2.g) / 255;
+            const bDiff = (rgb1.b - rgb2.b) / 255;
+            
+            // Weight differences (human eyes are more sensitive to green)
+            const distance = Math.sqrt(rDiff*rDiff*0.3 + gDiff*gDiff*0.59 + bDiff*bDiff*0.11);
+            
+            // Convert to similarity (0-1)
+            return Math.max(0, 1 - distance);
+        }
+        
+        // Helper functions for color conversion
+        function hexToRgb(hex) {
+            // Remove # if present
+            hex = hex.replace(/^#/, '');
+            
+            // Parse RGB values
+            const bigint = parseInt(hex, 16);
+            return {
+                r: (bigint >> 16) & 255,
+                g: (bigint >> 8) & 255,
+                b: bigint & 255
+            };
+        }
+        
+        function rgbToHex(r, g, b) {
+            return '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+        }
+        
+        // Initialize the mini-game with a random target color on load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateNewTarget();
+            
+            // Set target color for app preview
+            document.getElementById('app-target-color').style.backgroundColor = '#6750A4';
+        });
+    </script>
+</body>
+</html>
