@@ -3,818 +3,595 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palette Master - Master Color Theory Through Fun Puzzles</title>
+    <title>Palette Master - Learn Color Theory Through Play</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6750A4;
-            --primary-light: #D0BCFF;
-            --primary-container: #EADDFF;
-            --on-primary: #FFFFFF;
-            --on-primary-container: #21005D;
+            --primary-light: #EADDFF;
             --secondary: #625B71;
-            --secondary-container: #E8DEF8; 
-            --on-secondary: #FFFFFF;
-            --on-secondary-container: #1D192B;
-            --tertiary: #7D5260;
-            --tertiary-container: #FFD8E4;
-            --on-tertiary: #FFFFFF;
-            --on-tertiary-container: #31111D;
-            --surface: #FFFBFE;
-            --on-surface: #1C1B1F;
-            --surface-variant: #E7E0EC;
-            --on-surface-variant: #49454F;
-            --error: #B3261E;
+            --accent: #7D5260;
+            --accent-light: #FFD8E4;
+            --dark: #1C1B1F;
+            --light: #FFFBFE;
+            --gray: #79747E;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
             line-height: 1.6;
-            color: var(--on-surface);
-            background-color: var(--surface);
             overflow-x: hidden;
         }
-
-        header {
-            background-image: linear-gradient(to right, #6750A4, #7D5260);
-            color: var(--on-primary);
-            padding: 1rem;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Background Animation */
+        .animated-background {
             position: fixed;
-            width: 100%;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-            background: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .color-wheel {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: conic-gradient(
-                red, orange, yellow, green, blue, indigo, violet, red
-            );
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            color: var(--on-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        nav ul li a:hover {
-            opacity: 0.8;
-        }
-
-        .hero {
-            padding-top: 100px;
-            min-height: 90vh;
-            background: linear-gradient(135deg, #E9DEFF, #FFD8E7);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--on-primary-container);
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--on-surface-variant);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--on-primary);
-            box-shadow: 0 4px 12px rgba(103, 80, 164, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: #5840A0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(103, 80, 164, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: var(--surface);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary-container);
-            transform: translateY(-2px);
-        }
-
-        .hero-image {
-            flex: 0 0 40%;
-            position: relative;
-        }
-
-        .app-preview {
-            width: 300px;
-            height: 600px;
-            background-color: white;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            position: relative;
-            border: 8px solid #333;
-        }
-
-        .app-content {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, #f5f5f5, #fff);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .app-header {
-            background: var(--primary);
-            color: white;
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .app-body {
-            flex: 1;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        .color-target {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-        }
-
-        .color-mixer {
-            width: 85%;
-            height: 180px;
-            background: white;
-            border-radius: 15px;
-            margin: 10px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .color-droplets {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
-        }
-
-        .droplet {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s;
-        }
-
-        .droplet:hover {
-            transform: scale(1.1);
-        }
-
-        .features {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--on-surface-variant);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background-color: var(--surface);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            background-color: var(--primary-container);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-icon i {
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--on-surface);
-        }
-
-        .feature-card p {
-            color: var(--on-surface-variant);
-            margin-bottom: 1rem;
-        }
-
-        .mini-game-section {
-            background-color: var(--primary-container);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .mini-game-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .mini-game-container h2 {
-            font-size: 2.5rem;
-            color: var(--on-primary-container);
-            margin-bottom: 1rem;
-        }
-
-        .mini-game-container p {
-            color: var(--on-surface-variant);
-            margin-bottom: 2rem;
-        }
-
-        .mini-game {
-            background-color: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            margin-bottom: 2rem;
-        }
-
-        .game-controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .target-color {
-            width: 100px;
-            height: 100px;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .color-sliders {
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .color-slider {
-            margin-bottom: 1rem;
-        }
-
-        .color-slider label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .slider-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .slider-color {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        input[type="range"] {
-            flex: 1;
-            height: 8px;
-            border-radius: 4px;
-            outline: none;
-            -webkit-appearance: none;
-            margin: 0 10px;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-        }
-
-        .your-mix {
-            width: 100px;
-            height: 100px;
-            border-radius: 12px;
-            margin: 1.5rem auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .accuracy {
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .download-section {
-            padding: 5rem 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, #E9DEFF, #FFD8E7);
-        }
-
-        .download-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .download-container h2 {
-            font-size: 2.5rem;
-            color: var(--on-primary-container);
-            margin-bottom: 1rem;
-        }
-
-        .download-container p {
-            color: var(--on-surface-variant);
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-        }
-
-        .store-badges {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .store-badge {
-            display: inline-block;
-            transition: transform 0.3s;
-        }
-
-        .store-badge:hover {
-            transform: scale(1.05);
-        }
-
-        .store-badge img {
-            height: 60px;
-        }
-
-        footer {
-            background-color: var(--secondary);
-            color: var(--on-secondary);
-            padding: 3rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-col h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-col ul li a {
-            color: var(--on-secondary);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .footer-col ul li a:hover {
-            opacity: 1;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 1024px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-content {
-                margin-bottom: 3rem;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* Floating bubbles animation for background */
-        .bubbles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
         }
-
-        .bubble {
+        
+        .floating-bubble {
             position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
             border-radius: 50%;
-            opacity: 0.5;
-            animation: float 8s infinite ease-in-out;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
         }
-
+        
         @keyframes float {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
                 opacity: 0.5;
             }
-            50% {
-                opacity: 0.8;
+            90% {
+                opacity: 0.4;
             }
             100% {
-                transform: translateY(-120vh) rotate(360deg);
-                opacity: 0.5;
+                transform: translate(100px, -800px) rotate(360deg);
+                opacity: 0;
             }
+        }
+        
+        .color-gradient {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(103, 80, 164, 0.05) 0%, rgba(125, 82, 96, 0.05) 100%);
+            z-index: 0;
+        }
+        
+        /* Header Styles */
+        header {
+            position: relative;
+            background: linear-gradient(135deg, #6750A4 0%, #7D5260 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem 5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: linear-gradient(90deg, #FFFFFF, #FFD8E4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s infinite linear;
+            background-size: 200% 100%;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .store-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .store-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .store-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.8);
+        }
+        
+        .store-button img {
+            height: 24px;
+            margin-right: 12px;
+        }
+        
+        /* Decorative Elements */
+        .circle-decoration {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            z-index: 0;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+            animation: pulse 8s infinite alternate;
+        }
+        
+        .circle-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -250px;
+            right: -200px;
+            animation: pulse 12s infinite alternate-reverse;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+        
+        /* Wave Separator */
+        .wave-separator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            z-index: 1;
+        }
+
+        .wave-separator svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 70px;
+            transform: rotateY(180deg);
+        }
+
+        .wave-separator .shape-fill {
+            fill: var(--light);
+        }
+        
+        /* Contact Form Section */
+        .contact {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+            border-radius: 2px;
+        }
+        
+        .contact p {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .form-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--primary), transparent 70%),
+                radial-gradient(circle at 80% 70%, var(--accent), transparent 70%);
+            z-index: -1;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--gray);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(103, 80, 164, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1.2rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(103, 80, 164, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(103, 80, 164, 0.4);
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-light);
+            transition: width 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Animated Highlights */
+        .highlight {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(125, 82, 96, 0.2);
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .store-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+            
+            .footer-links {
+                gap: 1.5rem;
+                flex-direction: column;
+            }
+        }
+        
+        /* Additional Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.6s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.9s;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <div class="color-wheel"></div>
-                </div>
-                Palette Master
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#mini-game">Try It</a></li>
-                    <li><a href="#download">Download</a></li>
-                    <li><a href="privacy-policy.html">Privacy</a></li>
-                    <li><a href="terms-of-service.html">Terms</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="bubbles">
-            <!-- Colored bubbles will be added by JavaScript -->
-        </div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Master Color Theory Through Fun Puzzles</h1>
-                <p>Palette Master is an interactive game that teaches color theory through engaging puzzles. Mix colors, match targets, and develop your color intuition while having fun!</p>
-                <div class="cta-buttons">
-                    <a href="#download" class="btn btn-primary">Download Now</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="app-preview">
-                    <div class="app-content">
-                        <div class="app-header">Palette Master</div>
-                        <div class="app-body">
-                            <div>
-                                <h3>Target Color</h3>
-                                <div class="color-target" id="app-target-color"></div>
-                            </div>
-                            <div class="color-mixer" id="app-mixer">
-                                <!-- Dynamic content will be added by JavaScript -->
-                            </div>
-                            <div>
-                                <h3>Your Mix</h3>
-                                <div id="app-result-color" style="background-color: white; width: 80px; height: 80px; border-radius: 50%; margin: 0 auto; border: 3px solid #eee;"></div>
-                            </div>
-                            <div class="color-droplets">
-                                <div class="droplet" style="background-color: #FF5252;" onclick="addColorToMixer('#FF5252')"></div>
-                                <div class="droplet" style="background-color: #FFEB3B;" onclick="addColorToMixer('#FFEB3B')"></div>
-                                <div class="droplet" style="background-color: #2196F3;" onclick="addColorToMixer('#2196F3')"></div>
-                                <div class="droplet" style="background-color: #4CAF50;" onclick="addColorToMixer('#4CAF50')"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Create floating colored bubbles in the background
-        document.addEventListener('DOMContentLoaded', function() {
-            const bubblesContainer = document.querySelector('.bubbles');
-            const colors = ['#FF5252', '#FFEB3B', '#2196F3', '#4CAF50', '#9C27B0', '#FF9800'];
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="color-gradient"></div>
+        <script>
+            // Create floating bubbles
+            const bubbleCount = 15;
+            const background = document.querySelector('.animated-background');
             
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < bubbleCount; i++) {
+                createBubble();
+            }
+            
+            function createBubble() {
                 const bubble = document.createElement('div');
-                bubble.classList.add('bubble');
+                bubble.classList.add('floating-bubble');
                 
-                // Random properties
-                const size = Math.random() * 100 + 20;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                
-                // Position and styles
+                // Random size
+                const size = Math.random() * 200 + 50;
                 bubble.style.width = `${size}px`;
                 bubble.style.height = `${size}px`;
-                bubble.style.backgroundColor = color;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.bottom = `-${size}px`;
                 
-                // Animation
-                bubble.style.animationDuration = `${Math.random() * 10 + 5}s`;
-                bubble.style.animationDelay = `${Math.random() * 5}s`;
+                // Random position
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight + window.innerHeight;
+                bubble.style.left = `${posX}px`;
+                bubble.style.bottom = `${-posY}px`;
                 
-                bubblesContainer.appendChild(bubble);
+                // Random color
+                const hue = Math.random() * 360;
+                bubble.style.background = `radial-gradient(circle at 30% 30%, hsla(${hue}, 80%, 70%, 0.4), hsla(${hue}, 70%, 40%, 0))`;
+                
+                // Random animation duration
+                const duration = Math.random() * 15 + 10;
+                bubble.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                const delay = Math.random() * 10;
+                bubble.style.animationDelay = `${delay}s`;
+                
+                background.appendChild(bubble);
+                
+                // Remove and recreate bubble after animation is complete
+                setTimeout(() => {
+                    bubble.remove();
+                    createBubble();
+                }, (duration + delay) * 1000);
             }
-        });
-
-        // App preview simulation
-        let appMixedColor = 'white';
-        const appTargetColor = '#6750A4';
+        </script>
+    </div>
+    
+    <!-- Header Section -->
+    <header>
+        <!-- Decorative circles -->
+        <div class="circle-decoration circle-1"></div>
+        <div class="circle-decoration circle-2"></div>
         
-        function addColorToMixer(color) {
-            const mixer = document.getElementById('app-mixer');
-            const resultColor = document.getElementById('app-result-color');
-            
-            // Add a circle to the mixer
-            const drop = document.createElement('div');
-            drop.style.position = 'absolute';
-            drop.style.width = '30px';
-            drop.style.height = '30px';
-            drop.style.borderRadius = '50%';
-            drop.style.backgroundColor = color;
-            drop.style.left = `${Math.random() * 80 + 10}%`;
-            drop.style.top = `${Math.random() * 80 + 10}%`;
-            drop.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
-            
-            mixer.appendChild(drop);
-            
-            // Simple mixing algorithm for demo (not accurate)
-            if (appMixedColor === 'white') {
-                appMixedColor = color;
-            } else {
-                // Simulate mixing
-                const rgb1 = hexToRgb(appMixedColor);
-                const rgb2 = hexToRgb(color);
+        <div class="container">
+            <div class="hero">
+                <h1 class="fade-in-up">Palette Master</h1>
+                <p class="fade-in-up delay-1">Master color theory through interactive play. Mix, match, and understand colors in a fun, engaging way that makes learning effortless.</p>
                 
-                const mixedRgb = {
-                    r: Math.floor((rgb1.r + rgb2.r) / 2),
-                    g: Math.floor((rgb1.g + rgb2.g) / 2),
-                    b: Math.floor((rgb1.b + rgb2.b) / 2)
-                };
+                <div class="store-buttons fade-in-up delay-2">
+                    <a href="#" class="store-button">
+                        <img src="https://www.svgrepo.com/show/511330/apple-173.svg" alt="Apple App Store">
+                        Download on the App Store
+                    </a>
+                    <!--<a href="#" class="store-button">-->
+                    <!--    <img src="/api/placeholder/24/24" alt="Google Play Store">-->
+                    <!--    Get it on Google Play-->
+                    <!--</a>-->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave separator -->
+        <div class="wave-separator">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+    
+    <!-- Contact Form Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="fade-in-up">Get In Touch</h2>
+            <p class="fade-in-up delay-1">Have questions or feedback? We'd love to hear from you!</p>
+            
+            <form class="contact-form fade-in-up delay-2">
+                <div class="form-background"></div>
                 
-                appMixedColor = rgbToHex(mixedRgb.r, mixedRgb.g, mixedRgb.b);
-            }
-            
-            // Update the result color
-            resultColor.style.backgroundColor = appMixedColor;
-            
-            // Update the mixer background slightly
-            mixer.style.backgroundColor = appMixedColor + '20'; // 20 is hex for low opacity
-            
-            // Target color for the app preview
-            document.getElementById('app-target-color').style.backgroundColor = appTargetColor;
-        }
-
-        // Color mixing game
-        let targetColorHex;
-        
-        function generateNewTarget() {
-            // Generate a random target color
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
-            
-            targetColorHex = rgbToHex(r, g, b);
-            document.getElementById('target-color').style.backgroundColor = targetColorHex;
-            
-            // Reset sliders to middle values
-            document.getElementById('red-slider').value = 128;
-            document.getElementById('green-slider').value = 128;
-            document.getElementById('blue-slider').value = 128;
-            document.getElementById('red-value').textContent = 128;
-            document.getElementById('green-value').textContent = 128;
-            document.getElementById('blue-value').textContent = 128;
-            
-            updateMixedColor();
-        }
-        
-        function updateMixedColor() {
-            // Get slider values
-            const r = parseInt(document.getElementById('red-slider').value);
-            const g = parseInt(document.getElementById('green-slider').value);
-            const b = parseInt(document.getElementById('blue-slider').value);
-            
-            // Update value displays
-            document.getElementById('red-value').textContent = r;
-            document.getElementById('green-value').textContent = g;
-            document.getElementById('blue-value').textContent = b;
-            
-            // Set the mixed color
-            const mixedColorHex = rgbToHex(r, g, b);
-            document.getElementById('mixed-color').style.backgroundColor = mixedColorHex;
-            
-            // Calculate accuracy
-            const accuracy = calculateColorSimilarity(mixedColorHex, targetColorHex || '#6750A4');
-            document.getElementById('accuracy').textContent = `${Math.round(accuracy * 100)}%`;
-            
-            // Change accuracy color based on value
-            const accuracyEl = document.getElementById('accuracy');
-            if (accuracy >= 0.9) {
-                accuracyEl.style.color = 'green';
-            } else if (accuracy >= 0.7) {
-                accuracyEl.style.color = 'orange';
-            } else {
-                accuracyEl.style.color = 'red';
-            }
-        }
-        
-        function calculateColorSimilarity(hex1, hex2) {
-            const rgb1 = hexToRgb(hex1);
-            const rgb2 = hexToRgb(hex2);
-            
-            // Calculate color distance (simplified)
-            const rDiff = (rgb1.r - rgb2.r) / 255;
-            const gDiff = (rgb1.g - rgb2.g) / 255;
-            const bDiff = (rgb1.b - rgb2.b) / 255;
-            
-            // Weight differences (human eyes are more sensitive to green)
-            const distance = Math.sqrt(rDiff*rDiff*0.3 + gDiff*gDiff*0.59 + bDiff*bDiff*0.11);
-            
-            // Convert to similarity (0-1)
-            return Math.max(0, 1 - distance);
-        }
-        
-        // Helper functions for color conversion
-        function hexToRgb(hex) {
-            // Remove # if present
-            hex = hex.replace(/^#/, '');
-            
-            // Parse RGB values
-            const bigint = parseInt(hex, 16);
-            return {
-                r: (bigint >> 16) & 255,
-                g: (bigint >> 8) & 255,
-                b: bigint & 255
-            };
-        }
-        
-        function rgbToHex(r, g, b) {
-            return '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
-        }
-        
-        // Initialize the mini-game with a random target color on load
-        document.addEventListener('DOMContentLoaded', function() {
-            generateNewTarget();
-            
-            // Set target color for app preview
-            document.getElementById('app-target-color').style.backgroundColor = '#6750A4';
-        });
-    </script>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://taalaydev.github.io/palettemaster/privacy-policy.html" class="footer-link">Privacy Policy</a>
+                <a href="https://taalaydev.github.io/palettemaster/terms-of-service.html" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
