@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Flex - Train Your Brain Daily</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --primary-light: #9D97FF;
+            --primary-dark: #4A42C8;
+            --accent: #FF8A65;
+            --word-weaver: #8E24AA;
+            --pattern-pulse: #00ACC1;
+            --logic-labyrinth: #43A047;
+            --calculation-castle: #FFB300;
+            --memory-mansion: #EF5350;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+        
+        .accent-gradient {
+            background: linear-gradient(135deg, var(--accent) 0%, #FF5722 100%);
+        }
+        
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .hero-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 120px;
+        }
+        
+        .hero-wave .shape-fill {
+            fill: #FFFFFF;
+        }
+        
+        .game-card {
+            transition: all 0.3s ease;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-weaver { background-color: var(--word-weaver); }
+        .pattern-pulse { background-color: var(--pattern-pulse); }
+        .logic-labyrinth { background-color: var(--logic-labyrinth); }
+        .calculation-castle { background-color: var(--calculation-castle); }
+        .memory-mansion { background-color: var(--memory-mansion); }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-accent:hover {
+            background-color: #FF5722;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card {
+            border-radius: 12px;
+            padding: 24px;
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .testimonial-card {
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .device-mockup {
+            position: relative;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .stat-card {
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .brain-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brain-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 100 100'%3E%3Cpath fill='%236C63FF' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/svg%3E");
+            z-index: -1;
+        }
+        
+        /* Pulse animation for notifications */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(108, 99, 255, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 99, 255, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold text-gray-800">Mind<span style="color: var(--primary);">Flex</span></span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="text-gray-700 hover:text-primary-dark transition">Features</a>
+                <a href="#games" class="text-gray-700 hover:text-primary-dark transition">Games</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-primary-dark transition">Testimonials</a>
+                <a href="#pricing" class="text-gray-700 hover:text-primary-dark transition">Pricing</a>
+                <button class="btn-primary">Download</button>
+            </div>
+            <div class="md:hidden">
+                <button class="text-gray-700">
+                    <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg pt-32 pb-2 md:pt-40 relative">
+        <div class="container mx-auto px-6 py-12 flex flex-col-reverse md:flex-row items-center">
+            <div class="md:w-1/2 text-center md:text-left">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    Exercise Your Brain Daily
+                </h1>
+                <p class="text-xl md:text-2xl text-white opacity-90 mb-8">
+                    Mind Flex offers 5 brain training games designed to sharpen your memory, boost problem-solving skills, and enhance mental agility.
+                </p>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center md:justify-start">
+                    <button class="btn-accent pulse">
+                        Get Started
+                    </button>
+                    <button class="btn-primary bg-white text-primary border border-white hover:bg-transparent hover:text-white">
+                        Learn More
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+        
+    
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="stat-card bg-white">
+                    <div class="text-5xl font-bold text-primary mb-2">5</div>
+                    <div class="text-lg text-gray-600">Unique Games</div>
+                </div>
+                <div class="stat-card bg-white">
+                    <div class="text-5xl font-bold text-primary mb-2">10M+</div>
+                    <div class="text-lg text-gray-600">Games Played</div>
+                </div>
+                <div class="stat-card bg-white">
+                    <div class="text-5xl font-bold text-primary mb-2">92%</div>
+                    <div class="text-lg text-gray-600">User Satisfaction</div>
+                </div>
+                <div class="stat-card bg-white">
+                    <div class="text-5xl font-bold text-primary mb-2">15-20</div>
+                    <div class="text-lg text-gray-600">Minutes Daily</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 brain-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Choose Mind Flex?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Our science-backed approach helps you improve cognitive abilities through engaging daily exercises.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="feature-card">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Progress Tracking</h3>
+                    <p class="text-gray-600">Track your improvement with detailed statistics and visualizations of your cognitive performance over time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Adaptive Difficulty</h3>
+                    <p class="text-gray-600">Games automatically adjust to your skill level, ensuring you're always challenged but never overwhelmed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Daily Challenges</h3>
+                    <p class="text-gray-600">Stay motivated with new daily challenges and build streaks to maintain your training routine.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Personalized Insights</h3>
+                    <p class="text-gray-600">Receive detailed analysis of your cognitive strengths and areas for improvement with tailored recommendations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Cross-Platform</h3>
+                    <p class="text-gray-600">Train seamlessly across all your devices with full support for iOS, Android, Web, macOS, Windows, and Linux.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Privacy Focused</h3>
+                    <p class="text-gray-600">Your cognitive data stays private and secure. We never sell your information to third parties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Five Engaging Games</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Each game is designed to target specific cognitive abilities, providing a comprehensive brain workout.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="game-card word-weaver text-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Word Weaver</h3>
+                        <p class="mb-4 opacity-90">Form words from a grid of letters with increasing difficulty levels.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Vocabulary</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Language</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Pattern Recognition</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card pattern-pulse text-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Pattern Pulse</h3>
+                        <p class="mb-4 opacity-90">Remember and reproduce increasingly complex sequences of colors and sounds.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Memory</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Attention</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Sequence Learning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card logic-labyrinth text-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Logic Labyrinth</h3>
+                        <p class="mb-4 opacity-90">Solve grid-based logic puzzles with varying rules and constraints.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Logic</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Problem Solving</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Deduction</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card calculation-castle text-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Calculation Castle</h3>
+                        <p class="mb-4 opacity-90">Quick mental math challenges with adaptive difficulty levels.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Numeracy</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Mental Math</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Speed</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card memory-mansion text-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Memory Mansion</h3>
+                        <p class="mb-4 opacity-90">Classic card-matching memory games with twists and special powers.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Visual Memory</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Concentration</span>
+                            <span class="text-xs bg-white bg-opacity-30 px-3 py-1 rounded-full">Spatial Awareness</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card gradient-bg text-white overflow-hidden">
+                    <div class="p-6 flex flex-col items-center justify-center h-full text-center">
+                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">More Coming Soon</h3>
+                        <p class="mb-6 opacity-90">We're constantly developing new brain training games to keep your mind challenged.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">How Mind Flex Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Just 15-20 minutes of daily brain training can help improve your cognitive abilities over time.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl font-bold text-purple-600">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Play Daily Games</h3>
+                    <p class="text-gray-600">Spend 15-20 minutes playing a variety of engaging brain training games.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl font-bold text-blue-600">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Track Progress</h3>
+                    <p class="text-gray-600">Monitor your improvement with detailed performance statistics.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl font-bold text-green-600">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Build Habits</h3>
+                    <p class="text-gray-600">Maintain daily streaks and earn achievements to stay motivated.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-yellow-100 flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl font-bold text-yellow-600">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Improve Skills</h3>
+                    <p class="text-gray-600">See real improvement in your memory, attention, and problem-solving abilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Mind<span class="text-primary-light">Flex</span></h4>
+                    <p class="text-gray-400">Exercise your brain daily with fun, science-backed brain training games.</p>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-6">Games</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Word Weaver</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pattern Pulse</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Logic Labyrinth</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Calculation Castle</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Memory Mansion</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-6">Company</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-6">Legal</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden button');
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    // Add mobile menu functionality here
+                    console.log('Mobile menu clicked');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
