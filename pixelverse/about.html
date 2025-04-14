@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelVerse - Powerful Pixel Art Creation Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #4361ee;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --dark: #16161a;
+            --light: #fffffe;
+            --gray: #94a1b2;
+            --gray-light: #f5f5f7;
+            --success: #2cb67d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pixel-border {
+            border: 3px solid var(--dark);
+            position: relative;
+        }
+
+        .pixel-border::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: -3px;
+            bottom: -3px;
+            background: rgba(0,0,0,0.1);
+            z-index: -1;
+        }
+
+        /* Pixel-style button */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.1s ease;
+            position: relative;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-success {
+            background-color: var(--success);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            margin-left: 10px;
+        }
+
+        .logo-pixel {
+            color: var(--accent);
+        }
+
+        .logo-verse {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .hero-image {
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateX(5deg);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+        }
+
+        /* Tool Gallery Section */
+        .tools {
+            padding: 80px 0;
+            background-color: var(--gray-light);
+        }
+
+        .tools-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .tool-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Screenshots */
+        .screenshots {
+            padding: 100px 0;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .screenshot {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background-color: var(--gray-light);
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-plan {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .pricing-duration {
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            margin-bottom: 30px;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .pricing-feature i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+
+        .pricing-action {
+            text-align: center;
+        }
+
+        .pro-plan {
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pro-badge {
+            position: absolute;
+            background-color: var(--primary);
+            color: white;
+            top: 0;
+            right: 0;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border-bottom-left-radius: 8px;
+        }
+
+        /* Download */
+        .download {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .download h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .download p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            color: var(--dark);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .download-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Pixel art grid overlay */
+        .pixel-grid {
+            position: relative;
+        }
+
+        .pixel-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(to right, rgba(200,200,200,.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(200,200,200,.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img width="32px" height="32px" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/75/30/16/75301695-ce84-932a-66b7-b73b2d146002/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/360x360bb.png"/>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-pixel">Pixel</span><span class="logo-verse">Verse</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero pixel-grid">
+        <div class="container">
+            <h1>Bring Your Pixel Art Visions to Life</h1>
+            <p>PixelVerse is a powerful and intuitive pixel art creation tool designed for both beginners and experienced pixel artists. With a wide range of features and a user-friendly interface, PixelVerse makes it easy to create stunning pixel art.</p>
+            
+            <div class="hero-buttons">
+                <a href="#download" class="btn pixel-border">Get Started</a>
+                <a href="#features" class="btn btn-accent pixel-border">Explore Features</a>
+            </div>
+            
+            <div class="hero-image pixel-border">
+                <img src="https://is2-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/e4/28/fd/e428fd43-13b4-bd59-3abe-0e5886c6ea7a/0x0ss__U00281_U0029.png/0x0ss.png" alt="PixelVerse Editor Interface" width="100%" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Features</h2>
+                <p>PixelVerse comes packed with everything you need to create amazing pixel art</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Layer Support</h3>
+                    <p>Create complex artwork with multiple layers. Each layer can be edited independently, with options for visibility, opacity, and effects.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Animation Frames</h3>
+                    <p>Create frame-by-frame animations directly in the app. Preview animations in real-time and export them as GIFs or sprite sheets.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Advanced Effects</h3>
+                    <p>Apply various effects to your layers including brightness, contrast, sepia, blur, sharpen, emboss, and many more.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Color Management</h3>
+                    <p>Use the eyedropper tool and custom color palettes. Create, save, and manage your palette collections.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Symmetry Drawing</h3>
+                    <p>Create symmetrical art effortlessly with horizontal, vertical, or radial symmetry options that mirror your strokes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Multiple Export Options</h3>
+                    <p>Export your work in various formats, including PNG, JPEG, SVG, and animated GIFs. Pro users get additional format options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Gallery -->
+    <section id="tools" class="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Intuitive Drawing Tools</h2>
+                <p>A complete set of tools for precise pixel manipulation</p>
+            </div>
+            
+            <div class="tools-gallery">
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>Pencil</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Brush</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-eraser"></i>
+                    </div>
+                    <h3>Eraser</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-fill-drip"></i>
+                    </div>
+                    <h3>Fill</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-vector-square"></i>
+                    </div>
+                    <h3>Rectangle</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <h3>Circle</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-grip-lines"></i>
+                    </div>
+                    <h3>Line</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-crop-alt"></i>
+                    </div>
+                    <h3>Selection</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-eye-dropper"></i>
+                    </div>
+                    <h3>Eyedropper</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h3>Spray Paint</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-arrows-alt"></i>
+                    </div>
+                    <h3>Move</h3>
+                </div>
+                
+                <div class="tool-item">
+                    <div class="tool-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <h3>Pen</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download pixel-grid">
+        <div class="container">
+            <h2>Ready to Create Amazing Pixel Art?</h2>
+            <p>Download PixelVerse for your platform and start creating today.</p>
+            
+            <div class="download-buttons">
+                <!--<a href="#" class="download-btn">-->
+                <!--    <div class="download-icon"><i class="fab fa-android"></i></div>-->
+                <!--    <div>-->
+                <!--        <small>Download on</small>-->
+                <!--        <div>Google Play</div>-->
+                <!--    </div>-->
+                <!--</a>-->
+                
+                <a href="#" class="download-btn">
+                    <div class="download-icon"><i class="fab fa-apple"></i></div>
+                    <div>
+                        <small>Download on</small>
+                        <div>App Store</div>
+                    </div>
+                </a>
+                
+                <!--<a href="#" class="download-btn">-->
+                <!--    <div class="download-icon"><i class="fab fa-windows"></i></div>-->
+                <!--    <div>-->
+                <!--        <small>Download for</small>-->
+                <!--        <div>Windows</div>-->
+                <!--    </div>-->
+                <!--</a>-->
+                
+                <a href="#" class="download-btn">
+                    <div class="download-icon"><i class="fab fa-apple"></i></div>
+                    <div>
+                        <small>Download for</small>
+                        <div>macOS</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>PixelVerse</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://taalaydev.github.io/files/pixelverse-terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="https://taalaydev.github.io/files/pixelverse-privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:a.u.taalay@gmail.com">a.u.taalay@gmail.com</a></li>
+                        <li><a href="https://taalaydev.github.io" target="_blank">taalaydev.github.io</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 PixelVerse. All rights reserved. Made with ❤️ for pixel artists everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to handle smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
