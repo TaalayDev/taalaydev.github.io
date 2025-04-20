@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Kizuna Quest: Tokyo Ties</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #6750A4;
+            --primary-light: #D0BCFF;
+            --primary-dark: #381E72;
+            --secondary: #9575CD;
+            --accent: #D73BFF;
+            --text-light: #F8F8F8;
+            --text-dark: #1C1B1F;
+            --bg-light: #FFFBFF;
+            --bg-dark: #1C1B1F;
+            --card-bg: rgba(248, 248, 248, 0.9);
+            --card-bg-dark: rgba(45, 45, 45, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary-dark);
+        }
+
+        p, li {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            text-decoration: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23FFFBFF' d='M0,0 C300,90 600,100 900,80 C1200,60 1320,40 1440,80 L1440,100 L0,100 Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-container {
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .last-updated {
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Privacy Policy Styles */
+        .privacy-content {
+            padding: 60px 0;
+        }
+
+        .privacy-section {
+            margin-bottom: 40px;
+        }
+
+        .privacy-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .privacy-section h3 {
+            font-size: 1.4rem;
+            margin: 20px 0 15px;
+            color: var(--primary-dark);
+        }
+
+        .privacy-section ul, .privacy-section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box h4 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .privacy-navigation {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .navigation-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .navigation-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .navigation-links li a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navigation-links li a:hover {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-section {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links li a {
+            color: white;
+        }
+
+        .footer-links li a:hover {
+            color: var(--primary-light);
+        }
+
+        .back-to-site {
+            margin-top: 20px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .navigation-links {
+                flex-direction: column;
+            }
+
+            .navigation-links li a {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .privacy-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/50/50" alt="Kizuna Quest Logo">
+                <span class="logo-text">Kizuna Quest</span>
+            </a>
+            <h1 class="page-title">Privacy Policy</h1>
+            <p class="last-updated">Last Updated: April 21, 2025</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="privacy-content">
+            <div class="privacy-navigation">
+                <h3 class="navigation-title">Quick Navigation</h3>
+                <ul class="navigation-links">
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#information-collection">Information Collection</a></li>
+                    <li><a href="#information-use">How We Use Your Information</a></li>
+                    <li><a href="#data-security">Data Security</a></li>
+                    <li><a href="#your-rights">Your Rights</a></li>
+                    <li><a href="#children">Children's Privacy</a></li>
+                    <li><a href="#updates">Policy Updates</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <section class="privacy-section" id="introduction">
+                <h2>1. Introduction</h2>
+                <p>Welcome to Kizuna Quest: Tokyo Ties ("Kizuna Quest," "we," "our," or "us"). We are committed to protecting your privacy and ensuring you have a positive experience using our language learning application. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application, desktop application, website, and related services (collectively, the "Services").</p>
+                
+                <p>Please read this Privacy Policy carefully. By accessing or using our Services, you acknowledge that you have read, understood, and agree to be bound by all the terms of this Privacy Policy and our Terms of Service. If you do not agree with our policies and practices, please do not use our Services.</p>
+                
+                <div class="highlight-box">
+                    <h4>Offline-First Application</h4>
+                    <p>Kizuna Quest is designed as an offline-first application, which means:</p>
+                    <ul>
+                        <li>Most data is stored locally on your device</li>
+                        <li>Your learning progress and game data remain private and under your control</li>
+                        <li>The application requires minimal internet connectivity for optional features only</li>
+                        <li>We do not share your personal data with third parties except in very limited circumstances detailed in this policy</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="privacy-section" id="information-collection">
+                <h2>2. Information We Collect</h2>
+                
+                <h3>2.1 Information You Provide to Us</h3>
+                <p>We may collect information that you provide directly to us when using our Services:</p>
+                <ul>
+                    <li><strong>Basic Account Information:</strong> If you choose to create an optional online account for cloud saving, we collect your email address and username.</li>
+                    <li><strong>User Content:</strong> Information you create through the application, including game progress, language learning data, custom dictionary entries, and personalized notes. This data is primarily stored on your local device.</li>
+                    <li><strong>Communication:</strong> Information you provide when you contact us for customer support, feedback, or other inquiries.</li>
+                    <li><strong>Purchase Information:</strong> If you make in-app purchases, we process minimal transaction data necessary to complete your purchase.</li>
+                </ul>
+
+                <h3>2.2 Information Stored Locally</h3>
+                <p>Kizuna Quest stores the following information directly on your device:</p>
+                <ul>
+                    <li><strong>Game Progress:</strong> Your game state, dialogue choices, relationship levels with characters, and story progression.</li>
+                    <li><strong>Learning Data:</strong> Your vocabulary mastery levels, grammar comprehension, cultural notes accessed, and personalized learning notes.</li>
+                    <li><strong>Settings:</strong> Your application preferences, display settings, and language options.</li>
+                    <li><strong>Saved Games:</strong> All save files are stored locally on your device by default.</li>
+                </ul>
+                
+                <h3>2.3 Information We Collect Automatically (Optional Features Only)</h3>
+                <p>For users who opt into our optional online features, we may collect:</p>
+                <ul>
+                    <li><strong>Device Information:</strong> Basic information about your device to ensure compatibility and troubleshoot issues.</li>
+                    <li><strong>Diagnostic Data:</strong> If you enable error reporting, we collect anonymized crash reports and performance data to help improve the application experience.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Learning Data Collection</h4>
+                    <p>Kizuna Quest is an educational language learning application. To provide personalized learning experiences, the app stores data about your Japanese language proficiency locally on your device, including:</p>
+                    <ul>
+                        <li>Vocabulary mastery levels</li>
+                        <li>Grammar point completion status</li>
+                        <li>Cultural note interactions</li>
+                        <li>Reading comprehension metrics</li>
+                        <li>Dialogue choice patterns</li>
+                    </ul>
+                    <p>This information is used to adapt content difficulty, suggest review materials, and personalize your learning journey. It remains on your device unless you explicitly enable cloud sync.</p>
+                </div>
+            </section>
+
+            <section class="privacy-section" id="information-use">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use the information we collect for various purposes, including:</p>
+                <ul>
+                    <li><strong>Providing and Improving Services:</strong> To operate, maintain, and enhance our Services, develop new features, and address technical issues.</li>
+                    <li><strong>Personalization:</strong> To customize your language learning experience locally on your device, including adapting content difficulty based on your proficiency, suggesting review materials, and tailoring the narrative experience.</li>
+                    <li><strong>Progress Tracking:</strong> To save your game progress locally on your device, track your language acquisition, and provide progress reports and insights.</li>
+                    <li><strong>Communication:</strong> To respond to your inquiries and provide customer support.</li>
+                    <li><strong>Optional Cloud Services:</strong> If you enable cloud saving, to synchronize your progress across multiple devices.</li>
+                    <li><strong>Security:</strong> To detect, prevent, and address technical issues and protect the security of our Services.</li>
+                    <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, and legal processes.</li>
+                </ul>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type of Data</th>
+                                <th>Storage Location</th>
+                                <th>Primary Purpose</th>
+                                <th>Retention Period</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Basic Account Info (optional)</td>
+                                <td>Server (if cloud sync enabled)</td>
+                                <td>Authentication for optional cloud features</td>
+                                <td>Until account deletion</td>
+                            </tr>
+                            <tr>
+                                <td>Game Progress</td>
+                                <td>Local device</td>
+                                <td>Save state management, progress restoration</td>
+                                <td>Until app uninstallation or manual deletion</td>
+                            </tr>
+                            <tr>
+                                <td>Learning Data</td>
+                                <td>Local device</td>
+                                <td>Educational personalization, adaptive difficulty</td>
+                                <td>Until app uninstallation or manual deletion</td>
+                            </tr>
+                            <tr>
+                                <td>Diagnostic Data (optional)</td>
+                                <td>Server (if enabled)</td>
+                                <td>Service improvement, bug fixing</td>
+                                <td>36 months (anonymized)</td>
+                            </tr>
+                            <tr>
+                                <td>Purchase History</td>
+                                <td>Local device + minimal transaction records</td>
+                                <td>Purchase restoration</td>
+                                <td>Local: Until app deletion<br>Transaction: 7 years</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="privacy-section" id="data-security">
+                <h2>4. Data Security</h2>
+                <p>We implement appropriate technical and organizational measures to protect your personal information. Since Kizuna Quest primarily stores data locally on your device, most of your information is protected by your device's security measures.</p>
+                
+                <h3>4.1 Local Data Security</h3>
+                <p>For data stored locally on your device:</p>
+                <ul>
+                    <li>Your game progress, learning data, and preferences are stored in secure, application-specific storage areas on your device.</li>
+                    <li>We recommend keeping your device's operating system and Kizuna Quest updated to ensure you have the latest security improvements.</li>
+                    <li>Consider enabling your device's built-in security features (e.g., passcode, biometric authentication) to prevent unauthorized access.</li>
+                </ul>
+                
+                <h3>4.2 Cloud Data Security (Optional Feature)</h3>
+                <p>If you enable optional cloud features:</p>
+                <ul>
+                    <li>Data transmitted to our servers is encrypted during transit using industry-standard TLS/SSL protocols.</li>
+                    <li>Server-side data is stored in secure, access-controlled environments with regular security audits.</li>
+                    <li>We implement authentication mechanisms to ensure that only you can access your cloud-stored data.</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h4>Offline Mode and Local Storage</h4>
+                    <p>Kizuna Quest features an offline-first design where language learning data and game progress are stored locally on your device. Please note:</p>
+                    <ul>
+                        <li>Data stored locally is subject to your device's security measures</li>
+                        <li>Uninstalling the application may result in loss of locally stored data</li>
+                        <li>We recommend creating periodic backups of your save data</li>
+                        <li>To sync data across devices, you need to enable the optional cloud sync feature</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="privacy-section" id="your-rights">
+                <h2>5. Your Rights and Choices</h2>
+                <p>Since Kizuna Quest primarily stores your data locally on your device, you maintain direct control over most of your information. However, we still respect and support your privacy rights, which may include:</p>
+                <ul>
+                    <li><strong>Access and Control:</strong> You can access, modify, or delete most of your information directly within the application and through your device's file management system.</li>
+                    <li><strong>Cloud Data (If Applicable):</strong> If you've enabled our optional cloud features, you can request access to, correction, or deletion of your cloud-stored data by contacting us.</li>
+                    <li><strong>Communication Preferences:</strong> You can manage your communication preferences within the application settings.</li>
+                    <li><strong>Account Deletion:</strong> If you created an optional online account, you can delete it at any time through the application or by contacting us.</li>
+                </ul>
+                
+                <h3>5.1 Application Settings</h3>
+                <p>Kizuna Quest provides several privacy-related settings directly in the application:</p>
+                <ul>
+                    <li><strong>Cloud Sync:</strong> Enable or disable syncing your data to our servers (disabled by default).</li>
+                    <li><strong>Error Reporting:</strong> Control whether anonymous diagnostic data is sent to help improve the application (opt-in only).</li>
+                    <li><strong>Data Backup:</strong> Create local backups of your game data and learning progress.</li>
+                    <li><strong>Data Reset:</strong> Clear all locally stored data and start fresh.</li>
+                </ul>
+                
+                <h3>5.2 Device Permissions</h3>
+                <p>Kizuna Quest uses minimal device permissions to function. You can review and modify these permissions through your device's settings:</p>
+                <ul>
+                    <li><strong>Storage:</strong> Required to save your game progress locally.</li>
+                    <li><strong>Network Access:</strong> Only required for optional online features.</li>
+                </ul>
+            </section>
+
+            <section class="privacy-section" id="children">
+                <h2>6. Children's Privacy</h2>
+                <p>Our Services are not directed to children under the age of 13 (or 16 in the European Union). We do not knowingly collect personal information from children under these ages. If we learn that we have collected personal information from a child under these ages, we will take steps to delete that information as quickly as possible.</p>
+                
+                <p>If you are a parent or guardian and believe that your child has provided us with personal information without your consent, please contact us using the information provided in the "Contact Us" section.</p>
+            </section>
+
+            <section class="privacy-section" id="updates">
+                <h2>7. Changes to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+                
+                <p>If we make material changes to this Privacy Policy, we will notify you through a notice on our Services or by other means as required by applicable law.</p>
+            </section>
+
+            <section class="privacy-section" id="contact">
+                <h2>8. Contact Us</h2>
+                <p>If you have any questions, comments, or concerns about this Privacy Policy or our privacy practices, please contact us at:</p>
+                
+                <div class="contact-box">
+                    <h3>Developer</h3>
+                    <p>Email: <a href="mailto:privacy@kizunaquest.com">a.u.taalay@gmail.com</a></p>
+                </div>
+                
+                <p>For users in the European Union, please note that our Data Protection Officer can be contacted at <a href="mailto:dpo@kizunaquest.com">dpo@kizunaquest.com</a>.</p>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer-section">
+        <div class="container">
+            <p>&copy; 2025 Kizuna Quest Team. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
