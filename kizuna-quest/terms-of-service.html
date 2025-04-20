@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Kizuna Quest: Tokyo Ties</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #6750A4;
+            --primary-light: #D0BCFF;
+            --primary-dark: #381E72;
+            --secondary: #9575CD;
+            --accent: #D73BFF;
+            --text-light: #F8F8F8;
+            --text-dark: #1C1B1F;
+            --bg-light: #FFFBFF;
+            --bg-dark: #1C1B1F;
+            --card-bg: rgba(248, 248, 248, 0.9);
+            --card-bg-dark: rgba(45, 45, 45, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary-dark);
+        }
+
+        p, li {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            text-decoration: none;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23FFFBFF' d='M0,0 C300,90 600,100 900,80 C1200,60 1320,40 1440,80 L1440,100 L0,100 Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-container {
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .last-updated {
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Terms of Service Styles */
+        .terms-content {
+            padding: 60px 0;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+        }
+
+        .terms-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .terms-section h3 {
+            font-size: 1.4rem;
+            margin: 20px 0 15px;
+            color: var(--primary-dark);
+        }
+
+        .terms-section ul, .terms-section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box h4 {
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .terms-navigation {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .navigation-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .navigation-links {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .navigation-links li a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navigation-links li a:hover {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-section {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links li a {
+            color: white;
+        }
+
+        .footer-links li a:hover {
+            color: var(--primary-light);
+        }
+
+        .back-to-site {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .navigation-links {
+                flex-direction: column;
+            }
+
+            .navigation-links li a {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .terms-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .terms-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/50/50" alt="Kizuna Quest Logo">
+                <span class="logo-text">Kizuna Quest</span>
+            </a>
+            <h1 class="page-title">Terms of Service</h1>
+            <p class="last-updated">Last Updated: April 21, 2025</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="terms-content">
+            <div class="terms-navigation">
+                <h3 class="navigation-title">Quick Navigation</h3>
+                <ul class="navigation-links">
+                    <li><a href="#acceptance">Acceptance of Terms</a></li>
+                    <li><a href="#license">License Grant</a></li>
+                    <li><a href="#accounts">User Accounts</a></li>
+                    <li><a href="#conduct">User Conduct</a></li>
+                    <li><a href="#purchases">Purchases</a></li>
+                    <li><a href="#educational">Educational Content</a></li>
+                    <li><a href="#intellectual">Intellectual Property</a></li>
+                    <li><a href="#disclaimers">Disclaimers</a></li>
+                    <li><a href="#limitation">Limitation of Liability</a></li>
+                    <li><a href="#termination">Termination</a></li>
+                    <li><a href="#updates">Updates to Terms</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <section class="terms-section" id="acceptance">
+                <h2>1. Acceptance of Terms</h2>
+                <p>Welcome to Kizuna Quest: Tokyo Ties ("Kizuna Quest," "the Application," "we," "our," or "us"). By downloading, installing, accessing, or using Kizuna Quest, you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you should not download, install, access, or use the Application.</p>
+                
+                <p>These Terms constitute a legally binding agreement between you and the Kizuna Quest Team regarding your use of the Application. You must be at least 13 years of age (or the minimum age required in your country) to use the Application. If you are under the required age, you may only use the Application with the consent and involvement of a parent or guardian.</p>
+                
+                <div class="highlight-box">
+                    <h4>Offline-First Application</h4>
+                    <p>Kizuna Quest is designed primarily as an offline application. Most functionality, including game progression and language learning features, operates entirely on your device without requiring internet connectivity. Optional online features are clearly marked within the Application and subject to additional terms as described below.</p>
+                </div>
+            </section>
+
+            <section class="terms-section" id="license">
+                <h2>2. License Grant</h2>
+                <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to download, install, and use the Application for your personal, non-commercial use on compatible devices that you own or control.</p>
+                
+                <h3>2.1 Restrictions</h3>
+                <p>You may not:</p>
+                <ul>
+                    <li>Copy, modify, or create derivative works of the Application;</li>
+                    <li>Distribute, transfer, sublicense, lease, lend, or rent the Application to any third party;</li>
+                    <li>Reverse engineer, decompile, or disassemble the Application;</li>
+                    <li>Remove, circumvent, disable, damage, or otherwise interfere with security-related features of the Application;</li>
+                    <li>Use the Application in any way that violates any applicable law or regulation;</li>
+                    <li>Use the Application for any commercial purpose, including but not limited to commercial language instruction without prior written permission;</li>
+                    <li>Use the Application to infringe upon the rights of others;</li>
+                    <li>Exploit the Application or any of its parts for any commercial purpose, including public display or educational settings requiring licenses;</li>
+                    <li>Use automated scripts or bots to access or interact with the Application.</li>
+                </ul>
+            </section>
+
+            <section class="terms-section" id="accounts">
+                <h2>3. User Accounts</h2>
+                <p>While most features of Kizuna Quest function without requiring registration, certain optional online features may require you to create a user account.</p>
+                
+                <h3>3.1 Account Creation</h3>
+                <p>If you choose to create an account:</p>
+                <ul>
+                    <li>You must provide accurate and complete information;</li>
+                    <li>You are responsible for maintaining the confidentiality of your account credentials;</li>
+                    <li>You are responsible for all activities that occur under your account;</li>
+                    <li>You must notify us immediately of any unauthorized use of your account.</li>
+                </ul>
+                
+                <h3>3.2 Cloud Save and Synchronization</h3>
+                <p>Kizuna Quest offers optional cloud save functionality, allowing you to synchronize your game progress and learning data across multiple devices. By enabling this feature:</p>
+                <ul>
+                    <li>You consent to the storage of your game data on our servers;</li>
+                    <li>You acknowledge that internet connectivity is required for synchronization;</li>
+                    <li>You understand that online features are provided on an "as is" and "as available" basis;</li>
+                    <li>You accept that temporary service interruptions may occur during maintenance or updates.</li>
+                </ul>
+            </section>
+
+            <section class="terms-section" id="conduct">
+                <h2>4. User Conduct</h2>
+                <p>You agree to use the Application in accordance with all applicable laws, rules, and regulations. You shall not:</p>
+                <ul>
+                    <li>Use the Application for any illegal purpose or in violation of any local, state, national, or international law;</li>
+                    <li>Harass, abuse, or harm another person through use of the Application;</li>
+                    <li>Interfere with or disrupt the Application or servers or networks connected to the Application;</li>
+                    <li>Attempt to gain unauthorized access to any portion of the Application or any other accounts, computer systems, or networks connected to the Application;</li>
+                    <li>Create or submit any malicious code, including viruses, spyware, trojan horses, worms, or other harmful computer code, files, or programs;</li>
+                    <li>Cheat or manipulate the Application in any way, including using unauthorized third-party software designed to modify or hack the Application;</li>
+                    <li>Use any robot, spider, scraper, or other automated means to access the Application.</li>
+                </ul>
+            </section>
+
+            <section class="terms-section" id="purchases">
+                <h2>5. In-App Purchases</h2>
+                <p>Kizuna Quest may offer optional in-app purchases for additional content, features, or services. By making a purchase within the Application:</p>
+                
+                <h3>5.1 Payment Terms</h3>
+                <ul>
+                    <li>All purchases are final and non-refundable, except as required by applicable law;</li>
+                    <li>Purchases are processed through your device's app store (e.g., Apple App Store, Google Play Store) and subject to their terms and conditions;</li>
+                    <li>You agree to pay all fees and applicable taxes incurred by you or anyone using your account;</li>
+                    <li>Prices and availability of in-app purchases are subject to change without notice.</li>
+                </ul>
+                
+                <h3>5.2 Content Ownership</h3>
+                <p>In-app purchases grant you a license to use the purchased content or features within the Application according to these Terms, but do not transfer ownership of any intellectual property rights to you.</p>
+                
+                <h3>5.3 Subscriptions</h3>
+                <p>If we offer subscription services:</p>
+                <ul>
+                    <li>Subscriptions will automatically renew at the end of each subscription period unless canceled before the renewal date;</li>
+                    <li>You can manage and cancel subscriptions through your device's app store account settings;</li>
+                    <li>Cancellation will take effect at the end of the current subscription period.</li>
+                </ul>
+            </section>
+
+            <section class="terms-section" id="educational">
+                <h2>6. Educational Content</h2>
+                <p>Kizuna Quest is an educational language learning application designed to help users learn Japanese. Regarding our educational content:</p>
+                
+                <h3>6.1 Accuracy and Updates</h3>
+                <p>While we strive to provide accurate and up-to-date educational content, we do not guarantee that all information is complete, accurate, or current. Language content, including vocabulary, grammar, and cultural notes, may be updated periodically to improve educational quality.</p>
+                
+                <h3>6.2 Educational Effectiveness</h3>
+                <p>Kizuna Quest is designed as a supplementary language learning tool. We do not guarantee specific learning outcomes or fluency levels. Individual results may vary based on frequency of use, prior knowledge, and personal learning aptitude.</p>
+                
+                <h3>6.3 Vocabulary and Grammar Content</h3>
+                <p>The Japanese language content, including vocabulary, kanji, grammar points, and cultural notes, is provided for educational purposes only. The sequencing and presentation of language content is based on our teaching methodology and may differ from other language learning resources or formal Japanese language curricula.</p>
+                
+                <div class="highlight-box">
+                    <h4>Not a Certification Program</h4>
+                    <p>Kizuna Quest is not a certified language course and does not provide official JLPT (Japanese Language Proficiency Test) certification or preparation specifically aligned with JLPT requirements, though content may overlap with JLPT vocabulary and grammar points. Users seeking official certification should consult dedicated JLPT preparation materials.</p>
+                </div>
+            </section>
+
+            <section class="terms-section" id="intellectual">
+                <h2>7. Intellectual Property Rights</h2>
+                <p>The Application, including all content, features, and functionality, is owned by the Kizuna Quest Team and its licensors and is protected by copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+                
+                <h3>7.1 Trademarks</h3>
+                <p>Kizuna Quest, the Kizuna Quest logo, and all related names, logos, product and service names, designs, and slogans are trademarks of the Kizuna Quest Team or its affiliates or licensors. You may not use such marks without the prior written permission of the Kizuna Quest Team.</p>
+                
+                <h3>7.2 Content Ownership</h3>
+                <p>All story elements, character designs, dialogue, illustrations, graphics, animations, and other content contained within the Application are owned by the Kizuna Quest Team or its licensors and are protected by copyright and other intellectual property laws.</p>
+                
+                <h3>7.3 User-Generated Content</h3>
+                <p>The Application may allow you to create personalized content, such as custom vocabulary lists or notes. You retain ownership of such user-generated content, but you grant us a non-exclusive, royalty-free, worldwide license to use, store, and display such content solely for the purpose of providing the Application's services to you.</p>
+            </section>
+
+            <section class="terms-section" id="disclaimers">
+                <h2>8. Disclaimers</h2>
+                <p>THE APPLICATION IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR COURSE OF PERFORMANCE.</p>
+                
+                <p>The Kizuna Quest Team does not warrant that:</p>
+                <ul>
+                    <li>The Application will function uninterrupted, secure, or available at any particular time or location;</li>
+                    <li>Any errors or defects will be corrected;</li>
+                    <li>The Application is free of viruses or other harmful components;</li>
+                    <li>The results of using the Application will meet your requirements;</li>
+                    <li>The educational content will lead to specific language proficiency or learning outcomes.</li>
+                </ul>
+                
+                <p>Some jurisdictions do not allow the exclusion of certain warranties, so some of the above exclusions may not apply to you.</p>
+            </section>
+
+            <section class="terms-section" id="limitation">
+                <h2>9. Limitation of Liability</h2>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE KIZUNA QUEST TEAM, ITS AFFILIATES, DIRECTORS, EMPLOYEES, AGENTS, LICENSORS, OR SERVICE PROVIDERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:</p>
+                <ul>
+                    <li>Your access to or use of or inability to access or use the Application;</li>
+                    <li>Any conduct or content of any third party on the Application;</li>
+                    <li>Any content obtained from the Application;</li>
+                    <li>Unauthorized access, use, or alteration of your transmissions or content;</li>
+                    <li>Errors or inaccuracies in the educational content;</li>
+                    <li>Personal injury or property damage, of any nature whatsoever, resulting from your access to and use of the Application;</li>
+                    <li>Any bugs, viruses, trojan horses, or the like which may be transmitted to or through the Application by any third party.</li>
+                </ul>
+                
+                <p>THE KIZUNA QUEST TEAM'S TOTAL LIABILITY TO YOU FOR ALL CLAIMS ARISING FROM OR RELATING TO THESE TERMS OR YOUR USE OF THE APPLICATION IS LIMITED TO THE AMOUNT YOU PAID FOR THE APPLICATION WITHIN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.</p>
+                
+                <p>Some jurisdictions do not allow the limitation of liability for personal injury, or of incidental or consequential damages, so this limitation may not apply to you.</p>
+            </section>
+
+            <section class="terms-section" id="termination">
+                <h2>10. Termination</h2>
+                <p>We may terminate or suspend your access to all or part of the Application, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.</p>
+                
+                <h3>10.1 Effects of Termination</h3>
+                <p>Upon termination:</p>
+                <ul>
+                    <li>Your right to use the Application will immediately cease;</li>
+                    <li>If applicable, your account may be deactivated or deleted;</li>
+                    <li>Any cloud-stored data associated with your account may be deleted after a grace period;</li>
+                    <li>Local data on your device, including your game progress and learning data, will remain on your device unless you manually delete the Application.</li>
+                </ul>
+                
+                <h3>10.2 Survival</h3>
+                <p>All provisions of these Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
+            </section>
+
+            <section class="terms-section" id="updates">
+                <h2>11. Updates to Terms</h2>
+                <p>We may update these Terms from time to time. We will notify you of any changes by posting the new Terms on this page and updating the "Last Updated" date at the top. You are advised to review these Terms periodically for any changes. Changes to these Terms are effective when they are posted on this page.</p>
+                
+                <p>Your continued use of the Application after the posting of revised Terms means that you accept and agree to the changes. If you do not agree to the updated Terms, you must stop using the Application.</p>
+            </section>
+
+            <section class="terms-section" id="contact">
+                <h2>12. Contact Us</h2>
+                <p>If you have any questions, comments, or concerns about these Terms or our services, please contact us at:</p>
+                
+                <div class="contact-box">
+                    <h3>Kizuna Quest Team</h3>
+                    <p>Email: <a href="mailto:legal@kizunaquest.com">legal@kizunaquest.com</a></p>
+                    <p>Address: 123 Tokyo Street, Suite 456, San Francisco, CA 94103, USA</p>
+                    <a href="#" class="btn">Contact Support</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer-section">
+        <div class="container">
+            <p>&copy; 2025 Kizuna Quest Team. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="back-to-site">
+                <a href="index.html" class="btn">Back to Main Site</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
