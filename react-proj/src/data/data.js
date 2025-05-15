@@ -58,7 +58,7 @@ export const skils = [
 export const projects = [
     {
         name: "Pixel Verse",
-        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a5/b8/2b/a5b82b51-ea09-28b7-3370-3b331ee98b9f/AppIcon-0-0-1x_U007emarketing-0-10-0-0-85-220.png/340x340bb.png",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e2/18/f6/e218f6a9-f307-1900-6111-d34f08f4015f/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/360x360bb.png",
         platforms: {
             ios: "https://apps.apple.com/us/app/pixel-verse/id6736886514",
             macos: "https://apps.apple.com/us/app/pixel-verse/id6736886514",
@@ -78,24 +78,6 @@ export const projects = [
             "Zoom and Pan: Get up close and personal with your artwork.",
             "Animation Support: Create simple animations with frame management.",
             "Export Options: Save your work in various formats, including image and project files."
-        ],
-    },
-    {
-        name: "JSMaster",
-        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/85/e8/14/85e8149c-27f8-f5c8-e9f3-1563813ffca6/AppIcon-0-0-1x_U007emarketing-0-10-0-0-85-220.png/340x340bb.png",
-        platforms: {
-            ios: "https://apps.apple.com/us/app/js-master/id6736955510",
-            macos: "https://apps.apple.com/us/app/js-master/id6736955510",
-            sourcecode: "https://github.com/TaalayDev/JSMaster",
-        },
-        stack: ["Flutter"],
-        description: "Interactive JavaScript learning app built with Flutter. Features real-time code execution, progress tracking, and offline lessons.",
-        note: [
-            "Interactive JavaScript lessons",
-            "Real-time code execution",
-            "Progress tracking",
-            "Offline access to lessons",
-            "Quizzes to test your knowledge",
         ],
     },
     {
@@ -120,10 +102,28 @@ export const projects = [
         ],
     },
     {
+        name: "Tsuzuki Connect",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f8/2f/6d/f82f6db1-3742-061c-436c-c848bd324506/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/360x360bb.png",
+        platforms: {
+            ios: "https://apps.apple.com/us/app/tsuzuki-connect/id6744872822",
+            macos: "https://apps.apple.com/us/app/tsuzuki-connect/id6744872822",
+            sourcecode: "https://github.com/TaalayDev/tsuzuki_connect",
+        },
+        stack: ["Flutter"],
+        description: "A Japanese language learning adventure in the form of an interactive visual novel, built with Flutter.",
+        note: [
+            "Interactive visual novel: Engage with a captivating story while learning Japanese.",
+            "Language lessons: Learn vocabulary, grammar, and pronunciation through immersive gameplay.",
+            "Quizzes and challenges: Test your knowledge and track your progress.",
+            "Offline access: Enjoy the app without an internet connection.",
+        ],
+    },
+    {
         "name": "Constellation Catcher",
         "image": "https://raw.githubusercontent.com/TaalayDev/constellation_catcher/refs/heads/main/ios/Runner/Assets.xcassets/AppIcon.appiconset/512.png",
         "platforms": {
-            "ios": "https://apps.apple.com/us/app/constellation-catcher-game/id6739852690",
+            "ios": "https://apps.apple.com/us/app/constellation-catcher/id6739852690",
+            "macos": "https://apps.apple.com/us/app/constellation-catcher/id6739852690",
             "sourcecode": "https://github.com/TaalayDev/constellation_catcher",
         },
         "stack": ["Flutter"],
@@ -135,9 +135,41 @@ export const projects = [
         ],
     },
     {
-        "name": "Brain Teasers",
-        "image": "https://raw.githubusercontent.com/TaalayDev/brain_teasers/refs/heads/main/ios/Runner/Assets.xcassets/AppIcon.appiconset/512.png",
+        "name": "Мал Базар: Кыргызстан",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/86/9e/2a/869e2a6a-c122-33a9-70d0-bf37f114a886/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/460x0w.webp",
         "platforms": {
+            "ios": "https://apps.apple.com/us/app/%D0%BC%D0%B0%D0%BB-%D0%B1%D0%B0%D0%B7%D0%B0%D1%80-%D0%BA%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D1%82%D0%B0%D0%BD/id6745025940",
+        },
+        "stack": ["Flutter"],
+        "description": "Мал Базар: Кыргызстан — цифровая торговая площадка Кыргызстана для продажи и покупки сельскохозяйственных животных, птицы, техники и товаров для фермерства.",
+        "note": [
+            "Пользовательский интерфейс: Простой и интуитивно понятный интерфейс для удобного поиска и размещения объявлений.",
+            "Функционал: Возможность размещать объявления о продаже и покупке животных, птицы, техники и товаров для фермерства.",
+            "Поиск и фильтрация: Удобные инструменты для поиска и фильтрации объявлений по различным критериям.",
+        ],
+    },
+    {
+        "name": "Palette Master: Color Puzzles",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/40/1b/b7/401bb748-19d4-f7e9-bfb5-613bee2ae80e/AppIcon-0-0-85-220-0-5-0-2x.png/460x0w.webp",
+        "platforms": {
+            "ios": "https://apps.apple.com/us/app/palette-master-color-puzzles/id6743667034",
+            "macos": "https://apps.apple.com/us/app/palette-master-color-puzzles/id6743667034",
+            "sourcecode": "https://github.com/TaalayDev/palette_master",
+        },
+        "stack": ["Flutter"],
+        "description": "Palette Master is an interactive puzzle game that turns color theory into a fun and engaging experience.",
+        "note": [
+            "Color theory puzzles: Solve puzzles based on color theory concepts.",
+            "Interactive learning: Learn about color mixing, harmony, and contrast through gameplay.",
+            "Progress tracking: Monitor your performance and see how you improve over time.",
+            "Offline access: Play without an internet connection.",
+        ],
+    },
+    {
+        "name": "Brain Teasers",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6e/d4/0b/6ed40bfe-9eb8-1ba8-4c94-de28be026026/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/360x360bb.png",
+        "platforms": {
+            "ios": "https://apps.apple.com/us/app/brain-teasers-puzzle-games/id6743542227",
             "sourcecode": "https://github.com/TaalayDev/brain_teasers",
         },
         "stack": ["Flutter"],
@@ -146,6 +178,24 @@ export const projects = [
             "Diverse puzzles: Solve a variety of puzzles, including math problems, logic puzzles, and more.",
             "Challenges: Complete daily challenges to earn rewards.",
             "Progress tracking: Monitor your performance and see how you improve over time.",
+        ],
+    },
+    {
+        name: "JSMaster",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/85/e8/14/85e8149c-27f8-f5c8-e9f3-1563813ffca6/AppIcon-0-0-1x_U007emarketing-0-10-0-0-85-220.png/340x340bb.png",
+        platforms: {
+            ios: "https://apps.apple.com/us/app/js-master/id6736955510",
+            macos: "https://apps.apple.com/us/app/js-master/id6736955510",
+            sourcecode: "https://github.com/TaalayDev/JSMaster",
+        },
+        stack: ["Flutter"],
+        description: "Interactive JavaScript learning app built with Flutter. Features real-time code execution, progress tracking, and offline lessons.",
+        note: [
+            "Interactive JavaScript lessons",
+            "Real-time code execution",
+            "Progress tracking",
+            "Offline access to lessons",
+            "Quizzes to test your knowledge",
         ],
     },
     {
