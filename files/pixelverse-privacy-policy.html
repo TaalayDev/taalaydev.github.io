@@ -19,6 +19,15 @@
         h2 {
             color: #34495e;
         }
+        h3 {
+            color: #5a6c7d;
+        }
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin: 15px 0;
+        }
         footer {
             margin-top: 40px;
             padding-top: 20px;
@@ -31,77 +40,177 @@
 <body>
     <h1>PixelVerse Privacy Policy</h1>
     
-    <p>Last updated: March 18, 2025</p>
+    <p><strong>Last updated: March 18, 2025</strong></p>
     
     <h2>Introduction</h2>
-    <p>PixelVerse ("we," "our," or "us") respects your privacy and is committed to protecting it through our compliance with this policy. This privacy policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application PixelVerse (the "App").</p>
+    <p>PixelVerse ("we," "our," or "us") respects your privacy and is committed to protecting it through our compliance with this policy. This privacy policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application PixelVerse (the "App") and our cloud services.</p>
     
     <h2>Information We Collect</h2>
     
-    <h3>Information You Provide to Us</h3>
-    <p>PixelVerse primarily stores all your artwork and settings locally on your device. However, we may collect the following information:</p>
+    <h3>Account Information</h3>
+    <p>When you create an account or sign in with third-party services, we collect:</p>
     <ul>
-        <li><strong>Purchase Information</strong>: If you make purchases through the App, payment information is processed by app store platforms (Apple App Store or Google Play). We receive only confirmation of the purchase, not your actual payment details.</li>
+        <li><strong>Google Account Information</strong>: Name, email address, profile picture, and Google account ID when you sign in with Google</li>
+        <li><strong>Apple ID Information</strong>: Name (if provided), email address (real or private relay email), and Apple ID when you sign in with Apple</li>
+        <li><strong>Authentication Data</strong>: Firebase authentication tokens and user identifiers from your chosen sign-in method</li>
+        <li><strong>Profile Information</strong>: Display name, username, and any profile information you choose to provide</li>
+    </ul>
+    
+    <h3>Content You Create</h3>
+    <p>PixelVerse stores your creative content both locally and in the cloud:</p>
+    <ul>
+        <li><strong>Pixel Art Projects</strong>: Your artwork, including layers, animations, effects, and metadata</li>
+        <li><strong>Project Information</strong>: Project names, descriptions, creation dates, and modification history</li>
+        <li><strong>Comments and Interactions</strong>: Comments you write on projects, likes, and other social interactions</li>
+        <li><strong>Project Sharing Settings</strong>: Whether projects are public or private, and associated tags</li>
+    </ul>
+    
+    <h3>Information You Provide to Us</h3>
+    <ul>
+        <li><strong>Purchase Information</strong>: If you make purchases through the App, payment information is processed by app store platforms (Apple App Store or Google Play). We receive only confirmation of the purchase, not your actual payment details</li>
+        <li><strong>Support Communications</strong>: Information you provide when contacting us for support or feedback</li>
+        <li><strong>User-Generated Content</strong>: Any content you voluntarily share or make public within the App</li>
     </ul>
     
     <h3>Automatically Collected Information</h3>
     <p>When you use our App, we may automatically collect certain information, including:</p>
     <ul>
-        <li><strong>Device Information</strong>: Information about your mobile device and internet connection, including the device's unique device identifier, operating system, browser type, and mobile network information.</li>
-        <li><strong>Usage Data</strong>: Information about how you use our App, such as frequency of use, features used, and preferences selected.</li>
-        <li><strong>Error Data</strong>: In case of App crashes or errors, we collect diagnostic information to improve the App's stability.</li>
+        <li><strong>Device Information</strong>: Information about your mobile device and internet connection, including the device's unique device identifier, operating system, browser type, and mobile network information</li>
+        <li><strong>Usage Data</strong>: Information about how you use our App, such as frequency of use, features used, tools selected, and preferences</li>
+        <li><strong>Analytics Data</strong>: App performance metrics, session duration, and feature usage statistics collected through Firebase Analytics</li>
+        <li><strong>Error Data</strong>: In case of App crashes or errors, we collect diagnostic information to improve the App's stability</li>
+        <li><strong>Sync Activity</strong>: Information about when projects are synchronized between devices</li>
     </ul>
     
     <h2>How We Use Your Information</h2>
     <p>We use the information we collect to:</p>
     <ul>
-        <li>Provide, maintain, and improve our App and its contents</li>
-        <li>Fulfill and manage purchases and subscriptions</li>
-        <li>Respond to your requests and inquiries</li>
-        <li>Fix bugs and improve the App's functionality</li>
-        <li>Monitor the usage of our App for product improvement</li>
-        <li>Protect the security and integrity of our App</li>
+        <li><strong>Provide Core Services</strong>: Enable account creation, authentication via Google or Apple, and access to your projects</li>
+        <li><strong>Cloud Sync and Backup</strong>: Synchronize your projects across devices and provide cloud backup services</li>
+        <li><strong>Social Features</strong>: Enable sharing, commenting, liking, and discovering public projects</li>
+        <li><strong>App Improvement</strong>: Maintain, improve, and optimize our App and its features</li>
+        <li><strong>Subscription Management</strong>: Fulfill and manage purchases, subscriptions, and Pro features</li>
+        <li><strong>Communication</strong>: Respond to your requests, inquiries, and provide customer support</li>
+        <li><strong>Security</strong>: Protect the security and integrity of our App and prevent fraud</li>
+        <li><strong>Legal Compliance</strong>: Comply with applicable laws and protect our legal rights</li>
     </ul>
     
     <h2>Data Storage and Security</h2>
-    <p>Your pixel art creations and app settings are stored locally on your device.</p>
     
-    <p>We implement measures designed to secure any personal information from accidental loss and from unauthorized access, use, alteration, and disclosure. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
+    <div class="highlight">
+        <h3>Local Storage</h3>
+        <p>Your pixel art creations and app settings are stored locally on your device. This data remains private unless you choose to sync it to the cloud.</p>
+    </div>
+    
+    <h3>Cloud Storage</h3>
+    <p>When you enable cloud sync or create an account:</p>
+    <ul>
+        <li>Your projects are stored on secure cloud servers</li>
+        <li>Data is encrypted in transit using industry-standard protocols</li>
+        <li>We implement appropriate technical and organizational security measures</li>
+        <li>Access to your data is restricted to authorized personnel only</li>
+    </ul>
+    
+    <p>However, no method of transmission over the Internet or electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee its absolute security.</p>
     
     <h2>Data Sharing and Disclosure</h2>
     <p>We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties except in the following cases:</p>
+    
+    <h3>Public Content</h3>
+    <p>Content you choose to make public (public projects, comments, likes) may be visible to other users of the App and may appear in search results or featured content.</p>
+    
+    <h3>Service Providers</h3>
+    <p>We may share information with trusted third-party vendors and service providers who assist us in operating our App, including:</p>
     <ul>
-        <li><strong>Service Providers</strong>: We may share information with third-party vendors, service providers, and other contractors who perform services on our behalf, but only what is necessary for them to provide these services.</li>
-        <li><strong>Legal Requirements</strong>: We may disclose information if required to do so by law or in response to valid requests by public authorities.</li>
-        <li><strong>Business Transfers</strong>: In the event of a merger, acquisition, or sale of all or a portion of our assets, user information may be among the transferred assets.</li>
+        <li>Cloud hosting and storage providers</li>
+        <li>Analytics services (Firebase Analytics)</li>
+        <li>Authentication services (Google Sign-In, Apple Sign-In, Firebase Auth)</li>
+        <li>Payment processors (App Store platforms)</li>
     </ul>
     
+    <h3>Legal Requirements</h3>
+    <p>We may disclose information if required to do so by law or in response to valid requests by public authorities, such as court orders or government investigations.</p>
+    
+    <h3>Business Transfers</h3>
+    <p>In the event of a merger, acquisition, or sale of all or a portion of our assets, user information may be among the transferred assets, but this policy will continue to apply.</p>
+    
     <h2>Your Choices and Rights</h2>
-    <p>You have control over your personal information:</p>
+    
+    <h3>Account Management</h3>
     <ul>
-        <li><strong>Local Storage</strong>: All locally stored data can be removed by clearing the App's data through your device settings or uninstalling the App.</li>
+        <li><strong>Account Deletion</strong>: You can delete your account at any time through the App settings</li>
+        <li><strong>Data Export</strong>: You can export your projects in standard formats</li>
+        <li><strong>Sync Control</strong>: You can enable or disable cloud synchronization</li>
+        <li><strong>Privacy Settings</strong>: You can control whether your projects are public or private</li>
+        <li><strong>Email Privacy</strong>: If you used Apple Sign-In with "Hide My Email," you can manage email forwarding through your Apple ID settings</li>
+    </ul>
+    
+    <h3>Content Control</h3>
+    <ul>
+        <li><strong>Project Visibility</strong>: Choose whether each project is public or private</li>
+        <li><strong>Comment Management</strong>: Edit or delete your comments on projects</li>
+        <li><strong>Social Interactions</strong>: Control your participation in community features</li>
+    </ul>
+    
+    <h3>Data Removal</h3>
+    <ul>
+        <li><strong>Local Data</strong>: All locally stored data can be removed by clearing the App's data through your device settings or uninstalling the App</li>
+        <li><strong>Cloud Data</strong>: Account deletion will remove your cloud-stored projects and associated data</li>
     </ul>
     
     <h2>Third-Party Services</h2>
     <p>Our App integrates the following third-party services:</p>
     <ul>
-        <li><strong>Firebase Analytics</strong>: We use Firebase Analytics to collect anonymous usage statistics to improve the App. This service may collect information such as how often you use the App and which features you use most.</li>
-        <li><strong>In-App Purchases</strong>: Payments are processed through Apple App Store or Google Play, depending on your device. Their respective privacy policies apply to the payment process.</li>
+        <li><strong>Google Sign-In</strong>: For account creation and authentication (Google's Privacy Policy applies)</li>
+        <li><strong>Apple Sign-In</strong>: For account creation and authentication on Apple devices (Apple's Privacy Policy applies)</li>
+        <li><strong>Firebase Services</strong>: For authentication, analytics, and backend services (Google's Privacy Policy applies)</li>
+        <li><strong>Firebase Analytics</strong>: We use Firebase Analytics to collect anonymous usage statistics to improve the App</li>
+        <li><strong>In-App Purchases</strong>: Payments are processed through Apple App Store or Google Play, depending on your device</li>
+    </ul>
+    
+    <div class="highlight">
+        <h3>Apple Sign-In Privacy Features</h3>
+        <p>When you use Sign in with Apple, you benefit from Apple's enhanced privacy features:</p>
+        <ul>
+            <li><strong>Hide My Email</strong>: You can choose to share a private relay email address instead of your real email</li>
+            <li><strong>Minimal Data Sharing</strong>: Apple limits the information shared with us to only what's necessary</li>
+            <li><strong>User Control</strong>: You have full control over what information is shared with PixelVerse</li>
+        </ul>
+    </div>
+    
+    <h2>Data Retention</h2>
+    <p>We retain your information for as long as necessary to provide our services:</p>
+    <ul>
+        <li><strong>Account Data</strong>: Retained until you delete your account</li>
+        <li><strong>Project Data</strong>: Retained until you delete the projects or your account</li>
+        <li><strong>Analytics Data</strong>: Aggregated and anonymized data may be retained for product improvement</li>
+        <li><strong>Support Communications</strong>: Retained for a reasonable period to provide ongoing support</li>
     </ul>
     
     <h2>Children's Privacy</h2>
-    <p>Our App is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal information from a child under 13, we will take steps to delete that information.</p>
+    <p>Our App is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal information from a child under 13, we will take steps to delete that information promptly.</p>
     
     <h2>International Data Transfers</h2>
-    <p>If you use our App outside of the United States, your information may be transferred to, stored, and processed in the United States, where our servers are located. By using our App, you consent to the transfer of information to countries outside of your country of residence, which may have different data protection rules than those of your country.</p>
+    <p>If you use our App outside of the United States, your information may be transferred to, stored, and processed in the United States or other countries where our servers and service providers are located. By using our App, you consent to the transfer of information to countries outside of your country of residence, which may have different data protection rules than those of your country.</p>
     
     <h2>Changes to Our Privacy Policy</h2>
-    <p>We may update our privacy policy from time to time. If we make material changes to how we treat our users' personal information, we will post the new privacy policy in the App and update the "Last Updated" date at the top of this policy.</p>
-    <p>We will notify you of any significant changes by displaying a prominent notice within the App or by sending you an email notification (if you've provided us with your email for cloud services).</p>
+    <p>We may update our privacy policy from time to time. If we make material changes to how we treat our users' personal information, we will:</p>
+    <ul>
+        <li>Post the new privacy policy in the App</li>
+        <li>Update the "Last Updated" date at the top of this policy</li>
+        <li>Display a prominent notice within the App</li>
+        <li>Send you an email notification (if you've provided us with your email through account creation, including Apple's private relay emails)</li>
+    </ul>
+    
+    <p>We encourage you to review this privacy policy periodically to stay informed about how we are protecting your information.</p>
     
     <h2>Contact Information</h2>
-    <p>If you have any questions or comments about this privacy policy or our data practices, please contact us at:</p>
-    <p>Email: a.u.taalay@gmail.com</p>
+    <p>If you have any questions or comments about this privacy policy, our data practices, or would like to exercise your rights regarding your personal information, please contact us at:</p>
+    
+    <p><strong>Email:</strong> a.u.taalay@gmail.com</p>
+    <p><strong>Subject Line:</strong> PixelVerse Privacy Inquiry</p>
+    
+    <p>We will respond to your inquiry within a reasonable timeframe.</p>
     
     <footer>
         <p>© 2025 PixelVerse. All rights reserved.</p>
