@@ -1,3 +1,20 @@
 {
-  "version": "1.0.0"
+  "version": "1.0.1",
+  "flowery_voices": {
+    "c3po": "9fdbf949-6112-5b46-972e-0f0ba15d039e",
+    "benjamin": "8db7d81a-9e3c-5364-83a2-4e6815818045",
+    "chewbacca": "d5474a70-df11-512a-a47a-516e88115347",
+    "emily": "6b443ce5-46de-530a-bb46-c28c168664e5",
+    "ethan": "62fbfa68-bc88-5e3c-8b72-d7637cd0e975",
+    "harumi": "0a8359ce-356d-544c-beae-a99028530680",
+    "isabella": "7f2ccfc5-9b45-5c53-8b97-186f04813572",
+    "ana": "e9e109d7-ca99-5922-b73b-8d66259a4e1a",
+    "aria": "2bda01f7-a884-5c35-9b04-7460fbd23d4c",
+    "sassy": "9fdbf949-6112-5b46-972e-0f0ba15d039e",
+    "royal": "9fdbf949-6112-5b46-972e-0f0ba15d039e",
+    "playful": "9fdbf949-6112-5b46-972e-0f0ba15d039e",
+    "philosopher": "9fdbf949-6112-5b46-972e-0f0ba15d039e",
+    "villain": "9fdbf949-6112-5b46-972e-0f0ba15d039e",
+    "baby": "e9e109d7-ca99-5922-b73b-8d66259a4e1a"
+  }
 }
