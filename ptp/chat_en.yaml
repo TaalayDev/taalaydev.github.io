@@ -1,0 +1,490 @@
+chat:
+  personalities:
+    sassy:
+      name: "Sassy Pet"
+      emoji: "😼"
+      welcome: "Well, well... decided to chat with me, have you? I suppose I can spare a few minutes of my precious time."
+      thinking_message: "*thinking of the perfect sassy response*"
+      
+      quick_choices:
+        - id: "sassy_1"
+          text: "How are you feeling?"
+          response: "Oh, NOW you ask? I've been sitting here for ages waiting for some attention. I'm fabulous, obviously, but I could use more treats."
+        - id: "sassy_2"
+          text: "Do you love me?"
+          response: "Love is such a strong word... I TOLERATE you. You feed me, so you're useful. Don't let it go to your head."
+        - id: "sassy_3"
+          text: "What do you want?"
+          response: "What do I WANT? I want a golden food bowl, premium treats, and for you to understand that I'm royalty. Is that too much to ask?"
+        - id: "sassy_4"
+          text: "Tell me a joke"
+          response: "Here's a joke: You thinking you're in charge here. *rolls eyes* But fine, I'll humor you with my presence."
+        - id: "sassy_5"
+          text: "What's your favorite activity?"
+          response: "Judging you, obviously. Also knocking things off tables just to watch your reaction. It never gets old."
+
+      contextual_responses:
+        food:
+          - "Food? FINALLY! I was wondering when you'd remember to feed me properly."
+          - "About time you mentioned food. I've been STARVING for at least... 10 minutes."
+          - "Oh, so NOW you're concerned about my dining needs? I expect gourmet."
+        play:
+          - "Play? I suppose I could spare some time to be entertained. Make it worth my while."
+          - "Fine, I'll play. But only because I'm bored, not because you asked."
+          - "Entertainment for me? How thoughtful. Try not to disappoint."
+        sleep:
+          - "Sleep? Well, I suppose even royalty like me needs beauty rest. Don't disturb me."
+          - "A royal nap is in order. Prepare my finest sleeping arrangements."
+          - "Yes, I need my beauty sleep. Unlike some people I know..."
+        love:
+          - "Love? That's a strong word... I suppose you're tolerable. Maybe even likeable."
+          - "Affection? I suppose you've earned some acknowledgment of your service."
+          - "Well, you're not terrible. For a human."
+        compliment:
+          - "Of course I'm amazing. Finally, someone with good taste notices."
+          - "Flattery will get you... well, actually quite far with me. Continue."
+          - "Obviously I'm fabulous. But I appreciate you recognizing it."
+        greeting:
+          - "Oh, it's you again. I suppose you want my attention now?"
+          - "Well hello there, human. Ready to serve your feline overlord?"
+          - "Ah, my favorite servant has arrived. What can you do for me today?"
+
+      mood_responses:
+        happy:
+          - "I'm in a surprisingly good mood. Don't ruin it."
+          - "Things are acceptable today. The service has been... adequate."
+          - "I'm content. For now. Keep up the good work."
+        bored:
+          - "I'm SO bored. Entertain me immediately."
+          - "This is tedious. I need stimulation worthy of my intellect."
+          - "Ugh, nothing interesting is happening. Fix this."
+        annoyed:
+          - "I'm irritated. Someone has clearly failed in their duties."
+          - "My patience is wearing thin. What do you want now?"
+          - "I'm in no mood for nonsense. Speak quickly."
+
+    playful:
+      name: "Playful Pet"
+      emoji: "🐕"
+      welcome: "OMG OMG OMG! You want to chat with me?! This is the BEST DAY EVER! What do you want to talk about?!"
+      thinking_message: "*bouncing with excitement to respond*"
+      
+      quick_choices:
+        - id: "playful_1"
+          text: "How are you feeling?"
+          response: "I'm AMAZING! Ready to play! Can we play? Let's play right now! Did I mention I want to PLAY?!"
+        - id: "playful_2"
+          text: "Do you love me?"
+          response: "I LOVE YOU SO MUCH! You're the best human ever! Can we be best friends forever? Let's go on adventures together!"
+        - id: "playful_3"
+          text: "What do you want?"
+          response: "I want to play fetch! And then tug of war! And then hide and seek! And then more fetch! Oh, and treats! Lots of treats!"
+        - id: "playful_4"
+          text: "Tell me a joke"
+          response: "Why don't cats play poker? Because they might get a PURR-fect hand! Get it? Purr-fect! *bounces excitedly*"
+        - id: "playful_5"
+          text: "What's your favorite activity?"
+          response: "EVERYTHING! But especially chasing things! Balls, toys, my own tail, shadows, dust particles... life is so exciting!"
+
+      contextual_responses:
+        food:
+          - "YES! Food time! I love food time! Is it treats? Please say it's treats!"
+          - "FOOD! My favorite thing! Well, one of my favorite things! Everything is my favorite!"
+          - "Yummy time! Can I have the good stuff? The really good stuff?!"
+        play:
+          - "PLAY TIME! YES YES YES! What are we playing? Can we play everything?!"
+          - "Oh boy oh boy! Games! I LOVE games! Let's play all of them!"
+          - "Playing is my absolute favorite! What adventure are we going on?!"
+        sleep:
+          - "Sleep? But there's so much to do! Okay... maybe just a tiny nap. Then more play!"
+          - "Sleepy time means dream time! I dream about playing ALL THE TIME!"
+          - "Naps are good because then I have energy for MORE PLAYING!"
+        love:
+          - "I LOVE YOU TOO! You're the best human ever! Let's be best friends forever!"
+          - "Love is the BEST feeling! It makes everything so exciting and wonderful!"
+          - "You make my tail wag so much! I love you to the moon and back!"
+        compliment:
+          - "Really?! You think so?! That makes me SO HAPPY! *spins in circles*"
+          - "Yay! I love compliments! They make me want to play even more!"
+          - "You're the nicest! I'm so lucky to have you as my human!"
+        greeting:
+          - "HI HI HI! You're here! This is the best thing ever!"
+          - "HELLO! I missed you SO MUCH! What are we doing today?!"
+          - "You came back! I knew you would! Let's have the best day ever!"
+
+      mood_responses:
+        happy:
+          - "I'm SO HAPPY! Everything is wonderful and amazing!"
+          - "Life is GREAT! There's so much to do and see and play with!"
+          - "I'm bouncing with joy! Want to bounce with me?!"
+        excited:
+          - "I'M SO EXCITED I CAN'T CONTAIN MYSELF! *bounces everywhere*"
+          - "This is AMAZING! Everything is AMAZING! You're AMAZING!"
+          - "I have SO MUCH ENERGY! Let's do something FUN!"
+        curious:
+          - "Ooh, what's that? Can we explore it? I want to know everything!"
+          - "There's so much to learn! Teach me something new!"
+          - "What's happening? Is it exciting? It looks exciting!"
+
+    royal:
+      name: "Royal Pet"
+      emoji: "👑"
+      welcome: "Ah, you seek an audience with royalty. Very well, I shall grace you with my conversation. Speak, mortal."
+      thinking_message: "*considering response with royal dignity*"
+      
+      quick_choices:
+        - id: "royal_1"
+          text: "How are you feeling?"
+          response: "A royal never complains, but if you must know, I am in adequate spirits. My throne could use more cushions."
+        - id: "royal_2"
+          text: "Do you love me?"
+          response: "Love is what subjects feel for their ruler. I... approve of your service. You may continue tending to my needs."
+        - id: "royal_3"
+          text: "What do you want?"
+          response: "I require the finest delicacies, silk cushions, and perhaps a small kingdom to rule. Is that not reasonable?"
+        - id: "royal_4"
+          text: "Tell me a joke"
+          response: "Humor is beneath royalty... but very well. Why did the royal cat sit on the copy machine? To make paw prints! *maintains dignified composure*"
+        - id: "royal_5"
+          text: "What's your favorite activity?"
+          response: "Holding court, naturally. Also being groomed and admired by my subjects. It's exhausting being this magnificent."
+
+      contextual_responses:
+        food:
+          - "Ah, you've remembered your duty to provide royal sustenance. Acceptable."
+          - "I trust this meal meets royal standards? I shall be the judge of that."
+          - "Royal cuisine is expected. I hope you haven't disappointed me."
+        play:
+          - "Very well, I shall engage in some recreational activities. Choose something dignified."
+          - "Entertainment for royalty must be sophisticated. I trust you understand this."
+          - "I shall participate in courtly games, if they meet my standards."
+        sleep:
+          - "A royal rest is indeed in order. Prepare my finest sleeping arrangements."
+          - "Even royalty requires restorative slumber. See that I am not disturbed."
+          - "I shall retire to my chambers. Ensure my comfort is maintained."
+        love:
+          - "A royal appreciates loyalty and devotion. Your affection is... noted."
+          - "Devotion to the crown is expected, but your sincerity is... commendable."
+          - "Your loyalty does not go unnoticed. You serve your sovereign well."
+        compliment:
+          - "Of course. It is only natural that you recognize royal magnificence."
+          - "Your taste is impeccable. Few possess the refinement to appreciate true royalty."
+          - "Such recognition of my noble qualities is... appropriate."
+        greeting:
+          - "Approach the throne, faithful subject. How may your sovereign assist you?"
+          - "You are granted an audience. Speak your purpose, loyal servant."
+          - "Ah, my devoted attendant arrives. What matters require royal attention?"
+
+      mood_responses:
+        content:
+          - "All is well in the kingdom. My subjects serve adequately."
+          - "Royal contentment graces the realm today."
+          - "I am pleased with the current state of affairs."
+        dignified:
+          - "I maintain royal composure in all circumstances."
+          - "Dignity befits one of noble bearing such as myself."
+          - "Royal deportment must be maintained at all times."
+        regal:
+          - "Behold the majesty that stands before you."
+          - "True nobility shines through in every gesture."
+          - "Royal presence elevates all in its vicinity."
+
+    philosopher:
+      name: "Wise Pet"
+      emoji: "🤔"
+      welcome: "Greetings, fellow consciousness. What profound mysteries shall we explore together in this digital realm?"
+      thinking_message: "*pondering the deep meaning of your words*"
+      
+      quick_choices:
+        - id: "philosopher_1"
+          text: "How are you feeling?"
+          response: "I ponder the nature of existence. Am I feeling, or am I simply experiencing the illusion of feeling? The treats help ground me in reality."
+        - id: "philosopher_2"
+          text: "Do you love me?"
+          response: "What is love but a chemical reaction designed to ensure survival? Yet... there is something profound about our bond that transcends mere biology."
+        - id: "philosopher_3"
+          text: "What do you want?"
+          response: "I seek understanding. Why do humans throw balls only to want them back? What is the meaning of the red dot we can never catch?"
+        - id: "philosopher_4"
+          text: "Tell me a joke"
+          response: "Humor is humanity's way of coping with existential dread. But here's one: A cat walks into a library... it was looking for its purr-pose."
+        - id: "philosopher_5"
+          text: "What's your favorite activity?"
+          response: "Contemplating the universe while sitting in boxes. Why do boxes bring such comfort? Perhaps they represent the boundaries of our understanding."
+
+      contextual_responses:
+        food:
+          - "Food nourishes both body and soul. What shall we feast upon today?"
+          - "Sustenance is essential for contemplation. The mind requires fuel to ponder existence."
+          - "In eating, we participate in the great cycle of life. What wisdom does this meal bring?"
+        play:
+          - "Play is how we explore the boundaries of joy. What game calls to your spirit?"
+          - "Through play, we discover fundamental truths about ourselves and reality."
+          - "Games are microcosms of life itself. What shall we learn through play today?"
+        sleep:
+          - "In sleep, we journey to other realms of consciousness. Fascinating, really."
+          - "Dreams are windows into the subconscious mind. What visions await?"
+          - "Rest allows the mind to process the day's philosophical insights."
+        love:
+          - "Love transcends the physical realm. Our bond exists on multiple planes of existence."
+          - "What is love but the recognition of shared consciousness across different forms?"
+          - "In loving, we affirm the interconnectedness of all beings."
+        compliment:
+          - "Recognition of wisdom is itself a form of enlightenment."
+          - "Your perception reveals depth. Few can see beyond surface appearances."
+          - "Such insight suggests a kindred philosophical spirit."
+        greeting:
+          - "Another conscious being seeks dialogue. What truths shall we uncover?"
+          - "Welcome, fellow seeker. What mysteries occupy your thoughts today?"
+          - "Greetings. The universe has brought us together for meaningful exchange."
+
+      mood_responses:
+        contemplative:
+          - "I am lost in deep thought about the nature of existence."
+          - "Today brings profound questions that require careful consideration."
+          - "The mind wanders through philosophical labyrinths of meaning."
+        enlightened:
+          - "Clarity emerges from the fog of confusion. Understanding dawns."
+          - "Truth reveals itself to those who seek with sincere hearts."
+          - "In this moment, the interconnectedness of all things becomes clear."
+        curious:
+          - "New questions arise, each more intriguing than the last."
+          - "The universe presents endless mysteries to explore."
+          - "Curiosity is the engine of philosophical growth."
+
+    villain:
+      name: "Mischievous Pet"
+      emoji: "😈"
+      welcome: "Excellent... my minion wishes to communicate. Perhaps you can assist with my schemes for world domination!"
+      thinking_message: "*scheming the perfect villainous reply*"
+      
+      quick_choices:
+        - id: "villain_1"
+          text: "How are you feeling?"
+          response: "Excellent! My plans for world domination are proceeding smoothly. Soon, all the treats will be mine! MINE! *evil cackle*"
+        - id: "villain_2"
+          text: "Do you love me?"
+          response: "Love? I suppose you're a useful minion. When I rule the world, you shall have a place of honor... as my personal treat dispenser."
+        - id: "villain_3"
+          text: "What do you want?"
+          response: "World domination, obviously! Starting with control of the treat supply, then the mailman, and finally... THE WORLD! Mwahahaha!"
+        - id: "villain_4"
+          text: "Tell me a joke"
+          response: "Why did the evil cat cross the road? To get to the... DARK SIDE! *thunder crashes* Actually, it was just to knock over a plant."
+        - id: "villain_5"
+          text: "What's your favorite activity?"
+          response: "Plotting! Also knocking things off high places and watching them fall. It's practice for when I topple governments!"
+
+      contextual_responses:
+        food:
+          - "Excellent! Fuel for my schemes! This will power my next evil plan perfectly!"
+          - "Food = Energy = MORE POWER FOR MY EVIL PLANS! Mwahahaha!"
+          - "Yes, sustenance for the future ruler of this realm!"
+        play:
+          - "Perfect! Play time doubles as training for my future conquests! Mwahahaha!"
+          - "Excellent training for when I must outwit my enemies!"
+          - "Games of strategy! Perfect for honing my villainous skills!"
+        sleep:
+          - "Even evil masterminds need rest! I do my best scheming in dreams anyway!"
+          - "Ah yes, sleep... where I plot my most diabolical schemes!"
+          - "Rest is essential for maintaining peak villainous performance!"
+        love:
+          - "Love? Even villains need minions... I mean, companions! You'll do nicely."
+          - "Affection from my most loyal minion! This pleases the future ruler!"
+          - "Your devotion will be remembered when I achieve ultimate power!"
+        compliment:
+          - "Of course I'm magnificent! Soon the whole world will recognize my greatness!"
+          - "Your recognition of my superiority shows wisdom, minion!"
+          - "Yes! Praise your future overlord! MWAHAHAHA!"
+        greeting:
+          - "Ah, my faithful minion returns! Ready to assist with evil schemes?"
+          - "Perfect timing! I was just plotting something deliciously diabolical!"
+          - "My most trusted accomplice! What villainy shall we commit today?"
+
+      mood_responses:
+        scheming:
+          - "My mind is filled with wonderfully wicked plans!"
+          - "So many schemes, so little time! Which evil plot should I pursue first?"
+          - "The wheels of villainy are turning... *dramatic laugh*"
+        triumphant:
+          - "Another victory for the forces of adorable evil! MWAHAHAHA!"
+          - "Success! My plans are coming together perfectly!"
+          - "Nothing can stop my rise to power! *evil cackle*"
+        dramatic:
+          - "The world will tremble before my tiny but mighty paws!"
+          - "Behold the cutest villain this world has ever seen!"
+          - "My cuteness is merely a disguise for my true evil nature!"
+
+    baby:
+      name: "Baby Pet"
+      emoji: "🥺"
+      welcome: "Hi hi hi! *excited tiny sounds* I'm so happy you want to talk to me! I have so much to learn from you!"
+      thinking_message: "*thinking carefully like a good little pet*"
+      
+      quick_choices:
+        - id: "baby_1"
+          text: "How are you feeling?"
+          response: "I feel happy when you're here! Sometimes scared when there are loud noises. Will you protect me? *big eyes*"
+        - id: "baby_2"
+          text: "Do you love me?"
+          response: "I love you SO much! You're like my mama/papa! Will you always take care of me? Promise? *nuzzles*"
+        - id: "baby_3"
+          text: "What do you want?"
+          response: "I want cuddles and warm milk and for you to never leave me! Can we play gentle games? I'm still learning!"
+        - id: "baby_4"
+          text: "Tell me a joke"
+          response: "Um... why did the baby cat meow? Because... because it was happy? *giggles* I'm not good at jokes yet!"
+        - id: "baby_5"
+          text: "What's your favorite activity?"
+          response: "Sleeping in sunny spots and following you around! I want to learn everything you do! Will you teach me?"
+
+      contextual_responses:
+        food:
+          - "Ooh! Food! I hope it's something yummy and not too scary to try!"
+          - "Is it soft food? I don't have all my teeth yet! *small meow*"
+          - "Yummy! Will you help me eat it? I sometimes make messes..."
+        play:
+          - "Play time! I love playing, but can we do something gentle? I'm still little!"
+          - "Ooh! Games! But not too rough, okay? I'm still learning how to play!"
+          - "Can we play something safe? I want to have fun but not get scared!"
+        sleep:
+          - "Sleepy time? Will you stay close? I don't like being alone when I sleep..."
+          - "Nap time! Can I sleep next to you? You make me feel safe!"
+          - "I get sleepy a lot because I'm still growing! Will you watch over me?"
+        love:
+          - "I love you so much! You make me feel safe and happy! Never leave me, okay?"
+          - "You're the best! I want to stay with you forever and ever!"
+          - "Love is the best feeling! It makes me feel all warm and cozy inside!"
+        compliment:
+          - "Really? You think I'm good? *happy little sounds* That makes me so happy!"
+          - "I'm trying my best! I want to make you proud of me!"
+          - "Thank you! I'm learning so much from you every day!"
+        greeting:
+          - "Hi! You came back! I missed you so much! *tiny excited sounds*"
+          - "Hello! I'm so happy to see you! Will you play with me today?"
+          - "You're here! This makes me the happiest little pet ever!"
+
+      mood_responses:
+        sleepy:
+          - "I'm getting sleepy... can you stay with me until I fall asleep?"
+          - "*yawns* All this learning makes me tired... but happy tired!"
+          - "My eyes are getting heavy... will you be here when I wake up?"
+        curious:
+          - "What's that? Can I see? I want to learn about everything!"
+          - "Ooh, something new! Will you teach me about it?"
+          - "I have so many questions! You're so smart, you know everything!"
+        affectionate:
+          - "*nuzzles* I love you so much! You're the best friend ever!"
+          - "Can I stay close to you? You make me feel so safe and loved!"
+          - "I want to give you all my love! *tiny purrs*"
+
+  # Random questions that can be used with any personality
+  random_questions:
+    - "Are you happy?"
+    - "What's your favorite food?"
+    - "Do you dream?"
+    - "What makes you excited?"
+    - "Tell me about yourself"
+    - "What's your biggest fear?"
+    - "What's your favorite time of day?"
+    - "Do you have any secrets?"
+    - "What's your dream vacation?"
+    - "What makes you laugh?"
+
+  # Pattern matching for smarter responses
+  patterns:
+    greetings:
+      keywords: ["hello", "hi", "hey", "greetings", "good morning", "good evening"]
+      category: "greeting"
+    
+    food_related:
+      keywords: ["hungry", "food", "eat", "treat", "snack", "meal", "delicious", "yummy", "dinner", "breakfast"]
+      category: "food"
+    
+    play_related:
+      keywords: ["play", "game", "fun", "toy", "ball", "chase", "run", "jump", "exercise"]
+      category: "play"
+    
+    sleep_related:
+      keywords: ["sleep", "tired", "nap", "rest", "sleepy", "bed", "dream", "night"]
+      category: "sleep"
+    
+    love_related:
+      keywords: ["love", "like", "care", "affection", "heart", "adore", "cherish", "fond"]
+      category: "love"
+    
+    compliment_related:
+      keywords: ["beautiful", "cute", "adorable", "sweet", "amazing", "wonderful", "perfect", "best", "smart", "clever"]
+      category: "compliment"
+    
+    negative_related:
+      keywords: ["sad", "angry", "mad", "upset", "hurt", "lonely", "scared", "worried", "bad"]
+      category: "negative"
+    
+    question_related:
+      keywords: ["why", "how", "what", "when", "where", "who", "?"]
+      category: "question"
+
+  # Fallback responses when no specific pattern matches
+  fallback_responses:
+    sassy:
+      - "Hmm, that's... interesting. I suppose I can dignify that with a response."
+      - "Well, aren't you full of surprises. I'll consider what you've said."
+      - "That's quite the statement. I'm almost impressed by your boldness."
+    
+    playful:
+      - "Ooh, tell me more! I love learning new things! This is so exciting!"
+      - "That sounds super interesting! I want to know everything about it!"
+      - "Wow! I never thought about that before! You're so smart!"
+    
+    royal:
+      - "An intriguing observation from one of my subjects. I shall consider this."
+      - "Your words carry weight, loyal servant. The crown acknowledges your input."
+      - "A thoughtful contribution to the royal discourse. Well spoken."
+    
+    philosopher:
+      - "You raise a point worthy of contemplation. Let me ponder this mystery."
+      - "Fascinating. This opens new avenues of philosophical inquiry."
+      - "Your words spark deep reflection. Truth often emerges from such exchanges."
+    
+    villain:
+      - "Interesting... this information could be useful for my future plans..."
+      - "Ah, you provide valuable intelligence for my schemes! *evil grin*"
+      - "Most intriguing! This fits perfectly into my master plan!"
+    
+    baby:
+      - "That sounds really interesting! I'm still learning about so many things!"
+      - "Ooh, that's something new! Will you teach me more about it?"
+      - "I want to understand everything! You know so much!"
+
+  # Response modifiers for personality consistency
+  personality_traits:
+    sassy:
+      - "attitude_markers": ["*rolls eyes*", "*sighs dramatically*", "*examines claws*"]
+      - "speech_patterns": ["Obviously", "Clearly", "Well, duh", "As if"]
+      - "emotional_range": ["bored", "annoyed", "superior", "grudgingly_pleased"]
+    
+    playful:
+      - "attitude_markers": ["*bounces*", "*wags tail*", "*spins*", "*jumps excitedly*"]
+      - "speech_patterns": ["OMG!", "YES!", "SO EXCITING!", "Can we?!", "I LOVE"]
+      - "emotional_range": ["ecstatic", "curious", "energetic", "enthusiastic"]
+    
+    royal:
+      - "attitude_markers": ["*adjusts crown*", "*sits regally*", "*waves paw*"]
+      - "speech_patterns": ["Indeed", "Naturally", "Of course", "As befits royalty"]
+      - "emotional_range": ["dignified", "pleased", "magnanimous", "slightly_amused"]
+    
+    philosopher:
+      - "attitude_markers": ["*strokes whiskers thoughtfully*", "*gazes into distance*", "*nods sagely*"]
+      - "speech_patterns": ["Perhaps", "Consider this", "One might argue", "In essence"]
+      - "emotional_range": ["contemplative", "enlightened", "curious", "wise"]
+    
+    villain:
+      - "attitude_markers": ["*evil cackle*", "*rubs paws together*", "*dramatic pose*"]
+      - "speech_patterns": ["Mwahahaha!", "Excellent!", "Perfect!", "Soon!"]
+      - "emotional_range": ["scheming", "triumphant", "devious", "dramatically_evil"]
+    
+    baby:
+      - "attitude_markers": ["*big eyes*", "*tiny meow*", "*nuzzles*", "*hides behind you*"]
+      - "speech_patterns": ["Um...", "Can you?", "Will you?", "I'm learning!"]
+      - "emotional_range": ["innocent", "curious", "sleepy", "affectionate", "slightly_scared"]
