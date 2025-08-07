@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Pet Translator Pranks</title>
+    <title>Terms of Service - PocketPet Companion</title>
     <style>
+        /* General Body and Layout Styles */
         * {
             margin: 0;
             padding: 0;
@@ -15,7 +16,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
             min-height: 100vh;
         }
 
@@ -25,6 +26,7 @@
             padding: 20px;
         }
 
+        /* Header Styles */
         .header {
             background: white;
             border-radius: 20px;
@@ -37,6 +39,7 @@
         .app-icon {
             font-size: 60px;
             margin-bottom: 20px;
+            color: #8e44ad;
         }
 
         .header h1 {
@@ -53,14 +56,15 @@
         }
 
         .last-updated {
-            background: #e8f5e8;
-            color: #27ae60;
+            background: #e9e3f8;
+            color: #8e44ad;
             padding: 10px 20px;
             border-radius: 25px;
             display: inline-block;
             font-weight: 500;
         }
 
+        /* Main Content Styles */
         .content {
             background: white;
             border-radius: 20px;
@@ -78,7 +82,7 @@
             font-size: 1.8em;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 3px solid #e74c3c;
+            border-bottom: 3px solid #8e44ad;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -107,22 +111,23 @@
             line-height: 1.6;
         }
 
-        .highlight-box {
+        /* Special Box Styles */
+        .highlight-box, .success-box {
             background: #f8f9fa;
-            border-left: 4px solid #e74c3c;
+            border-left: 4px solid #8e44ad;
             padding: 20px;
             margin: 20px 0;
             border-radius: 0 10px 10px 0;
         }
 
         .warning-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
+            background: #fff9e6;
+            border-left: 4px solid #f39c12;
             padding: 20px;
             margin: 20px 0;
             border-radius: 0 10px 10px 0;
         }
-
+        
         .important-box {
             background: #f8d7da;
             border-left: 4px solid #dc3545;
@@ -131,17 +136,10 @@
             border-radius: 0 10px 10px 0;
         }
 
-        .success-box {
-            background: #d4edda;
-            border-left: 4px solid #28a745;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
-        }
-
+        /* Contact Info Footer */
         .contact-info {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            color: #2c3e50;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
@@ -154,9 +152,9 @@
         }
 
         .contact-info a {
-            color: #fff;
+            color: #1e3799;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .contact-info a:hover {
@@ -168,9 +166,11 @@
             margin-right: 5px;
         }
 
+        /* Numbered List Style */
         .numbered-list {
             counter-reset: item;
             padding-left: 0;
+            list-style: none;
         }
 
         .numbered-list li {
@@ -186,7 +186,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            background: #e74c3c;
+            background: #8e44ad;
             color: white;
             width: 25px;
             height: 25px;
@@ -198,47 +198,7 @@
             font-size: 0.9em;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header, .content {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .section h2 {
-                font-size: 1.5em;
-            }
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #e74c3c;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
-        }
-
-        .back-to-top:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-        }
-
+        /* Table of Contents */
         .table-of-contents {
             background: #f8f9fa;
             border-radius: 10px;
@@ -262,7 +222,7 @@
         }
 
         .table-of-contents a {
-            color: #e74c3c;
+            color: #8e44ad;
             text-decoration: none;
             font-weight: 500;
         }
@@ -270,17 +230,60 @@
         .table-of-contents a:hover {
             text-decoration: underline;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header, .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .section h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #8e44ad;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none; /* Initially hidden */
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+        }
+
+        .back-to-top:hover {
+            background: #732d91;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <div class="app-icon">🐾</div>
+            <div class="app-icon">🤖</div>
             <h1>Terms of Service</h1>
-            <p class="subtitle">Pet Translator Pranks</p>
+            <p class="subtitle">PocketPet Companion</p>
             <div class="last-updated">
                 <span class="icon">📅</span>
-                Last Updated: January 30, 2025
+                Last Updated: August 5, 2025
             </div>
         </header>
 
@@ -290,324 +293,131 @@
                 <ul>
                     <li><a href="#acceptance">1. Acceptance of Terms</a></li>
                     <li><a href="#service">2. Description of Service</a></li>
-                    <li><a href="#account">3. User Accounts & Eligibility</a></li>
-                    <li><a href="#conduct">4. User Conduct & Responsibilities</a></li>
-                    <li><a href="#prohibited">5. Prohibited Uses</a></li>
-                    <li><a href="#content">6. User-Generated Content</a></li>
-                    <li><a href="#intellectual">7. Intellectual Property Rights</a></li>
-                    <li><a href="#disclaimer">8. Disclaimers & Limitations</a></li>
-                    <li><a href="#privacy">9. Privacy & Data Protection</a></li>
-                    <li><a href="#termination">10. Account Termination</a></li>
-                    <li><a href="#changes">11. Changes to Terms</a></li>
-                    <li><a href="#legal">12. Legal & Dispute Resolution</a></li>
+                    <li><a href="#conduct">3. User Conduct & AI Interaction</a></li>
+                    <li><a href="#prohibited">4. Prohibited Uses</a></li>
+                    <li><a href="#content">5. User-Generated Content</a></li>
+                    <li><a href="#intellectual">6. Intellectual Property</a></li>
+                    <li><a href="#disclaimer">7. Disclaimers & Limitation of Liability</a></li>
+                    <li><a href="#privacy">8. Privacy Policy</a></li>
+                    <li><a href="#termination">9. Account Termination</a></li>
+                    <li><a href="#changes">10. Changes to Terms</a></li>
+                    <li><a href="#legal">11. Governing Law & Disputes</a></li>
                 </ul>
             </div>
 
             <div class="section" id="acceptance">
                 <h2><span class="icon">✅</span>1. Acceptance of Terms</h2>
-                <p>Welcome to Pet Translator Pranks! By downloading, installing, or using our mobile application ("App"), you agree to be bound by these Terms of Service ("Terms"). These Terms constitute a legally binding agreement between you and Pet Translator Pranks ("we," "us," "our").</p>
-                
+                <p>Welcome to PocketPet Companion! By downloading, installing, or using our mobile application ("App"), you agree to be bound by these Terms of Service ("Terms"). This is a legally binding agreement between you and the developers of PocketPet Companion ("we," "us," or "our").</p>
                 <div class="important-box">
-                    <strong>Important:</strong> If you do not agree to these Terms, please do not use our App. Your continued use of the App indicates your acceptance of any updates to these Terms.
+                    <strong>Please read these Terms carefully.</strong> If you do not agree with them, you must not use our App. Your continued use of the App signifies your acceptance of these Terms and any future updates.
                 </div>
-
-                <p>These Terms apply to all users of the App, including visitors, registered users, and premium subscribers.</p>
             </div>
 
             <div class="section" id="service">
-                <h2><span class="icon">🎭</span>2. Description of Service</h2>
-                <p>Pet Translator Pranks is an entertainment application that provides:</p>
-                
+                <h2><span class="icon">🐾</span>2. Description of Service</h2>
+                <p>PocketPet Companion is an entertainment application designed to provide a fun, engaging, and friendly digital experience. The service includes:</p>
                 <ul>
-                    <li><strong>Pet Sound Translation:</strong> AI-powered "translation" of pet sounds into humorous human speech</li>
-                    <li><strong>Video Recording:</strong> Creation of videos with live pet translation overlays</li>
-                    <li><strong>Virtual Pet:</strong> Interactive virtual pet with various personalities and care features</li>
-                    <li><strong>Prank Features:</strong> Fun prank modes for entertainment with friends and family</li>
-                    <li><strong>Social Sharing:</strong> Ability to share translations and videos on social platforms</li>
+                    <li><strong>Virtual Pet Care:</strong> Adopting, raising, feeding, playing with, and customizing a digital pet.</li>
+                    <li><strong>AI Chat Companion:</strong> Engaging in conversations with an AI-powered character designed for companionship and entertainment.</li>
+                    <li><strong>Mini-Games:</strong> A collection of games to play with your virtual pet to earn rewards.</li>
+                    <li><strong>Personalization:</strong> Unlocking items to customize your pet and its environment.</li>
                 </ul>
-
                 <div class="highlight-box">
-                    <strong>Entertainment Purpose:</strong> Our App is designed for entertainment and humor. The "translations" are not real animal communications but AI-generated humorous content based on sound patterns and selected personality types.
-                </div>
-            </div>
-
-            <div class="section" id="account">
-                <h2><span class="icon">👤</span>3. User Accounts & Eligibility</h2>
-                
-                <h3>Age Requirements</h3>
-                <ul>
-                    <li>Users must be at least 13 years old to create an account</li>
-                    <li>Children under 13 may use the App with parental supervision</li>
-                    <li>Users under 18 must have parental consent to use the App</li>
-                </ul>
-
-                <h3>Account Responsibilities</h3>
-                <ul>
-                    <li>Provide accurate information when creating an account</li>
-                    <li>Maintain the confidentiality of your account credentials</li>
-                    <li>Notify us immediately of any unauthorized use of your account</li>
-                    <li>You are responsible for all activities under your account</li>
-                </ul>
-
-                <div class="success-box">
-                    <strong>Family-Friendly:</strong> Our App is designed to be safe and appropriate for family use. We encourage parental involvement and supervision for younger users.
+                    <strong>For Entertainment Purposes Only:</strong> The App, especially the AI chat feature, is for entertainment and companionship. The AI is not a human and its responses are generated by algorithms. It is not designed to provide medical, legal, financial, or therapeutic advice.
                 </div>
             </div>
 
             <div class="section" id="conduct">
-                <h2><span class="icon">🤝</span>4. User Conduct & Responsibilities</h2>
-                
-                <h3>Acceptable Use</h3>
-                <p>When using our App, you agree to:</p>
+                <h2><span class="icon">🤝</span>3. User Conduct & AI Interaction</h2>
+                <p>You agree to interact with the App and your AI companion responsibly and respectfully. You will:</p>
                 <ul class="numbered-list">
-                    <li>Use the App only for lawful, entertainment purposes</li>
-                    <li>Respect other users and their privacy</li>
-                    <li>Keep pranks harmless and good-natured</li>
-                    <li>Follow all applicable laws and regulations</li>
-                    <li>Report any bugs or security issues responsibly</li>
-                </ul>
-
-                <h3>Pet Welfare</h3>
-                <p>We care about real pets! When using our App:</p>
-                <ul>
-                    <li>Never stress or harm animals to get reactions for recordings</li>
-                    <li>Respect your pet's comfort and well-being</li>
-                    <li>Stop recording if your pet becomes agitated or uncomfortable</li>
-                    <li>Remember that real pet behavior should be interpreted by veterinarians, not our App</li>
+                    <li>Use the App for its intended purpose of entertainment and companionship.</li>
+                    <li>Treat your AI companion and any community features with respect.</li>
+                    <li>Be mindful that you are interacting with an AI, not a human.</li>
+                    <li>Not rely on the AI for professional advice or emergency services. In a crisis, please contact a qualified professional or emergency services immediately.</li>
                 </ul>
             </div>
 
             <div class="section" id="prohibited">
-                <h2><span class="icon">🚫</span>5. Prohibited Uses</h2>
-                <p>You may NOT use our App to:</p>
-                
+                <h2><span class="icon">🚫</span>4. Prohibited Uses</h2>
+                <p>You are strictly prohibited from using the App to:</p>
                 <ul class="numbered-list">
-                    <li>Harass, abuse, or harm other users or animals</li>
-                    <li>Share inappropriate, offensive, or illegal content</li>
-                    <li>Impersonate others or provide false information</li>
-                    <li>Attempt to hack, reverse engineer, or compromise the App</li>
-                    <li>Use the App for commercial purposes without permission</li>
-                    <li>Spam or send unsolicited communications</li>
-                    <li>Violate any applicable laws or regulations</li>
-                    <li>Create content that could be harmful to minors</li>
-                    <li>Use the App to scam or deceive others maliciously</li>
-                    <li>Interfere with the App's functionality or other users' experience</li>
+                    <li>Engage in or promote illegal activities.</li>
+                    <li>Harass, abuse, threaten, or generate hateful content.</li>
+                    <li>Attempt to "jailbreak," manipulate, or force the AI to generate inappropriate, harmful, or dangerous content.</li>
+                    <li>Share sexually explicit or violent material.</li>
+                    <li>Impersonate any person or entity or misrepresent your affiliation with them.</li>
+                    <li>Attempt to reverse engineer, decompile, or hack the App.</li>
+                    <li>Use the App for any commercial purpose without our express written consent.</li>
+                    <li>Transmit viruses, malware, or any other malicious code.</li>
                 </ul>
-
                 <div class="warning-box">
-                    <strong>Pranks Should Be Fun for Everyone:</strong> While our App is designed for pranks, all pranking should be consensual, harmless, and in good fun. Malicious use or causing distress to others is strictly prohibited.
+                    <strong>Zero-Tolerance Policy:</strong> We have a zero-tolerance policy for the misuse of our service. Violating these rules may result in immediate and permanent termination of your account without notice.
                 </div>
             </div>
 
             <div class="section" id="content">
-                <h2><span class="icon">📱</span>6. User-Generated Content</h2>
-                
-                <h3>Your Content Rights</h3>
-                <p>You retain ownership of all content you create using our App, including:</p>
-                <ul>
-                    <li>Audio recordings of your pets</li>
-                    <li>Videos you create with our features</li>
-                    <li>Virtual pet profiles and customizations</li>
-                    <li>Any other original content you generate</li>
-                </ul>
-
+                <h2><span class="icon">📱</span>5. User-Generated Content</h2>
+                <p>You are responsible for the content you create and input into the App, including your chat messages and pet profile information ("User Content").</p>
+                <h3>Your Ownership</h3>
+                <p>You retain full ownership of your User Content.</p>
                 <h3>License to Us</h3>
-                <p>By using our App, you grant us a limited, non-exclusive license to:</p>
-                <ul>
-                    <li>Process your audio for translation services</li>
-                    <li>Store your content for App functionality</li>
-                    <li>Display your shared content within the App</li>
-                    <li>Use anonymized content for App improvement (with your consent)</li>
-                </ul>
-
-                <h3>Content Standards</h3>
-                <p>All user-generated content must:</p>
-                <ul>
-                    <li>Be appropriate for all ages</li>
-                    <li>Not violate others' rights or privacy</li>
-                    <li>Comply with applicable laws</li>
-                    <li>Not contain harmful or offensive material</li>
-                </ul>
-
-                <div class="important-box">
-                    <strong>Content Removal:</strong> We reserve the right to remove any content that violates these Terms or our community standards, with or without notice.
-                </div>
+                <p>By providing User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, process, and store that content solely for the purpose of operating and improving the App. This includes using your chat history to provide conversational memory for *your* AI companion.</p>
             </div>
 
             <div class="section" id="intellectual">
-                <h2><span class="icon">©️</span>7. Intellectual Property Rights</h2>
-                
-                <h3>Our Rights</h3>
-                <p>Pet Translator Pranks and all related materials are protected by intellectual property laws. We own or license:</p>
-                <ul>
-                    <li>The App's source code, design, and functionality</li>
-                    <li>AI translation algorithms and models</li>
-                    <li>Virtual pet characters and animations</li>
-                    <li>App branding, logos, and trademarks</li>
-                    <li>All pre-generated content and translations</li>
-                </ul>
-
-                <h3>Third-Party Content</h3>
-                <p>Our App may include third-party content such as:</p>
-                <ul>
-                    <li>AI services for translation processing</li>
-                    <li>Stock animations and sound effects</li>
-                    <li>Third-party libraries and frameworks</li>
-                </ul>
-
-                <h3>Respect for Others' Rights</h3>
-                <p>Users must respect intellectual property rights when using our App. Do not:</p>
-                <ul>
-                    <li>Copy or redistribute our proprietary content</li>
-                    <li>Use copyrighted music in your videos without permission</li>
-                    <li>Share content that infringes on others' rights</li>
-                </ul>
+                <h2><span class="icon">©️</span>6. Intellectual Property</h2>
+                <p>All rights, title, and interest in the App—including its code, design, graphics, AI characters, and branding—are the exclusive property of PocketPet Companion and its licensors. These Terms do not grant you any rights to use our branding or intellectual property except as part of the App itself.</p>
             </div>
 
             <div class="section" id="disclaimer">
-                <h2><span class="icon">⚠️</span>8. Disclaimers & Limitations</h2>
-                
-                <h3>Entertainment Only</h3>
+                <h2><span class="icon">⚠️</span>7. Disclaimers & Limitation of Liability</h2>
                 <div class="important-box">
-                    <strong>Important Disclaimer:</strong> Pet Translator Pranks is for ENTERTAINMENT PURPOSES ONLY. Our "translations" are not real animal communications and should not be used for:
-                    <ul style="margin-top: 10px;">
-                        <li>Veterinary diagnosis or medical decisions</li>
-                        <li>Understanding actual pet needs or behaviors</li>
-                        <li>Professional animal training or behavioral analysis</li>
-                        <li>Any serious decision-making regarding your pet's health or welfare</li>
-                    </ul>
+                    <strong>IMPORTANT - AI IS NOT A THERAPIST:</strong> PocketPet Companion is NOT a substitute for professional mental health services, medical advice, or any other professional guidance. It cannot diagnose, treat, or provide therapy. If you are in crisis or need support, please contact a qualified professional.
                 </div>
-
-                <h3>Service Availability</h3>
-                <p>We strive to provide reliable service, but we cannot guarantee:</p>
-                <ul>
-                    <li>Uninterrupted access to the App</li>
-                    <li>Error-free functionality at all times</li>
-                    <li>Compatibility with all devices</li>
-                    <li>Preservation of all user data indefinitely</li>
-                </ul>
-
+                <h3>"As Is" Service</h3>
+                <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not guarantee that the App will be uninterrupted, error-free, or completely secure.</p>
                 <h3>Limitation of Liability</h3>
-                <p>To the maximum extent permitted by law, Pet Translator Pranks shall not be liable for:</p>
-                <ul>
-                    <li>Any indirect, incidental, or consequential damages</li>
-                    <li>Loss of data, profits, or business opportunities</li>
-                    <li>Damages resulting from pranks or social situations</li>
-                    <li>Third-party actions or content</li>
-                    <li>Technical issues beyond our reasonable control</li>
-                </ul>
+                <p>To the fullest extent permitted by law, PocketPet Companion shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from (a) your use of the App; (b) any conduct or content of any third party on the service; or (c) unauthorized access, use, or alteration of your transmissions or content.</p>
             </div>
 
             <div class="section" id="privacy">
-                <h2><span class="icon">🔒</span>9. Privacy & Data Protection</h2>
-                <p>Your privacy is important to us. Our collection, use, and protection of your personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference.</p>
-
-                <h3>Key Privacy Points:</h3>
-                <ul>
-                    <li>We process audio data solely for translation services</li>
-                    <li>Your content is not used to train AI models without consent</li>
-                    <li>You have full control over your data and privacy settings</li>
-                    <li>We comply with applicable privacy laws (GDPR, CCPA, etc.)</li>
-                </ul>
-
-                <p>Please review our complete <a href="privacy-policy.html" style="color: #e74c3c; font-weight: 500;">Privacy Policy</a> for detailed information about how we handle your data.</p>
+                <h2><span class="icon">🔒</span>8. Privacy Policy</h2>
+                <p>Your privacy is paramount. Our data collection and use practices are detailed in our <a href="pocketpet_privacy_policy.html" style="color: #8e44ad; font-weight: 500;">Privacy Policy</a>, which is an integral part of these Terms. Please review it to understand how we protect your information.</p>
             </div>
 
             <div class="section" id="termination">
-                <h2><span class="icon">🔚</span>10. Account Termination</h2>
-                
+                <h2><span class="icon">🔚</span>9. Account Termination</h2>
                 <h3>Termination by You</h3>
-                <p>You may terminate your account at any time by:</p>
-                <ul>
-                    <li>Deleting the App from your device</li>
-                    <li>Contacting us to request account deletion</li>
-                    <li>Using in-app account deletion features</li>
-                </ul>
-
+                <p>You can terminate your account at any time by using the in-app deletion feature or by contacting our support team.</p>
                 <h3>Termination by Us</h3>
-                <p>We may terminate or suspend your account if you:</p>
-                <ul>
-                    <li>Violate these Terms of Service</li>
-                    <li>Engage in prohibited activities</li>
-                    <li>Cause harm to other users or animals</li>
-                    <li>Attempt to compromise the App's security</li>
-                </ul>
-
-                <h3>Effect of Termination</h3>
-                <p>Upon termination:</p>
-                <ul>
-                    <li>Your access to the App will cease immediately</li>
-                    <li>Your account data will be deleted according to our Privacy Policy</li>
-                    <li>You must stop using any proprietary content</li>
-                    <li>Certain provisions of these Terms will survive termination</li>
-                </ul>
+                <p>We reserve the right to suspend or terminate your account at our sole discretion, without notice, for any reason, including but not limited to a breach of these Terms.</p>
             </div>
 
             <div class="section" id="changes">
-                <h2><span class="icon">🔄</span>11. Changes to Terms</h2>
-                <p>We may update these Terms from time to time to reflect:</p>
-                <ul>
-                    <li>Changes in our services or features</li>
-                    <li>Legal or regulatory requirements</li>
-                    <li>Industry best practices</li>
-                    <li>User feedback and needs</li>
-                </ul>
-
-                <h3>Notification Process</h3>
-                <ul class="numbered-list">
-                    <li>We'll notify you of significant changes through the App</li>
-                    <li>Updated Terms will be posted with a new "Last Updated" date</li>
-                    <li>You'll have the opportunity to review changes before they take effect</li>
-                    <li>Continued use of the App constitutes acceptance of updated Terms</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <strong>Stay Informed:</strong> We recommend reviewing these Terms periodically to stay informed about your rights and obligations.
-                </div>
+                <h2><span class="icon">🔄</span>10. Changes to Terms</h2>
+                <p>We may modify these Terms from time to time. If we make material changes, we will provide you with notice through the App or by other means to give you the opportunity to review the changes before they become effective. Your continued use of the App after we publish or send a notice about our changes to these terms means that you are consenting to the updated terms.</p>
             </div>
 
             <div class="section" id="legal">
-                <h2><span class="icon">⚖️</span>12. Legal & Dispute Resolution</h2>
-                
-                <h3>Governing Law</h3>
-                <p>These Terms are governed by and construed in accordance with the laws of the Kyrgyz Republic, without regard to conflict of law principles.</p>
-
-                <h3>Dispute Resolution</h3>
-                <p>We encourage resolving disputes through friendly communication. If formal resolution is needed:</p>
-                
-                <ol class="numbered-list">
-                    <li><strong>Direct Contact:</strong> Contact us first to attempt resolution</li>
-                    <li><strong>Mediation:</strong> If direct contact fails, we agree to mediation</li>
-                    <li><strong>Arbitration:</strong> Binding arbitration may be required for certain disputes</li>
-                    <li><strong>Jurisdiction:</strong> Courts of the Kyrgyz Republic have exclusive jurisdiction</li>
-                </ol>
-
-                <h3>Severability</h3>
-                <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
-
-                <h3>Entire Agreement</h3>
-                <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Pet Translator Pranks regarding the use of our App.</p>
+                <h2><span class="icon">⚖️</span>11. Governing Law & Disputes</h2>
+                <p>These Terms shall be governed by the laws of the Kyrgyz Republic, without regard to its conflict of law provisions.</p>
+                <p>You agree to first contact us to resolve any dispute informally. If a dispute is not resolved within 30 days, we both agree to resolve any claim, dispute, or controversy arising out of or in connection with these Terms by binding arbitration in Bishkek, Kyrgyz Republic.</p>
             </div>
 
-            <div class="section">
+             <div class="section">
                 <h2><span class="icon">🎉</span>Thank You!</h2>
-                <p>Thank you for taking the time to read our Terms of Service. We're committed to providing a fun, safe, and entertaining experience for you and your pets. If you have any questions about these Terms, please don't hesitate to contact us.</p>
-                
-                <div class="success-box">
-                    <strong>Ready to Have Fun?</strong> Now that you've reviewed our Terms, you're all set to enjoy translating your pet's "thoughts" and creating hilarious memories with Pet Translator Pranks! 🐾
-                </div>
+                <p>Thank you for reading our Terms of Service. We are excited for you to start your journey of fun and friendship with your PocketPet Companion!</p>
             </div>
+
         </main>
 
         <div class="contact-info">
             <h3><span class="icon">📧</span>Questions About These Terms?</h3>
-            <p>If you have any questions about these Terms of Service or need clarification on any point, please contact us:</p>
+            <p>If you have any questions, please contact us:</p>
             <p style="margin-top: 15px;">
                 <strong>Email:</strong> <a href="mailto:a.u.taalay@gmail.com">a.u.taalay@gmail.com</a><br>
-                <strong>Subject Line:</strong> Terms of Service Question - Pet Translator Pranks
-            </p>
-            <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.9;">
-                We aim to respond to all legal inquiries within 48 hours.
+                <strong>Subject Line:</strong> Terms of Service Question - PocketPet Companion
             </p>
         </div>
     </div>
@@ -617,13 +427,13 @@
     </a>
 
     <script>
-        // Show/hide back to top button
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
+        // Show/hide the 'back to top' button based on scroll position
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                backToTop.style.display = 'flex';
+                backToTopButton.style.display = 'flex';
             } else {
-                backToTop.style.display = 'none';
+                backToTopButton.style.display = 'none';
             }
         });
 
@@ -639,21 +449,6 @@
                     });
                 }
             });
-        });
-
-        // Auto-scroll to section from URL hash
-        window.addEventListener('load', function() {
-            if (window.location.hash) {
-                const target = document.querySelector(window.location.hash);
-                if (target) {
-                    setTimeout(() => {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }, 100);
-                }
-            }
         });
     </script>
 </body>
