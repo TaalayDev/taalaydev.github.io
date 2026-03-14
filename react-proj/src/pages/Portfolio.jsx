@@ -9,21 +9,12 @@ import octocat from '../assets/octocat.svg';
 import linkedin from '../assets/linkedin.svg';
 
 import Navbar from '../components/Navbar';
-import ProjectSlider from '../components/ProjectSlider';
 import ExperienceTimeline from '../components/ExperienceTimeline';
 import SkillsRadarChart from '../components/SkillsRadarChart';
-import ContactForm from '../components/ContactForm';
 import ScrollAnimation from '../components/ScrollAnimation';
 import ProjectGrid3D from '../components/ProjectCard3D';
 
 const Portfolio = () => {
-    const socialLinks = [
-        { icon: <Mail className="w-5 h-5" />, href: "mailto:a.u.taalay@gmail.com", label: "Email" },
-        { icon: <MessageCircle className="w-5 h-5" />, href: "https://t.me/taalay_dev", label: "Telegram" },
-        { icon: <Github className="w-5 h-5" />, href: "https://github.com/TaalayDev", label: "GitHub" },
-        { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/taalaydev/", label: "LinkedIn" }
-    ];
-
     return (
         <div className="mx-auto page-container">
             <Navbar />
@@ -93,18 +84,18 @@ const Portfolio = () => {
                 </div>
 
                 {/* Projects */}
-                <div className="mt-14 text-left" id="projects">
-                    <h2 style={{ fontSize: '25px' }} className="font-normal mb-8">
-                        Last Projects I worked on
+                <div className="mt-20 text-left" id="projects">
+                    <h2 className="text-3xl font-bold mb-12">
+                        <span className="text-[#50afc0]">Featured</span> Projects
                     </h2>
-                    <div className='mb-16'>
+                    <div className='mb-24 -mx-4 md:mx-0'>
                         <ProjectGrid3D projects={projects} />
                     </div>
                 </div>
 
-                
+
             </main>
-            
+
         </div>
     );
 };
