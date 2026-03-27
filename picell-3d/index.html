@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Picell3D — Draw in 2D. Get 3D.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0d0221;
+      --surface:   #150a2d;
+      --surface2:  #1e0f3c;
+      --border:    rgba(90,26,154,.45);
+      --accent:    #ff2d78;
+      --cyan:      #00e5ff;
+      --orange:    #ff8800;
+      --purple:    #7b2fbe;
+      --text:      #f4d0ff;
+      --muted:     rgba(244,208,255,.45);
+      --dim:       rgba(244,208,255,.18);
+      --f-display: 'Audiowide', sans-serif;
+      --f-body:    'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--f-body);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--surface); }
+    ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 3px; }
+
+    /* ── grid bg pattern ───────────────────────────────────────────────── */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(90,26,154,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(90,26,154,.07) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* ── NAV ───────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; gap: 1.5rem;
+      padding: .9rem 2.5rem;
+      background: rgba(13,2,33,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--f-display);
+      font-size: 1.05rem; color: var(--text);
+      text-decoration: none; letter-spacing: .06em;
+    }
+    .nav-logo em { font-style: normal; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; margin-left: auto; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .875rem; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #fff;
+      padding: .5rem 1.3rem; border-radius: 7px;
+      text-decoration: none; font-size: .875rem; font-weight: 600;
+      transition: all .2s;
+      box-shadow: 0 0 22px rgba(255,45,120,.4);
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 36px rgba(255,45,120,.6); }
+
+    /* ── HERO ──────────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; padding: 8.5rem 4rem 5rem;
+      align-items: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 65% 55% at 72% 50%, rgba(90,26,154,.32), transparent),
+        radial-gradient(ellipse 45% 55% at 15% 65%, rgba(255,45,120,.12), transparent);
+    }
+
+    .hero-text { position: relative; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,45,120,.09); border: 1px solid rgba(255,45,120,.28);
+      border-radius: 999px; padding: .35rem .9rem;
+      font-size: .78rem; color: var(--accent);
+      letter-spacing: .06em; margin-bottom: 1.6rem;
+    }
+    .hero-pill::before { content: '✦'; }
+    .hero h1 {
+      font-family: var(--f-display);
+      font-size: clamp(2.4rem, 4.5vw, 4.4rem);
+      line-height: 1.08; margin-bottom: 1.5rem;
+      letter-spacing: -.025em;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(100deg, var(--accent) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted); line-height: 1.75;
+      max-width: 500px; margin-bottom: 2.75rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .btn-p {
+      background: var(--accent); color: #fff;
+      padding: .9rem 2rem; border-radius: 8px; text-decoration: none;
+      font-weight: 700; font-size: 1rem;
+      transition: all .25s; box-shadow: 0 0 28px rgba(255,45,120,.45);
+      display: inline-flex; align-items: center; gap: .55rem;
+    }
+    .btn-p:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(255,45,120,.65); background: #ff4e8e; }
+    .btn-s {
+      background: transparent; color: var(--text);
+      padding: .9rem 2rem; border-radius: 8px; text-decoration: none;
+      font-weight: 600; font-size: 1rem;
+      border: 1px solid var(--border); transition: all .25s;
+      display: inline-flex; align-items: center; gap: .55rem;
+    }
+    .btn-s:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    .hero-stats { display: flex; gap: 2.5rem; }
+    .stat-num { font-family: var(--f-display); font-size: 1.6rem; color: var(--text); }
+    .stat-lbl { font-size: .72rem; color: var(--muted); margin-top: .15rem; letter-spacing: .03em; }
+
+    .hero-canvas-wrap {
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .hero-canvas-wrap::before {
+      content: ''; position: absolute; inset: -30px;
+      background: radial-gradient(ellipse at center, rgba(90,26,154,.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #scene-hero {
+      width: 100%; aspect-ratio: 1 / .85;
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 0 1px rgba(90,26,154,.15), 0 0 70px rgba(90,26,154,.35), 0 0 120px rgba(255,45,120,.08);
+      background: #080015;
+    }
+
+    /* ── SECTION SHARED ────────────────────────────────────────────────── */
+    section { padding: 6rem 4rem; }
+    .section-label {
+      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.7rem, 2.8vw, 2.7rem);
+      line-height: 1.18; margin-bottom: 1.1rem; letter-spacing: -.02em;
+    }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.75; }
+    .section-head { margin-bottom: 3.5rem; }
+    .centered { text-align: center; }
+    .centered .section-sub { margin: 0 auto; }
+
+    /* ── FEATURES ─────────────────────────────────────────────────────── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .feat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.875rem; transition: all .3s;
+      position: relative; overflow: hidden;
+    }
+    .feat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--stripe, var(--accent)), transparent);
+      opacity: .7;
+    }
+    .feat-card:hover { border-color: rgba(255,45,120,.3); transform: translateY(-5px);
+      box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+    .feat-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.1rem;
+    }
+    .feat-title { font-family: var(--f-display); font-size: .95rem; margin-bottom: .65rem; letter-spacing: .02em; }
+    .feat-desc { font-size: .875rem; color: var(--muted); line-height: 1.72; }
+
+    /* ── EXAMPLES ─────────────────────────────────────────────────────── */
+    .examples { background: var(--surface); }
+    .examples-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .ex-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden; transition: all .3s;
+    }
+    .ex-card:hover { border-color: rgba(0,229,255,.35);
+      box-shadow: 0 24px 60px rgba(0,229,255,.08); }
+    .ex-scene { height: 270px; background: #060012; position: relative; cursor: grab; }
+    .ex-scene:active { cursor: grabbing; }
+    .ex-scene canvas { width: 100% !important; height: 100% !important; display: block; }
+    .ex-hint {
+      position: absolute; bottom: 8px; right: 10px;
+      font-size: .68rem; color: rgba(244,208,255,.3);
+      pointer-events: none; letter-spacing: .04em;
+    }
+    .ex-body { padding: 1.375rem 1.5rem; }
+    .ex-tag {
+      font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: .4rem; display: block;
+    }
+    .ex-title { font-family: var(--f-display); font-size: .95rem; margin-bottom: .5rem; }
+    .ex-desc { font-size: .84rem; color: var(--muted); line-height: 1.66; }
+
+    /* ── HOW IT WORKS ─────────────────────────────────────────────────── */
+    .steps-wrap { position: relative; }
+    .steps-line {
+      position: absolute; top: 28px; left: calc(12.5% + 28px); right: calc(12.5% + 28px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+    }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
+    .step { text-align: center; position: relative; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; font-family: var(--f-display); font-size: .95rem;
+      color: var(--accent); position: relative; z-index: 1;
+      box-shadow: 0 0 20px rgba(255,45,120,.12);
+    }
+    .step-title { font-family: var(--f-display); font-size: .875rem; margin-bottom: .65rem; letter-spacing: .03em; }
+    .step-desc { font-size: .84rem; color: var(--muted); line-height: 1.68; }
+
+    /* ── EXPORT FORMATS ───────────────────────────────────────────────── */
+    .formats { background: var(--surface); }
+    .formats-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem; }
+    .fmt-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 11px; padding: 1.5rem 1rem; text-align: center;
+      transition: all .25s; cursor: default;
+    }
+    .fmt-card:hover { border-color: var(--accent); box-shadow: 0 0 28px rgba(255,45,120,.12); }
+    .fmt-ext {
+      font-family: var(--f-display); font-size: 1.1rem;
+      color: var(--accent); margin-bottom: .4rem;
+    }
+    .fmt-name { font-size: .8rem; color: var(--text); margin-bottom: .2rem; }
+    .fmt-compat { font-size: .7rem; color: var(--dim); }
+
+    /* ── MATERIALS SHOWCASE ───────────────────────────────────────────── */
+    .materials { }
+    .mat-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem; }
+    .mat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem 1rem; text-align: center;
+      transition: all .3s;
+    }
+    .mat-card:hover { transform: translateY(-4px); }
+    .mat-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      margin: 0 auto .9rem; display: flex; align-items: center; justify-content: center;
+    }
+    .mat-name { font-family: var(--f-display); font-size: .82rem; margin-bottom: .4rem; }
+    .mat-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA ──────────────────────────────────────────────────────────── */
+    .cta-sec {
+      text-align: center;
+      background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(90,26,154,.38), transparent), var(--bg);
+      border-top: 1px solid var(--border); padding: 8rem 4rem;
+    }
+    .cta-sec h2 {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.2; margin-bottom: 1.25rem;
+    }
+    .cta-sec p { font-size: 1.1rem; color: var(--muted); margin-bottom: 2.75rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .lg { padding: 1.1rem 2.5rem; font-size: 1.1rem; }
+
+    /* ── FOOTER ───────────────────────────────────────────────────────── */
+    footer {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 1.75rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .f-logo { font-family: var(--f-display); font-size: .9rem; color: var(--muted); }
+    .f-logo em { font-style: normal; color: var(--accent); }
+    .f-links { display: flex; gap: 1.5rem; list-style: none; }
+    .f-links a { color: var(--muted); text-decoration: none; font-size: .84rem; transition: color .2s; }
+    .f-links a:hover { color: var(--text); }
+    .f-copy { font-size: .78rem; color: var(--dim); }
+
+    /* ── SCROLL REVEAL ────────────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.delay-1 { transition-delay: .08s; }
+    .reveal.delay-2 { transition-delay: .16s; }
+    .reveal.delay-3 { transition-delay: .24s; }
+    .reveal.delay-4 { transition-delay: .32s; }
+    .reveal.delay-5 { transition-delay: .40s; }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; padding: 7rem 2.5rem 4rem; }
+      #scene-hero { max-width: 520px; margin: 0 auto; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .formats-grid { grid-template-columns: repeat(3,1fr); }
+      .mat-grid { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 768px) {
+      section { padding: 4rem 1.75rem; }
+      nav { padding: .8rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.75rem 3.5rem; gap: 2rem; }
+      .features-grid, .examples-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .steps-line { display: none; }
+      .formats-grid { grid-template-columns: repeat(2,1fr); }
+      .mat-grid { grid-template-columns: repeat(2,1fr); }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">Picell<em>3D</em></a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#export">Export</a></li>
+  </ul>
+  <a href="../" class="nav-cta">Launch App →</a>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+<section class="hero grid-bg">
+  <div class="hero-text">
+    <div class="hero-pill">Browser-based &nbsp;·&nbsp; No install &nbsp;·&nbsp; Free</div>
+    <h1>Draw in 2D.<br><span class="grad">Get 3D automatically.</span></h1>
+    <p class="hero-sub">
+      Picell3D turns your pixel art into 3D voxel models in real time.
+      Draw on a familiar canvas, watch depth appear, then export to Blender, Unity, or anywhere.
+    </p>
+    <div class="hero-btns">
+      <a href="https://taalaydev.github.io/picell-3d/editor.html" class="btn-p lg">Launch Picell3D — Free</a>
+      <a href="https://github.com/" class="btn-s lg">GitHub →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">6</div><div class="stat-lbl">View projections</div></div>
+      <div><div class="stat-num">5</div><div class="stat-lbl">Material types</div></div>
+      <div><div class="stat-num">5</div><div class="stat-lbl">Export formats</div></div>
+      <div><div class="stat-num">0s</div><div class="stat-lbl">Setup time</div></div>
+    </div>
+  </div>
+  <div class="hero-canvas-wrap">
+    <div id="scene-hero"></div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ─────────────────────────────────────────────────────────── -->
+<section id="features">
+  <div class="section-head reveal">
+    <div class="section-label">Core features</div>
+    <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card reveal delay-1" style="--stripe:#ff2d78">
+      <div class="feat-icon" style="background:rgba(255,45,120,.1)">🎨</div>
+      <h3 class="feat-title">2D-First Workflow</h3>
+      <p class="feat-desc">Draw in a pixel art canvas you already understand. The 3D model generates automatically from your artwork — no 3D modeling experience required.</p>
+    </div>
+    <div class="feat-card reveal delay-2" style="--stripe:#00e5ff">
+      <div class="feat-icon" style="background:rgba(0,229,255,.1)">✦</div>
+      <h3 class="feat-title">Materials & Bloom</h3>
+      <p class="feat-desc">Assign Solid, Emissive, Neon, Metal, or Glass per color. Neon/Emissive get real-time UnrealBloom post-processing for stunning glow effects.</p>
+    </div>
+    <div class="feat-card reveal delay-3" style="--stripe:#ff8800">
+      <div class="feat-icon" style="background:rgba(255,136,0,.1)">📦</div>
+      <h3 class="feat-title">5 Export Formats</h3>
+      <p class="feat-desc">PNG spritesheet, OBJ+MTL for Blender, GLB for Unity, VOX for MagicaVoxel, JSON for custom pipelines. All from the Render Studio.</p>
+    </div>
+    <div class="feat-card reveal delay-1" style="--stripe:#7b2fbe">
+      <div class="feat-icon" style="background:rgba(123,47,190,.15)">🔲</div>
+      <h3 class="feat-title">6 View Projections</h3>
+      <p class="feat-desc">Edit from all 6 sides — Front, Back, Left, Right, Top, Bottom. All views share the same voxel grid. Depth-aware with signed offset labels.</p>
+    </div>
+    <div class="feat-card reveal delay-2" style="--stripe:#ff2d78">
+      <div class="feat-icon" style="background:rgba(255,45,120,.1)">🖼️</div>
+      <h3 class="feat-title">Image Import</h3>
+      <p class="feat-desc">Convert any PNG to pixel art instantly. Or import semi-transparent reference overlays — drag, resize, and adjust opacity while you trace.</p>
+    </div>
+    <div class="feat-card reveal delay-3" style="--stripe:#00e5ff">
+      <div class="feat-icon" style="background:rgba(0,229,255,.1)">⚡</div>
+      <h3 class="feat-title">Shape Tools</h3>
+      <p class="feat-desc">Circle, ellipse, rectangle, and an editable polyline. The line tool stays live — drag handles to bend it, press Enter to commit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXAMPLES ──────────────────────────────────────────────────────────── -->
+<section id="examples" class="examples">
+  <div class="section-head centered reveal">
+    <div class="section-label">Interactive examples</div>
+    <h2 class="section-title">See what you can make.</h2>
+    <p class="section-sub">Drag to rotate. Weapons, loot, and props built directly from simple voxel sketches.</p>
+  </div>
+  <div class="examples-grid">
+    <div class="ex-card reveal delay-1">
+      <div class="ex-scene" id="scene-character">
+        <div class="ex-hint">drag to rotate</div>
+      </div>
+      <div class="ex-body">
+        <span class="ex-tag">Character</span>
+        <h3 class="ex-title">Pixel Character</h3>
+        <p class="ex-desc">A simple game character built from the front canvas in minutes. Hair, shirt, arms, legs — all drawn with pencil and given depth automatically.</p>
+      </div>
+    </div>
+    <div class="ex-card reveal delay-2">
+      <div class="ex-scene" id="scene-coin">
+        <div class="ex-hint">drag to rotate</div>
+      </div>
+      <div class="ex-body">
+        <span class="ex-tag">Prop</span>
+        <h3 class="ex-title">Gold Coin</h3>
+        <p class="ex-desc">A radially shaded coin showing how flat pixel art gets real thickness. The depth layer turns a 2D circle into a solid, spinnable prop.</p>
+      </div>
+    </div>
+    <div class="ex-card reveal delay-3">
+      <div class="ex-scene" id="scene-house">
+        <div class="ex-hint">drag to rotate</div>
+      </div>
+      <div class="ex-body">
+        <span class="ex-tag">Architecture</span>
+        <h3 class="ex-title">House</h3>
+        <p class="ex-desc">A stylized building with rooftop, windows, door, and chimneys. Multiple depth layers stack the walls to give a fully solid 3D structure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────────────────────── -->
+<section id="how">
+  <div class="section-head centered reveal">
+    <div class="section-label">Simple workflow</div>
+    <h2 class="section-title">From pixel to 3D in minutes.</h2>
+  </div>
+  <div class="steps-wrap">
+    <div class="steps-line"></div>
+    <div class="steps">
+      <div class="step reveal delay-1">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Draw in 2D</h3>
+        <p class="step-desc">Open the canvas, pick colors, draw with pencil, shapes, or flood fill. Exactly like any pixel art editor.</p>
+      </div>
+      <div class="step reveal delay-2">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Set Depth</h3>
+        <p class="step-desc">Adjust the depth slider and direction — Both, Front, or Back. Watch the 3D preview update live with every stroke.</p>
+      </div>
+      <div class="step reveal delay-3">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Apply Materials</h3>
+        <p class="step-desc">Assign Neon, Metal, Glass, or Emissive per color. The bloom post-processing responds in real time.</p>
+      </div>
+      <div class="step reveal delay-4">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Export</h3>
+        <p class="step-desc">Open Render Studio. Choose camera angle, lighting preset, adjust bloom, then download in your format of choice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPORT FORMATS ────────────────────────────────────────────────────── -->
+<section id="export">
+  <div class="section-head centered reveal">
+    <div class="section-label">Export anywhere</div>
+    <h2 class="section-title">Works with your pipeline.</h2>
+  </div>
+  <div class="formats-grid">
+    <div class="fmt-card reveal delay-1">
+      <div class="fmt-ext">.PNG</div>
+      <div class="fmt-name">Spritesheet</div>
+      <div class="fmt-compat">All 6 views · Transparent bg · 4×–32× scale</div>
+    </div>
+    <div class="fmt-card reveal delay-2">
+      <div class="fmt-ext">.OBJ</div>
+      <div class="fmt-name">Wavefront OBJ + MTL</div>
+      <div class="fmt-compat">Blender · Maya · Cinema 4D</div>
+    </div>
+    <div class="fmt-card reveal delay-3">
+      <div class="fmt-ext">.GLB</div>
+      <div class="fmt-name">glTF Binary</div>
+      <div class="fmt-compat">Unity · Unreal Engine · Three.js</div>
+    </div>
+    <div class="fmt-card reveal delay-4">
+      <div class="fmt-ext">.VOX</div>
+      <div class="fmt-name">MagicaVoxel</div>
+      <div class="fmt-compat">MagicaVoxel · Qubicle · VoxEdit</div>
+    </div>
+    <div class="fmt-card reveal delay-5">
+      <div class="fmt-ext">.JSON</div>
+      <div class="fmt-name">Raw Voxel Data</div>
+      <div class="fmt-compat">Custom pipelines · Version-tagged</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────────────── -->
+<section class="cta-sec grid-bg">
+  <h2 class="reveal">Start creating.<br><span class="grad">It's free.</span></h2>
+  <p class="reveal">No signup. No install. Just open and draw.</p>
+  <div class="cta-btns reveal">
+    <a href="https://taalaydev.github.io/picell-3d/editor.html" class="btn-p lg">Launch Picell3D</a>
+    <a href="https://github.com/" class="btn-s lg">View Source</a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="f-logo">Picell<em>3D</em></div>
+  <ul class="f-links">
+    <li><a href="https://taalaydev.github.io/picell-3d/editor.html">App</a></li>
+    <li><a href="https://github.com/">GitHub</a></li>
+    <li><a href="#">Docs</a></li>
+    <li><a href="#">Concept</a></li>
+  </ul>
+  <div class="f-copy">© 2025 Picell3D — MIT License</div>
+</footer>
+
+<!-- ─── THREE.JS ──────────────────────────────────────────────────────────── -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three'
+import { OrbitControls }   from 'three/addons/controls/OrbitControls.js'
+import { EffectComposer }  from 'three/addons/postprocessing/EffectComposer.js'
+import { RenderPass }      from 'three/addons/postprocessing/RenderPass.js'
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
+
+// ── Voxel mesh builder ─────────────────────────────────────────────────────
+const U = 0.18, H2 = U / 2
+
+function buildVoxelMesh(voxels) {
+  // de-duplicate by position (last write wins — like a Map)
+  const dedup = new Map()
+  for (const v of voxels) dedup.set(`${v.x},${v.y},${v.z}`, v)
+  const vox = [...dedup.values()]
+
+  const occ = new Set(vox.map(v => `${v.x},${v.y},${v.z}`))
+  const has = (x, y, z) => occ.has(`${x},${y},${z}`)
+
+  // Group by color
+  const byColor = new Map()
+  for (const v of vox) {
+    if (!byColor.has(v.color)) byColor.set(v.color, [])
+    byColor.get(v.color).push(v)
+  }
+
+  const group = new THREE.Group()
+
+  for (const [color, pts] of byColor) {
+    const verts = [], cols = [], idxs = []
+    let vi = 0
+
+    function face(a, b, c, d, shade) {
+      const base = new THREE.Color(color)
+      base.multiplyScalar(Math.min(shade, 1.5))
+      for (const p of [a, b, c, d]) { verts.push(...p); cols.push(base.r, base.g, base.b) }
+      idxs.push(vi, vi+1, vi+2, vi, vi+2, vi+3); vi += 4
+    }
+
+    for (const { x, y, z } of pts) {
+      const cx = x*U, cy = y*U, cz = z*U
+      if (!has(x,y,z+1)) face([cx-H2,cy-H2,cz+H2],[cx+H2,cy-H2,cz+H2],[cx+H2,cy+H2,cz+H2],[cx-H2,cy+H2,cz+H2], 1.0)
+      if (!has(x,y,z-1)) face([cx+H2,cy-H2,cz-H2],[cx-H2,cy-H2,cz-H2],[cx-H2,cy+H2,cz-H2],[cx+H2,cy+H2,cz-H2], 0.80)
+      if (!has(x,y+1,z)) face([cx-H2,cy+H2,cz+H2],[cx+H2,cy+H2,cz+H2],[cx+H2,cy+H2,cz-H2],[cx-H2,cy+H2,cz-H2], 1.18)
+      if (!has(x,y-1,z)) face([cx+H2,cy-H2,cz+H2],[cx-H2,cy-H2,cz+H2],[cx-H2,cy-H2,cz-H2],[cx+H2,cy-H2,cz-H2], 0.65)
+      if (!has(x+1,y,z)) face([cx+H2,cy-H2,cz+H2],[cx+H2,cy-H2,cz-H2],[cx+H2,cy+H2,cz-H2],[cx+H2,cy+H2,cz+H2], 0.88)
+      if (!has(x-1,y,z)) face([cx-H2,cy-H2,cz-H2],[cx-H2,cy-H2,cz+H2],[cx-H2,cy+H2,cz+H2],[cx-H2,cy+H2,cz-H2], 0.88)
+    }
+
+    const geo = new THREE.BufferGeometry()
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3))
+    geo.setAttribute('color',    new THREE.Float32BufferAttribute(cols, 3))
+    geo.setIndex(idxs)
+    const mat = new THREE.MeshBasicMaterial({ vertexColors: true })
+    group.add(new THREE.Mesh(geo, mat))
+  }
+  return group
+}
+
+// ── VOX loader (MagicaVoxel .vox — inverse of exportVox.js mapping) ────────
+// Export maps: VOX.x=canvasX, VOX.y=depthZ, VOX.z=H-1-canvasY, SIZE=(W,D,H)
+// So import maps: scene.x=vox.x-W/2, scene.y=vox.z (Y-up), scene.z=vox.y-D/2
+async function loadVox(url) {
+  const resp = await fetch(url)
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}: ${url}`)
+  const buf = await resp.arrayBuffer()
+  const dv  = new DataView(buf)
+
+  const id4  = off => String.fromCharCode(dv.getUint8(off),dv.getUint8(off+1),dv.getUint8(off+2),dv.getUint8(off+3))
+  const u32  = off => dv.getUint32(off, true)
+  const u8   = off => dv.getUint8(off)
+
+  if (id4(0) !== 'VOX ') throw new Error('Not a .vox file')
+
+  let sizeX = 0, sizeY = 0, sizeZ = 0
+  const raw = []
+  let pal   = null
+
+  function parse(start, end) {
+    let off = start
+    while (off + 12 <= end) {
+      const name   = id4(off)
+      const cSize  = u32(off + 4)
+      const kSize  = u32(off + 8)
+      const cStart = off + 12
+      const cEnd   = cStart + cSize
+      const kEnd   = cEnd   + kSize
+
+      if (name === 'MAIN') {
+        parse(cEnd, kEnd)
+      } else if (name === 'SIZE') {
+        sizeX = u32(cStart);  sizeY = u32(cStart + 4);  sizeZ = u32(cStart + 8)
+      } else if (name === 'XYZI') {
+        const n = u32(cStart)
+        for (let i = 0; i < n; i++) {
+          const b = cStart + 4 + i * 4
+          raw.push({ x: u8(b), y: u8(b+1), z: u8(b+2), i: u8(b+3) })
+        }
+      } else if (name === 'RGBA') {
+        pal = []
+        for (let i = 0; i < 256; i++) {
+          const b = cStart + i * 4
+          pal.push((u8(b) << 16) | (u8(b+1) << 8) | u8(b+2))
+        }
+      }
+      off = kEnd
+    }
+  }
+
+  parse(8, buf.byteLength)
+  if (!pal) pal = Array(256).fill(0x888888)
+
+  return raw.map(v => ({
+    x:     v.x - Math.floor(sizeX / 2),
+    y:     v.z,                           // VOX z = height (Y-up in Three.js)
+    z:     v.y - Math.floor(sizeY / 2),   // VOX y = depth
+    color: pal[(v.i - 1) & 0xff] ?? 0x888888,
+  }))
+}
+
+// ── Scene factory ──────────────────────────────────────────────────────────
+function makeScene(container, voxels, opts = {}) {
+  const {
+    camPos       = [3, 3, 4],
+    camTarget    = [0, 2, 0],
+    autoRotate   = true,
+    rotateSpeed  = 0.9,
+    bloomStrength = 0.7,
+    bloomThreshold = 0.35,
+    fog          = true,
+  } = opts
+
+  const W = container.clientWidth  || 400
+  const H = container.clientHeight || 300
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.setSize(W, H)
+  renderer.setClearColor(0x060010, 1)
+  renderer.toneMapping = THREE.ACESFilmicToneMapping
+  renderer.toneMappingExposure = 1.1
+  container.appendChild(renderer.domElement)
+
+  const scene = new THREE.Scene()
+  if (fog) scene.fog = new THREE.FogExp2(0x060010, 0.055)
+
+  // Lighting
+  scene.add(new THREE.AmbientLight(0xd0a0ff, 0.35))
+  const key = new THREE.DirectionalLight(0xffffff, 0.7)
+  key.position.set(4, 6, 5)
+  scene.add(key)
+  const fill = new THREE.DirectionalLight(0x00e5ff, 0.25)
+  fill.position.set(-4, 2, -3)
+  scene.add(fill)
+  const rim = new THREE.DirectionalLight(0xff2d78, 0.2)
+  rim.position.set(0, -3, -4)
+  scene.add(rim)
+
+  const camera = new THREE.PerspectiveCamera(45, W / H, 0.01, 100)
+  camera.position.set(...camPos)
+
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.enableDamping = true
+  controls.dampingFactor = 0.06
+  controls.autoRotate    = autoRotate
+  controls.autoRotateSpeed = rotateSpeed
+  controls.target.set(...camTarget)
+  controls.minDistance = 0.5
+  controls.maxDistance = 22
+  controls.update()
+
+  // Subtle floor grid
+  const grid = new THREE.GridHelper(14, 28, 0x1a0035, 0x0d001a)
+  grid.position.y = -U * 0.5
+  scene.add(grid)
+
+  // Voxel mesh
+  const mesh = buildVoxelMesh(voxels)
+  scene.add(mesh)
+
+  // Bloom composer
+  const composer = new EffectComposer(renderer)
+  composer.addPass(new RenderPass(scene, camera))
+  composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), bloomStrength, 0.4, bloomThreshold))
+
+  // Resize observer
+  const ro = new ResizeObserver(() => {
+    const nw = container.clientWidth, nh = container.clientHeight
+    if (!nw || !nh) return
+    renderer.setSize(nw, nh)
+    composer.setSize(nw, nh)
+    camera.aspect = nw / nh
+    camera.updateProjectionMatrix()
+  })
+  ro.observe(container)
+
+  // Pause auto-rotate on interaction
+  container.addEventListener('pointerenter', () => { controls.autoRotate = false })
+  container.addEventListener('pointerleave', () => { controls.autoRotate = true })
+
+  let live = true
+  function tick() {
+    if (!live) return
+    requestAnimationFrame(tick)
+    controls.update()
+    composer.render()
+  }
+  tick()
+
+  return () => { live = false; ro.disconnect(); controls.dispose(); renderer.dispose() }
+}
+
+// ── Initialize all scenes ──────────────────────────────────────────────────
+
+// Auto-fit camera for any voxel model size
+function fitCamera(voxels) {
+  let minY = Infinity, maxY = -Infinity
+  let extX = 0, extZ = 0
+  for (const v of voxels) {
+    minY = Math.min(minY, v.y); maxY = Math.max(maxY, v.y)
+    extX = Math.max(extX, Math.abs(v.x)); extZ = Math.max(extZ, Math.abs(v.z))
+  }
+  const cy  = ((minY + maxY) / 2) * U
+  const ext = Math.max(extX, maxY - minY, extZ) * U || 1
+  return { camPos: [ext * 0.7, cy + ext * 0.5, ext * 1.4], camTarget: [0, cy, 0] }
+}
+
+// Hero — car.vox
+loadVox('./examples/car.vox').then(voxels => {
+  const fit = fitCamera(voxels)
+  makeScene(document.getElementById('scene-hero'), voxels, {
+    ...fit,
+    autoRotate: true, rotateSpeed: 0.55,
+    bloomStrength: 0.75, bloomThreshold: 0.30,
+  })
+}).catch(err => console.error('Hero VOX load failed:', err))
+
+// Example — Character
+loadVox('./examples/character.vox').then(voxels => {
+  const fit = fitCamera(voxels)
+  makeScene(document.getElementById('scene-character'), voxels, {
+    ...fit,
+    bloomStrength: 0.60, rotateSpeed: 0.70,
+  })
+}).catch(err => console.error('Character VOX load failed:', err))
+
+// Example — Coin
+loadVox('./examples/coin.vox').then(voxels => {
+  const fit = fitCamera(voxels)
+  makeScene(document.getElementById('scene-coin'), voxels, {
+    camPos: [fit.camPos[0], fit.camPos[1] * 1.2, fit.camPos[2]],
+    camTarget: fit.camTarget,
+    bloomStrength: 0.80, rotateSpeed: 0.65, bloomThreshold: 0.28,
+  })
+}).catch(err => console.error('Coin VOX load failed:', err))
+
+// Example — House
+loadVox('./examples/house.vox').then(voxels => {
+  const fit = fitCamera(voxels)
+  makeScene(document.getElementById('scene-house'), voxels, {
+    ...fit,
+    bloomStrength: 0.55, rotateSpeed: 0.55,
+  })
+}).catch(err => console.error('House VOX load failed:', err))
+
+
+
+// ── Scroll reveal ──────────────────────────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } })
+}, { threshold: 0.12 })
+document.querySelectorAll('.reveal').forEach(el => io.observe(el))
+</script>
+</body>
+</html>
