@@ -57,8 +57,8 @@ export const skils = [
 
 export const projects = [
     {
-        name: "Pixel Verse",
-        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e2/18/f6/e218f6a9-f307-1900-6111-d34f08f4015f/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/360x360bb.png",
+        name: "Picell",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/cd/d9/5d/cdd95da0-3264-e530-dada-5564a963daf0/Placeholder.mill/360x360bb.png",
         platforms: {
             ios: "https://apps.apple.com/us/app/pixel-verse/id6736886514",
             macos: "https://apps.apple.com/us/app/pixel-verse/id6736886514",
@@ -82,7 +82,7 @@ export const projects = [
     },
     {
         name: "Doodle Verse",
-        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7d/de/17/7dde175e-b98d-a2ea-3774-7bc284987bde/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/460x0w.webp",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/09/e9/dc/09e9dc22-f8e5-0b5b-44e8-6d50bcf1eaf8/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/360x360ia.png",
         platforms: {
             ios: "https://apps.apple.com/us/app/doodleverse-drawing-lessons/id6738771454",
             web: "https://taalaydev.github.io/doodleverse/",
@@ -103,7 +103,7 @@ export const projects = [
     },
     {
         name: "Tsuzuki Connect",
-        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f8/2f/6d/f82f6db1-3742-061c-436c-c848bd324506/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/360x360bb.png",
+        image: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/86/0d/78/860d78f5-202b-49d2-9ff2-7d3c27a67936/Placeholder.mill/360x360bb.png",
         platforms: {
             ios: "https://apps.apple.com/us/app/tsuzuki-connect/id6744872822",
             macos: "https://apps.apple.com/us/app/tsuzuki-connect/id6744872822",
@@ -120,7 +120,7 @@ export const projects = [
     },
     {
         "name": "Constellation Catcher",
-        "image": "https://raw.githubusercontent.com/TaalayDev/constellation_catcher/refs/heads/main/ios/Runner/Assets.xcassets/AppIcon.appiconset/512.png",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ad/2f/d4/ad2fd423-dbdb-f429-30d9-6166b3721f61/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/360x360ia.png",
         "platforms": {
             "ios": "https://apps.apple.com/us/app/constellation-catcher/id6739852690",
             "macos": "https://apps.apple.com/us/app/constellation-catcher/id6739852690",
@@ -135,86 +135,74 @@ export const projects = [
         ],
     },
     {
-        "name": "Мал Базар: Кыргызстан",
-        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/86/9e/2a/869e2a6a-c122-33a9-70d0-bf37f114a886/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/460x0w.webp",
+        "name": "Dialogue With The Monster",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fc/e5/03/fce5036a-c153-9a3c-517e-cd5d24b2fa92/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/360x360ia.png",
         "platforms": {
-            "ios": "https://apps.apple.com/us/app/%D0%BC%D0%B0%D0%BB-%D0%B1%D0%B0%D0%B7%D0%B0%D1%80-%D0%BA%D1%8B%D1%80%D0%B3%D1%8B%D0%B7%D1%81%D1%82%D0%B0%D0%BD/id6745025940",
+            "ios": "https://apps.apple.com/us/app/dialogue-with-the-monster/id6754234905",
+            "macos": "https://apps.apple.com/us/app/dialogue-with-the-monster/id6754234905",
         },
         "stack": ["Flutter"],
-        "description": "Мал Базар: Кыргызстан — цифровая торговая площадка Кыргызстана для продажи и покупки сельскохозяйственных животных, птицы, техники и товаров для фермерства.",
+        "description": "Conversation-Driven Horror: Your words are your only tools in this battle of minds and wills",
         "note": [
-            "Пользовательский интерфейс: Простой и интуитивно понятный интерфейс для удобного поиска и размещения объявлений.",
-            "Функционал: Возможность размещать объявления о продаже и покупке животных, птицы, техники и товаров для фермерства.",
-            "Поиск и фильтрация: Удобные инструменты для поиска и фильтрации объявлений по различным критериям.",
+            "Psychological Thriller: Immerse yourself in a suspenseful atmosphere where every choice matters.",
+            "Dynamic Narrative: A branching storyline that adapts to your decisions and dialogue choices.",
+            "Mystery and Intrigue: Uncover the secrets behind the monster's appearance and motives.",
+            "Multiple Endings: Your journey can conclude in various ways depending on your actions and words.",
         ],
     },
     {
-        "name": "Palette Master: Color Puzzles",
-        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/40/1b/b7/401bb748-19d4-f7e9-bfb5-613bee2ae80e/AppIcon-0-0-85-220-0-5-0-2x.png/460x0w.webp",
+        "name": "The Answer is Yes",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4d/35/53/4d35534f-23c1-2309-6ee5-824e25005f53/Placeholder.mill/360x360bb.png",
         "platforms": {
-            "ios": "https://apps.apple.com/us/app/palette-master-color-puzzles/id6743667034",
-            "macos": "https://apps.apple.com/us/app/palette-master-color-puzzles/id6743667034",
-            "sourcecode": "https://github.com/TaalayDev/palette_master",
+            "ios": "https://apps.apple.com/us/app/the-answer-is-yes/id6760308425",
+            "macos": "https://apps.apple.com/us/app/the-answer-is-yes/id6760308425",
+        },
+        "stack": ["Flutter", "JavaScript"],
+        "description": "You have been scheduled for an intake appointment.",
+        "note": [
+        ],
+    },
+    {
+        "name": "Love Me? YES",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3a/e8/f2/3ae8f2fc-11d1-dc52-c935-176cbb8f26da/Placeholder.mill/360x360bb.png",
+        "platforms": {
+            "ios": "https://apps.apple.com/us/app/love-me-yes/id6777530857",
+            "macos": "https://apps.apple.com/us/app/love-me-yes/id6777530857",
+        },
+        "stack": ["Flutter", "JavaScript"],
+        "description": "Love Me? Yes is a choice-driven visual novel that starts soft, personal, and almost comforting. Just a conversation, one reply at a time.",
+        "note": [
+            "Choice-Driven Narrative: Your decisions shape the story and your relationship with the character.",
+            "Multiple Endings: Your journey can conclude in various ways depending on your actions and words.",
+        ],
+    },
+    {
+        "name": "While You're Here",
+        "image": "https://img.itch.zone/aW1nLzI0NzY4NTEwLmpwZw==/315x250%23c/Qxprbq.jpg",
+        "platforms": {
+            "windows": "https://taalaydev.itch.io/while-youre-here"
+        },
+        "stack": ["HTML", "JavaScript"],
+        "description": "An intimate visual novel where you navigate the quiet intensity of a developing relationship through heartfelt conversation and shared memories.",
+        "note": [
+            "Choice-Driven Narrative: Your decisions shape the story and your relationship with the character.",
+            "Multiple Endings: Your journey can conclude in various ways depending on your actions and words.",
+        ],
+    },
+    {
+        "name": "Picell 3D",
+        "image": "https://img.itch.zone/aW1nLzI2MzQ5ODY1LmpwZw==/315x250%23c/lGjukk.jpg",
+        "platforms": {
+            "windows": "https://taalaydev.itch.io/picell-3d"
         },
         "stack": ["Flutter"],
-        "description": "Palette Master is an interactive puzzle game that turns color theory into a fun and engaging experience.",
+        "description": "Draw it in 2D. It's already 3D.",
         "note": [
-            "Color theory puzzles: Solve puzzles based on color theory concepts.",
-            "Interactive learning: Learn about color mixing, harmony, and contrast through gameplay.",
-            "Progress tracking: Monitor your performance and see how you improve over time.",
-            "Offline access: Play without an internet connection.",
+            "Draw 2D images",
+            "Watch them come alive in 3D",
+            "Relaxing and satisfying gameplay",
+            "Suitable for all ages",
         ],
-    },
-    {
-        "name": "Brain Teasers",
-        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6e/d4/0b/6ed40bfe-9eb8-1ba8-4c94-de28be026026/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/360x360bb.png",
-        "platforms": {
-            "ios": "https://apps.apple.com/us/app/brain-teasers-puzzle-games/id6743542227",
-            "sourcecode": "https://github.com/TaalayDev/brain_teasers",
-        },
-        "stack": ["Flutter"],
-        "description": "Brain Teasers is a collection of fun and challenging puzzles to test your cognitive skills. Solve puzzles, complete challenges, and track your progress as you exercise your brain.",
-        "note": [
-            "Diverse puzzles: Solve a variety of puzzles, including math problems, logic puzzles, and more.",
-            "Challenges: Complete daily challenges to earn rewards.",
-            "Progress tracking: Monitor your performance and see how you improve over time.",
-        ],
-    },
-    {
-        name: "JSMaster",
-        image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/85/e8/14/85e8149c-27f8-f5c8-e9f3-1563813ffca6/AppIcon-0-0-1x_U007emarketing-0-10-0-0-85-220.png/340x340bb.png",
-        platforms: {
-            ios: "https://apps.apple.com/us/app/js-master/id6736955510",
-            macos: "https://apps.apple.com/us/app/js-master/id6736955510",
-            sourcecode: "https://github.com/TaalayDev/JSMaster",
-        },
-        stack: ["Flutter"],
-        description: "Interactive JavaScript learning app built with Flutter. Features real-time code execution, progress tracking, and offline lessons.",
-        note: [
-            "Interactive JavaScript lessons",
-            "Real-time code execution",
-            "Progress tracking",
-            "Offline access to lessons",
-            "Quizzes to test your knowledge",
-        ],
-    },
-    {
-        name: "Doodle Verse",
-        image: "https://images.ctfassets.net/23aumh6u8s0i/4TsG2mTRrLFhlQ9G1m19sC/4c9f98d56165a0bdd71cbe7b9c2e2484/flutter",
-        platforms: {
-            sourcecode: "https://github.com/TaalayDev/doodle_verse",
-        },
-        stack: ["Flutter"],
-        description: "Feature-rich digital drawing and painting application built with Flutter.",
-        note: [
-            "Cross-platform support: Runs on Android, iOS, Web, and Desktop.",
-            "Multiple brush types: Including pencil, marker, watercolor, and various creative brushes.",
-            "Shape tools: Rectangle, circle, line, arrow, ellipse, and polygon.",
-            "Layer support: Create, manage, and organize your artwork in layers.",
-            "Color picker: Advanced color selection with opacity control.",
-            "Undo/Redo functionality: Easily correct mistakes or revisit previous states.",
-            "Project management: Create, save, and edit multiple projects.",
-        ],
-    },
+    }
 
 ];
