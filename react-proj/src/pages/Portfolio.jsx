@@ -9,15 +9,18 @@ import Footer from '../components/Footer';
 
 export default function Portfolio() {
   return (
-    <main className="relative z-10">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <ContactSection />
-      <Footer />
-    </main>
+    <>
+      <a href="#hero" className="skip-link">Skip to content</a>
+      <main id="hero" className="relative z-10">
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <ExperienceSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ContactSection />
+        <Footer />
+      </main>
+    </>
   );
 }

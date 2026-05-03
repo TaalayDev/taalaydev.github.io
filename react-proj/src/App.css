@@ -2,66 +2,104 @@
    App-level styles & global animations
    ============================================ */
 
-/* Animated gradient orbs in background */
-.bg-orb {
+/* Aurora atmosphere — slowly drifting blurred gradients creating
+   a cohesive, cinematic ambient background with depth. */
+.aurora {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.15;
-  animation: orbFloat 20s ease-in-out infinite;
+  filter: blur(130px);
+  will-change: transform;
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
-.bg-orb-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #6366f1, transparent 70%);
-  top: -200px;
-  left: -100px;
-  animation-delay: 0s;
+.aurora-1 {
+  width: 65vw;
+  height: 65vw;
+  max-width: 850px;
+  max-height: 850px;
+  background: radial-gradient(
+    circle at 40% 45%,
+    rgba(99, 102, 241, 0.25) 0%,
+    rgba(79, 70, 229, 0.1) 40%,
+    transparent 70%
+  );
+  top: -20vw;
+  left: -12vw;
+  animation: auroraDrift1 30s ease-in-out infinite;
 }
 
-.bg-orb-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #8b5cf6, transparent 70%);
-  top: 40%;
-  right: -150px;
-  animation-delay: -7s;
+.aurora-2 {
+  width: 55vw;
+  height: 55vw;
+  max-width: 750px;
+  max-height: 750px;
+  background: radial-gradient(
+    circle at 55% 50%,
+    rgba(168, 85, 247, 0.2) 0%,
+    rgba(139, 92, 246, 0.08) 40%,
+    transparent 70%
+  );
+  top: 25%;
+  right: -18vw;
+  animation: auroraDrift2 35s ease-in-out infinite;
 }
 
-.bg-orb-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #ec4899, transparent 70%);
-  bottom: 10%;
-  left: 20%;
-  animation-delay: -14s;
+.aurora-3 {
+  width: 50vw;
+  height: 50vw;
+  max-width: 680px;
+  max-height: 680px;
+  background: radial-gradient(
+    circle at 50% 55%,
+    rgba(236, 72, 153, 0.15) 0%,
+    rgba(219, 39, 119, 0.06) 40%,
+    transparent 70%
+  );
+  bottom: -12vw;
+  left: 18vw;
+  animation: auroraDrift3 40s ease-in-out infinite;
 }
 
-@keyframes orbFloat {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(50px, -30px) scale(1.1);
-  }
-  50% {
-    transform: translate(-30px, 50px) scale(0.95);
-  }
-  75% {
-    transform: translate(30px, 20px) scale(1.05);
-  }
+/* Three-point motion paths for organic aurora drift */
+@keyframes auroraDrift1 {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  33%  { transform: translate3d(5vw, 3vw, 0) scale(1.08) rotate(2deg); }
+  66%  { transform: translate3d(-2vw, 5vw, 0) scale(0.96) rotate(-1deg); }
+  100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+}
+@keyframes auroraDrift2 {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  33%  { transform: translate3d(-4vw, -2vw, 0) scale(0.94) rotate(-2deg); }
+  66%  { transform: translate3d(3vw, -4vw, 0) scale(1.06) rotate(1deg); }
+  100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+}
+@keyframes auroraDrift3 {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  33%  { transform: translate3d(3vw, -3vw, 0) scale(1.05) rotate(1.5deg); }
+  66%  { transform: translate3d(-3vw, 2vw, 0) scale(0.97) rotate(-1.5deg); }
+  100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
 }
 
-/* Grid dot pattern */
+/* Grid dot pattern — subtle, anchored, lower presence */
 .dot-grid {
   background-image: radial-gradient(
     circle,
-    rgba(99, 102, 241, 0.08) 1px,
+    rgba(148, 163, 184, 0.06) 1px,
     transparent 1px
   );
-  background-size: 40px 40px;
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+/* Edge vignette — pulls focus inward without darkening content */
+.vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(4, 4, 10, 0.6) 100%
+  );
 }
 
 /* Horizontal line accent */

@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Linkedin, Send, ChevronDown, Sparkles } from 'lucide-react';
 import { contacts } from '../data/data';
+import useReducedMotion from './useReducedMotion';
 
 const roles = [
   'Mobile Developer',
@@ -13,34 +14,41 @@ const roles = [
 
 export default function HeroSection() {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const typeRole = useCallback(() => {
-    const currentRole = roles[roleIndex];
-    if (!isDeleting) {
-      if (displayText.length < currentRole.length) {
-        setDisplayText(currentRole.substring(0, displayText.length + 1));
-      } else {
-        setTimeout(() => setIsDeleting(true), 2000);
-        return;
-      }
-    } else {
-      if (displayText.length > 0) {
-        setDisplayText(currentRole.substring(0, displayText.length - 1));
-      } else {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-        return;
-      }
-    }
-  }, [displayText, isDeleting, roleIndex]);
+  const reducedMotion = useReducedMotion();
+  const sectionRef = useRef(null);
+  const accentRef = useRef(null);
 
   useEffect(() => {
-    const speed = isDeleting ? 40 : 80;
-    const timer = setTimeout(typeRole, speed);
-    return () => clearTimeout(timer);
-  }, [typeRole, isDeleting]);
+    if (reducedMotion) return;
+    const id = setInterval(() => {
+      setRoleIndex((i) => (i + 1) % roles.length);
+    }, 2600);
+    return () => clearInterval(id);
+  }, [reducedMotion]);
+
+  // Cursor-tracked parallax accent — replaces the four floating shapes
+  useEffect(() => {
+    if (reducedMotion) return;
+    const section = sectionRef.current;
+    const accent = accentRef.current;
+    if (!section || !accent) return;
+
+    let raf = null;
+    const onMove = (e) => {
+      const rect = section.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        accent.style.transform = `translate3d(${x * 40}px, ${y * 40}px, 0)`;
+      });
+    };
+    section.addEventListener('mousemove', onMove);
+    return () => {
+      section.removeEventListener('mousemove', onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [reducedMotion]);
 
   const containerVariants = {
     hidden: {},
@@ -56,37 +64,20 @@ export default function HeroSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Floating geometric shapes */}
+      {/* Single cursor-parallax accent — replaces previous 4 floating shapes */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-20 left-[15%] w-64 h-64 rounded-full opacity-[0.04]"
-          style={{ background: 'radial-gradient(circle, #6366f1, transparent)' }}
-          animate={{ y: [-20, 20, -20], rotate: [0, 180, 360] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        />
-        <motion.div
-          className="absolute bottom-32 right-[10%] w-48 h-48 rounded-full opacity-[0.03]"
-          style={{ background: 'radial-gradient(circle, #ec4899, transparent)' }}
-          animate={{ y: [15, -15, 15], x: [-10, 10, -10] }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute top-[40%] right-[25%] w-2 h-2 bg-indigo-400 rounded-full"
-          animate={{ y: [-30, 30, -30], opacity: [0.3, 0.8, 0.3] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute top-[30%] left-[10%] w-1.5 h-1.5 bg-purple-400 rounded-full"
-          animate={{ y: [20, -20, 20], opacity: [0.2, 0.6, 0.2] }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        />
-        <motion.div
-          className="absolute bottom-[40%] left-[30%] w-1 h-1 bg-pink-400 rounded-full"
-          animate={{ y: [-15, 15, -15], opacity: [0.4, 0.9, 0.4] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        <div
+          ref={accentRef}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full opacity-[0.07] transition-transform duration-[400ms] ease-out"
+          style={{
+            background:
+              'radial-gradient(circle, #818cf8 0%, #c084fc 40%, transparent 70%)',
+          }}
+          aria-hidden="true"
         />
       </div>
 
@@ -115,16 +106,26 @@ export default function HeroSection() {
           <span className="text-white glow-text">Taalay</span>
         </motion.h1>
 
-        {/* Role typing */}
+        {/* Role — calm fade-cycle replaces the typewriter */}
         <motion.div
           variants={childVariants}
-          className="flex items-center justify-center gap-2 mb-8"
+          className="flex items-center justify-center gap-2 mb-8 h-8"
         >
-          <Sparkles size={18} className="text-indigo-400" />
-          <span className="font-mono text-lg sm:text-xl md:text-2xl text-indigo-300">
-            {displayText}
-            <span className="typing-cursor" />
-          </span>
+          <Sparkles size={18} className="text-indigo-400 shrink-0" />
+          <div className="relative font-mono text-lg sm:text-xl md:text-2xl text-indigo-300">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={roleIndex}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                className="inline-block"
+              >
+                {roles[roleIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </div>
         </motion.div>
 
         {/* Bio */}
@@ -203,7 +204,7 @@ export default function HeroSection() {
         transition={{ delay: 2 }}
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={reducedMotion ? {} : { y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="flex flex-col items-center gap-2"
         >
@@ -213,7 +214,7 @@ export default function HeroSection() {
           <div className="w-5 h-8 rounded-full border-2 border-gray-600 flex justify-center pt-1.5">
             <motion.div
               className="w-1 h-2 bg-gray-500 rounded-full"
-              animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+              animate={reducedMotion ? {} : { y: [0, 8, 0], opacity: [1, 0.3, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             />
           </div>
