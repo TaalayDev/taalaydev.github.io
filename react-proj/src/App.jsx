@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Portfolio from './pages/Portfolio';
 import ParticleBackground from './components/ParticleBackground';
+import PixelTrail from './components/PixelTrail';
 import './App.css';
 
 /**
@@ -83,6 +84,9 @@ function App() {
 
       {/* Edge vignette for depth */}
       <div className="fixed inset-0 pointer-events-none z-0 vignette" />
+
+      {/* Pixel art mouse trail */}
+      <PixelTrail />
 
       {/* Main content */}
       <Portfolio />
