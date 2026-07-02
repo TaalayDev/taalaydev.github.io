@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Запрос на удаление аккаунта — Birimdik.kg</title>
+    <title>Запрос на удаление аккаунта — Москва жарнамалары</title>
     <style>
       :root {
         --bg: #f5f7fb;
@@ -157,7 +157,7 @@
         <h1>Запрос на удаление аккаунта</h1>
         <p class="muted">
           Заполните форму ниже. После отправки откроется ваш почтовый клиент с готовым письмом на
-          <strong>birimdik.kg@yahoo.com</strong>.
+          <strong>Москва жарнамалары@yahoo.com</strong>.
         </p>
         <p class="warn">
           Важно: удаление аккаунта и связанных данных может быть необратимым.
@@ -194,7 +194,7 @@
           <div class="checkbox">
             <input id="confirm" name="confirm" type="checkbox" required />
             <label for="confirm">
-              Подтверждаю, что являюсь владельцем аккаунта и прошу удалить аккаунт Birimdik.kg.
+              Подтверждаю, что являюсь владельцем аккаунта и прошу удалить аккаунт Москва жарнамалары.
             </label>
           </div>
 
@@ -205,7 +205,7 @@
 
         <p class="footer">
           Если почтовый клиент не открылся автоматически, отправьте письмо вручную на
-          <a href="mailto:birimdik.kg@yahoo.com">birimdik.kg@yahoo.com</a>.
+          <a href="mailto:Москва жарнамалары@yahoo.com">Москва жарнамалары@yahoo.com</a>.
         </p>
       </section>
     </main>
@@ -213,7 +213,7 @@
     <script>
       (function () {
         const form = document.getElementById('deleteForm');
-        const recipient = 'birimdik.kg@yahoo.com';
+        const recipient = 'Москва жарнамалары@yahoo.com';
 
         form.addEventListener('submit', function (event) {
           event.preventDefault();
@@ -229,11 +229,11 @@
           const userId = document.getElementById('userId').value.trim() || 'Не указан';
           const reason = document.getElementById('reason').value.trim() || 'Не указана';
 
-          const subject = 'Запрос на удаление аккаунта Birimdik.kg';
+          const subject = 'Запрос на удаление аккаунта Москва жарнамалары';
           const body = [
             'Здравствуйте,',
             '',
-            'Прошу удалить мой аккаунт в Birimdik.kg.',
+            'Прошу удалить мой аккаунт в Москва жарнамалары.',
             '',
             'Данные пользователя:',
             'ФИО: ' + fullName,
