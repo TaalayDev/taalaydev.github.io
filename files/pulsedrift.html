@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse Drift</title>
+<meta name="description" content="A hypnotic audiovisual rhythm journey — tap on the pulse, drift through ten worlds, and build an evolving cosmic soundtrack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  /* ---------- tokens : light (bare :root) ---------- */
+  :root{
+    --ground:#eef0f4;
+    --surface:#ffffff;
+    --surface-2:#f6f7fa;
+    --hairline:#dcdee6;
+    --ink:#14151c;
+    --ink-dim:#5c5f70;         /* cool grey, faint violet bias — chosen, not defaulted */
+    --ink-faint:#9a9daf;
+    --accent:#4c5cd6;          /* drift periwinkle, deepened for white */
+    --accent-soft:#e7e9fb;
+    --chase:#c9257c;           /* chase magenta */
+    --glow:rgba(76,92,214,.16);
+    --scrim:rgba(238,240,244,.72);
+    color-scheme:light;
+  }
+  /* ---------- tokens : dark (system + explicit) ---------- */
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#06060b;
+      --surface:#0b0c13;
+      --surface-2:#0e0f17;
+      --hairline:#20212d;
+      --ink:#e9eaf2;
+      --ink-dim:#8a8ca0;
+      --ink-faint:#585a6c;
+      --accent:#8493f5;
+      --accent-soft:#171a2e;
+      --chase:#ec4899;
+      --glow:rgba(132,147,245,.22);
+      --scrim:rgba(6,6,11,.66);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#06060b;
+    --surface:#0b0c13;
+    --surface-2:#0e0f17;
+    --hairline:#20212d;
+    --ink:#e9eaf2;
+    --ink-dim:#8a8ca0;
+    --ink-faint:#585a6c;
+    --accent:#8493f5;
+    --accent-soft:#171a2e;
+    --chase:#ec4899;
+    --glow:rgba(132,147,245,.22);
+    --scrim:rgba(6,6,11,.66);
+    color-scheme:dark;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font:400 clamp(1rem,.96rem + .2vw,1.0625rem)/1.65 "Archivo",system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:var(--ground)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  /* ---------- shared type roles ---------- */
+  .display{
+    font-family:"Josefin Sans",system-ui,sans-serif;
+    font-weight:300;
+    text-transform:uppercase;
+    line-height:1.02;
+    text-wrap:balance;
+  }
+  .eyebrow{
+    font-family:"Space Mono",ui-monospace,monospace;
+    font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  .mono{font-family:"Space Mono",ui-monospace,monospace}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  /* ---------- layout frame ---------- */
+  .wrap{max-width:1160px;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,4rem)}
+  section{border-top:1px solid var(--hairline)}
+  .band{padding-block:clamp(4.5rem,10vw,8rem)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100svh;min-height:100vh;display:flex;flex-direction:column;
+        border-top:0;overflow:hidden}
+  #field{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero::after{ /* vignette so type holds over the canvas */
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:
+      linear-gradient(90deg,var(--ground) 0%,color-mix(in srgb,var(--ground) 78%,transparent) 34%,transparent 66%),
+      radial-gradient(130% 80% at 50% 28%,transparent 30%,var(--ground) 92%);
+  }
+  .hero > .wrap{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;
+                justify-content:center;padding-block:clamp(5rem,14vh,9rem)}
+  .hero .eyebrow{margin-bottom:2rem}
+  .wordmark{
+    font-size:clamp(2.7rem,11.5vw,8.5rem);
+    letter-spacing:clamp(.12em,1.4vw,.42em);
+    /* optical: kill the trailing letter-space so it stays centred to the ring */
+    margin-right:calc(-1 * clamp(.12em,1.4vw,.42em));
+  }
+  .tagline{
+    margin-top:1.6rem;max-width:34ch;
+    font-size:clamp(1.05rem,1rem + .5vw,1.4rem);
+    line-height:1.5;color:var(--ink);
+  }
+  .tagline .soft{color:var(--ink-dim)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:1rem 1.4rem;align-items:center;margin-top:2.8rem}
+  .btn{
+    font-family:"Space Mono",monospace;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;
+    padding:.95rem 1.6rem;border:1px solid var(--accent);color:var(--accent);
+    border-radius:999px;transition:background .25s,color .25s,box-shadow .25s;
+    display:inline-flex;align-items:center;gap:.7rem;white-space:nowrap;
+  }
+  .btn--primary{background:var(--accent);color:var(--ground)}
+  .btn--primary:hover{box-shadow:0 0 0 6px var(--glow)}
+  .btn--ghost:hover{background:var(--accent);color:var(--ground)}
+  .btn .dot{width:.5rem;height:.5rem;border-radius:50%;background:currentColor;
+            box-shadow:0 0 10px currentColor}
+  .platforms{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.24em;
+             text-transform:uppercase;color:var(--ink-dim)}
+  .headphones{
+    position:relative;z-index:2;text-align:center;padding-block:1.4rem 1.8rem;
+    font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--ink-faint);
+  }
+
+  /* ---------- section heads ---------- */
+  .head{display:grid;gap:1.1rem;margin-bottom:clamp(2.5rem,6vw,4rem);max-width:52ch}
+  .head h2{font-size:clamp(1.9rem,1.4rem + 2.4vw,3.4rem);letter-spacing:.06em}
+  .head p{color:var(--ink-dim);max-width:46ch}
+
+  /* ---------- modes ---------- */
+  .modes{display:grid;gap:1px;background:var(--hairline);
+         border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+  @media (min-width:820px){.modes{grid-template-columns:1fr 1fr}}
+  .mode{background:var(--surface);padding:clamp(2rem,4vw,3.4rem);display:flex;flex-direction:column;gap:1.4rem}
+  .mode__tag{display:flex;align-items:center;gap:.8rem}
+  .mode__tag .ring{width:1.35rem;height:1.35rem;border-radius:50%;flex:none;
+    border:1.5px solid var(--m);box-shadow:0 0 0 4px color-mix(in srgb,var(--m) 16%,transparent) inset,0 0 14px color-mix(in srgb,var(--m) 45%,transparent)}
+  .mode__tag h3{font-family:"Josefin Sans",sans-serif;font-weight:400;text-transform:uppercase;
+    letter-spacing:.34em;font-size:1.15rem}
+  .mode__lead{font-size:1.15rem;line-height:1.5}
+  .mode__body{color:var(--ink-dim);font-size:.95rem}
+  .mode--drift{--m:var(--accent)}
+  .mode--chase{--m:var(--chase)}
+  .score{border-top:1px solid var(--hairline);margin-top:.4rem;padding-top:1.3rem;
+         display:grid;gap:.55rem;font-family:"Space Mono",monospace;font-size:.82rem}
+  .score .row{display:flex;justify-content:space-between;gap:1rem;color:var(--ink-dim)}
+  .score .row b{color:var(--ink);font-weight:700}
+  .score .row.max b{color:var(--chase)}
+  .mode__note{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.16em;
+              text-transform:uppercase;color:var(--ink-faint)}
+
+  /* ---------- worlds ledger ---------- */
+  .worlds{display:grid;gap:0}
+  .world{
+    display:grid;grid-template-columns:2.6rem 1fr;gap:1rem 1.4rem;align-items:baseline;
+    padding-block:1.15rem;border-bottom:1px solid var(--hairline);
+  }
+  .world:first-child{border-top:1px solid var(--hairline)}
+  @media (min-width:720px){
+    .world{grid-template-columns:3.5rem 12rem 1fr auto}
+  }
+  .world__n{font-family:"Space Mono",monospace;font-size:.78rem;color:var(--ink-faint)}
+  .world__name{font-family:"Josefin Sans",sans-serif;font-weight:400;text-transform:uppercase;
+    letter-spacing:.2em;font-size:1rem;display:flex;align-items:center;gap:.7rem}
+  .world__name i{width:.5rem;height:.5rem;border-radius:50%;background:var(--c);flex:none;
+    box-shadow:0 0 10px var(--c)}
+  .world__sub{color:var(--ink-dim);font-size:.9rem}
+  .world__layer{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+
+  /* ---------- gallery ---------- */
+  .shots{display:grid;gap:1.1rem}
+  @media (min-width:760px){.shots{grid-template-columns:repeat(6,1fr)}}
+  .shot{border:1px solid var(--hairline);border-radius:5px;overflow:hidden;background:#000;
+        position:relative;aspect-ratio:2752/2064}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .shot figcaption{
+    position:absolute;left:0;bottom:0;padding:.6rem .8rem;
+    font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+    color:#e9eaf2;background:linear-gradient(0deg,rgba(0,0,0,.72),transparent);
+    width:100%;
+  }
+  @media (min-width:760px){
+    .shot:nth-child(1){grid-column:span 4}
+    .shot:nth-child(2){grid-column:span 2}
+    .shot:nth-child(3){grid-column:span 2}
+    .shot:nth-child(4){grid-column:span 2}
+    .shot:nth-child(5){grid-column:span 2}
+  }
+
+  /* ---------- get ---------- */
+  .get{display:grid;gap:2.4rem}
+  @media (min-width:820px){.get{grid-template-columns:1fr auto;align-items:end}}
+  .get h2{font-size:clamp(2.2rem,1.6rem + 3vw,4rem);letter-spacing:.05em}
+  .avail{display:grid;gap:.9rem;min-width:16rem}
+  .avail .eyebrow{margin-bottom:.3rem}
+  .plat{display:flex;justify-content:space-between;gap:1.5rem;padding-block:.7rem;
+        border-bottom:1px solid var(--hairline);font-family:"Space Mono",monospace;font-size:.85rem}
+  .plat span:last-child{color:var(--ink-faint);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--hairline);color:var(--ink-dim)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;
+               align-items:center;padding-block:2.4rem;font-family:"Space Mono",monospace;
+               font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+
+  /* ---------- reveal ---------- */
+  .rise{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  .rise.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .rise{opacity:1;transform:none;transition:none}
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;
+      transition-duration:.001ms !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="eyebrow rise">Audiovisual rhythm journey</p>
+    <h1 class="display wordmark rise">Pulse Drift</h1>
+    <p class="tagline rise">Tap anywhere on the beat. <span class="soft">Drift through ten evolving worlds and build a cosmic soundtrack that only exists while you play.</span></p>
+    <div class="hero-cta rise">
+      <a class="btn btn--primary" href="#get"><span class="dot"></span>Get the game</a>
+      <a class="btn btn--ghost" href="#modes">Two ways to play</a>
+      <span class="platforms">iOS · macOS · Android</span>
+    </div>
+  </div>
+  <p class="headphones rise">Best experienced with headphones</p>
+</header>
+
+<main>
+  <section id="modes" class="band">
+    <div class="wrap">
+      <div class="head rise">
+        <p class="eyebrow">Choose your journey</p>
+        <h2 class="display">One pulse.<br>Two ways in.</h2>
+        <p>The same beat, the same worlds, the same generative score — pointed at two completely different states of mind.</p>
+      </div>
+
+      <div class="modes rise">
+        <article class="mode mode--drift">
+          <div class="mode__tag"><span class="ring"></span><h3>Drift</h3></div>
+          <p class="mode__lead">Follow the pulse. Build the sound.</p>
+          <p class="mode__body">No score to chase and no way to lose — a missed beat just softens the drift. Progress raises the tempo, unlocks a new instrument, and transforms the space around you. Put it on, look up, and stay a while.</p>
+          <p class="mode__note">Relax · hypnotic · endless</p>
+        </article>
+
+        <article class="mode mode--chase">
+          <div class="mode__tag"><span class="ring"></span><h3>Chase</h3></div>
+          <p class="mode__lead">Catch moving pulses. Set a high score.</p>
+          <p class="mode__body">Targets bloom across the screen a beat ahead; their ring collapses toward the centre. Hit the right place at the right moment. Chain perfect catches into Overdrive and let each catch fling you deeper into space.</p>
+          <div class="score tnum">
+            <div class="row max"><span>Perfect timing + dead centre</span><b>1,000</b></div>
+            <div class="row"><span>Perfect timing</span><b>700</b></div>
+            <div class="row"><span>Good</span><b>400</b></div>
+            <div class="row"><span>Edge catch</span><b>200</b></div>
+            <div class="row"><span>Miss</span><b>combo resets</b></div>
+          </div>
+          <p class="mode__note">Finite runs · 3 misses · daily seed</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head rise">
+        <p class="eyebrow">The journey · 01–10</p>
+        <h2 class="display">Ten worlds,<br>one continuous score.</h2>
+        <p>Every world you reach adds a permanent layer to the music — a bassline, an arpeggio, a choir. By the end you're hearing everything at once.</p>
+      </div>
+      <div class="worlds rise" id="worlds"></div>
+    </div>
+  </section>
+
+  <section id="get" class="band">
+    <div class="wrap get rise">
+      <div>
+        <p class="eyebrow">Relax and build an evolving cosmic soundtrack</p>
+        <h2 class="display" style="margin-top:1rem">Put the<br>headphones on.</h2>
+      </div>
+      <div class="avail">
+        <p class="eyebrow">Available on</p>
+        <div class="plat"><span>iPhone &amp; iPad</span><span>App&nbsp;Store</span></div>
+        <div class="plat"><span>Mac</span><span>App&nbsp;Store</span></div>
+        <div class="plat"><span>Android</span><span>Google&nbsp;Play</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Pulse Drift</span>
+    <span>Generative audio · WebGL · built with Tauri</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const WORLDS = [
+    ['Void','where it begins','pulse','#6b7280'],
+    ['Nebula Drift','clouds of creation','+ bass frequency','#a78bfa'],
+    ['Crystal Sea','frozen light','+ crystal arpeggios','#22d3ee'],
+    ['The Deep','abyssal pressure','+ sub harmonics','#06b6d4'],
+    ['Aurora Stream','rivers of light','+ harmonic pads','#34d399'],
+    ['Electric Storm','chaos contained','+ storm percussion','#818cf8'],
+    ['Solar Wind','stellar fire','+ solar lead','#fbbf24'],
+    ['Quantum Field','probability waves','+ quantum glitch','#c084fc'],
+    ['Event Horizon','point of no return','+ gravitational strings','#f472b6'],
+    ['Transcendence','beyond the drift','+ celestial voices','#f5f5f5'],
+  ];
+  const wl = document.getElementById('worlds');
+  wl.innerHTML = WORLDS.map((w,i)=>`
+    <div class="world" style="--c:${w[3]}">
+      <span class="world__n">${String(i+1).padStart(2,'0')}</span>
+      <span class="world__name"><i></i>${w[0]}</span>
+      <span class="world__sub">${w[1]}</span>
+      <span class="world__layer">${w[2]}</span>
+    </div>`).join('');
+
+  // scroll reveal
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.rise').forEach((el,i)=>{ el.style.transitionDelay=(i%4*60)+'ms'; io.observe(el); });
+
+  // ---- ambient pulse field ----
+  const cv = document.getElementById('field');
+  const ctx = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const PAL = WORLDS.map(w=>w[3]);
+  let W,H,DPR,cx,cy,stars=[];
+  const hexToRgb = h => [1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+  const lerp = (a,b,t)=>a+(b-a)*t;
+  function mix(c1,c2,t){const a=hexToRgb(c1),b=hexToRgb(c2);return `rgb(${a.map((v,i)=>Math.round(lerp(v,b[i],t))).join(',')})`;}
+
+  function resize(){
+    DPR=Math.min(devicePixelRatio||1,2);
+    W=cv.clientWidth;H=cv.clientHeight;cx=W*0.52;cy=H*0.30;
+    cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+    stars=Array.from({length:Math.round(W*H/9000)},()=>({
+      x:Math.random()*W,y:Math.random()*H,z:Math.random()*.8+.2}));
+  }
+  addEventListener('resize',resize);resize();
+
+  const BPM=58, beat=60/BPM, life=beat*4.2, rings=[];
+  let t0=performance.now()/1000, last=t0, nextBeat=0;
+
+  function accentAt(time){
+    const span=11;                 // seconds per world
+    const p=(time/span)%PAL.length;
+    const i=Math.floor(p);
+    return mix(PAL[i],PAL[(i+1)%PAL.length],p-i);
+  }
+
+  function frame(now){
+    now/=1000; const dt=Math.min(now-last,.05); last=now; const T=now-t0;
+    const col=accentAt(T);
+
+    ctx.clearRect(0,0,W,H);
+
+    // drifting stars
+    ctx.fillStyle=getComputedStyle(document.body).getPropertyValue('--ink-faint');
+    for(const s of stars){
+      s.y+=dt*8*s.z; if(s.y>H){s.y=-4;s.x=Math.random()*W;}
+      ctx.globalAlpha=s.z*.5;
+      ctx.fillRect(s.x,s.y,1.4*s.z,1.4*s.z);
+    }
+    ctx.globalAlpha=1;
+
+    // spawn a ring on the beat
+    while(T>nextBeat){ rings.push({born:t0+nextBeat}); nextBeat+=beat; }
+    const R=Math.hypot(W,H)*.6;
+    for(let k=rings.length-1;k>=0;k--){
+      const age=now-rings[k].born; if(age>life){rings.splice(k,1);continue;}
+      const p=age/life;
+      const r=40+p*R;
+      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
+      ctx.strokeStyle=col;
+      ctx.globalAlpha=(1-p)*(1-p)*.62;
+      ctx.lineWidth=lerp(3.6,1,p);
+      ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+
+    // core — pulses on the beat
+    const phase=((T)%beat)/beat;
+    const puls=Math.pow(1-phase,3);
+    const cr=15+puls*8;
+    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,cr*3.2);
+    g.addColorStop(0,col);g.addColorStop(.3,col);
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.globalAlpha=.6;ctx.fillStyle=g;
+    ctx.beginPath();ctx.arc(cx,cy,cr*3.2,0,Math.PI*2);ctx.fill();
+    ctx.globalAlpha=.85;ctx.fillStyle=col;
+    ctx.beginPath();ctx.arc(cx,cy,cr*.5,0,Math.PI*2);ctx.fill();
+
+    raf=requestAnimationFrame(frame);
+  }
+
+  let raf;
+  if(reduce){
+    // one calm static frame
+    resize();
+    const col=PAL[1];
+    ctx.strokeStyle=col;ctx.lineWidth=2;
+    [70,150,240].forEach((r,i)=>{ctx.globalAlpha=.4-i*.1;ctx.beginPath();ctx.arc(cx,cy,r,0,7);ctx.stroke();});
+    ctx.globalAlpha=1;ctx.fillStyle=col;ctx.beginPath();ctx.arc(cx,cy,14,0,7);ctx.fill();
+  } else {
+    raf=requestAnimationFrame(frame);
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden){cancelAnimationFrame(raf);}
+      else{last=performance.now()/1000;raf=requestAnimationFrame(frame);}
+    });
+  }
+})();
+</script>
+</body>
+</html>
